@@ -419,6 +419,16 @@ export const caseStudies: CaseStudy[] = [
         tradeoff: "A longer migration and the cost of running two systems in parallel.",
       },
       {
+        call: "Migrate the most sensitive merchants first, and verify every account by hand",
+        why: "Our highest-stakes accounts got the most attention while the team was freshest. With temporary access, we checked that each one had migrated correctly before moving on.",
+        tradeoff: "Slower early batches and more manual verification work.",
+      },
+      {
+        call: "Tell merchants ourselves, before they noticed anything",
+        why: "I reached out to merchants personally alongside Customer Success and Business Development, so every client knew what was happening and confirmed their account was right.",
+        tradeoff: "Significant PM time spent on direct client communication.",
+      },
+      {
         call: "Build the financial core to regulatory requirements from day one",
         why: "Designing for the Central Bank's requirements up front avoided rework during licensing.",
         tradeoff: "Slower early feature delivery.",
@@ -430,7 +440,9 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     delivery: [
-      "Rebuilt the financial engine and moved merchants to the new platform with zero downtime",
+      "Rebuilt the financial engine and moved merchants to the new platform in reversible stages, with zero downtime",
+      "Ran migration scripts starting with the most sensitive merchants and verified each account with temporary access",
+      "Coordinated with Customer Success and Business Development to align with every migrated merchant",
       "Shipped balance management, transaction processing, merchant dashboards and the developer hub",
       "Took part in obtaining the Central Bank of Egypt licence",
       "Instrumented funnels, feature flags and A/B tests in PostHog and Mixpanel",
