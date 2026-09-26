@@ -82,7 +82,10 @@ export default function AskNada() {
   ]);
   const end = useRef<HTMLDivElement>(null);
 
-  useEffect(() => end.current?.scrollIntoView({ behavior: "smooth" }), [msgs, typing]);
+  // Braces matter: newer Chrome returns a Promise from scrollIntoView(), and React would treat it as a cleanup function.
+  useEffect(() => {
+    end.current?.scrollIntoView({ behavior: "smooth" });
+  }, [msgs, typing]);
 
   const ask = (i: number) => {
     if (typing) return;
