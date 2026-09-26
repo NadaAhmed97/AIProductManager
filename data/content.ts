@@ -364,6 +364,54 @@ export const caseStudies: CaseStudy[] = [
       "Market entry is a data problem before it's a product problem. Find the minimum data that makes the product credible, then launch.",
   },
   {
+    id: "muab-ai",
+    theme: "0 → 1",
+    tag: "Bringing AI into a platform",
+    title: "Growing an ed-tech platform into an AI-enabled one",
+    company: "MUAB · Product Manager",
+    context:
+      "MUAB is an ed-tech platform in Saudi Arabia that connects creators, institutions and learners, where creators sell courses and digital products.",
+    summary:
+      "I pushed for AI and introduced it into the platform and its user journeys: an AI assistant to help creators build courses, AI-powered flagging of content and users, and a scoring system that feeds the recommendation engine.",
+    headline: { value: "AI-first", label: "assistant, flagging and recommendation scoring" },
+    problem:
+      "Creators found it slow and hard to turn their knowledge into digital courses. As the platform grew, reviewing content and users by hand couldn't keep up, and the recommendation engine had no reliable signal about quality, only raw activity.",
+    ownership: [
+      "Making the case for AI and bringing it into the platform and its journeys",
+      "Planning MUAB's AI assistant, which helps creators build their digital courses",
+      "An AI-powered flagging system for content and users",
+      "A scoring system, based on user behaviour and content quality, that feeds the recommendation engine",
+    ],
+    decisions: [
+      {
+        call: "Start with creators: an AI assistant that helps build courses",
+        why: "A marketplace grows when supply is easy to create. Lowering the effort to publish a course grows everything downstream.",
+        tradeoff: "Learner-facing AI features came second.",
+      },
+      {
+        call: "Use AI to flag content and users, with people making the final call",
+        why: "Manual review couldn't scale, but automatic removal would be risky for a platform accountable for creators' credibility.",
+        tradeoff: "A human review step stays in the loop.",
+      },
+      {
+        call: "Score quality as well as behaviour before feeding recommendations",
+        why: "Recommending only on clicks rewards whatever is popular. Adding quality means learners are shown content that's actually good.",
+        tradeoff: "A more complex scoring model to design and tune.",
+      },
+    ],
+    delivery: [
+      "Introduced AI into the platform and its core user journeys",
+      "Planned the rollout of the AI course-creation assistant for creators",
+      "Designed the AI flagging system for content and users",
+      "Built the scoring model that feeds the recommendation engine",
+    ],
+    results: [
+      { value: "3", label: "AI capabilities introduced: assistant, flagging, scoring" },
+    ],
+    learned:
+      "AI earns its place when it removes the bottleneck the business actually has. For a marketplace, that's making supply easy and quality visible.",
+  },
+  {
     id: "prd",
     theme: "Stakeholders",
     tag: "Founder alignment",
@@ -910,6 +958,17 @@ export const builds: Build[] = [
     link: "[link]",
   },
   {
+    name: "AI flagging & recommendation scoring",
+    glyph: "⚑ → ★",
+    kind: "AI systems design",
+    category: "Product",
+    where: "MUAB",
+    blurb:
+      "An AI-powered system that flags risky content and users, and a scoring model combining user behaviour and content quality that feeds the recommendation engine.",
+    stack: ["LLM", "Moderation", "Recommendations", "Scoring"],
+    link: "[link]",
+  },
+  {
     name: "YallaGain mobile web app",
     glyph: "▯ ⚡",
     kind: "Full app · Figma Make + Copilot + Supabase",
@@ -1013,7 +1072,7 @@ export const experience = [
   { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach · moved dev in-house · built the mobile web app myself · digital-twin avatar and movement correction" },
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing · built the product operating system (docs, Linear + GitHub, Slack triage, PostHog)" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
-  { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
+  { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · brought AI into the platform: creator assistant, AI flagging, recommendation scoring. Joined as QA/QC, also covering localisation & GTM" },
   { when: "2023–24", org: "LocAI (acquired by AI71)", role: "Technical Product Lead", note: "Only Arabic speaker on the team · Arabic portal at parity with English · built the LLM testing framework" },
   { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · documented it end to end · QA → PM in 4 months" },
   { when: "2024", org: "Novomind iShop", role: "Agile & QA Process Manager", note: "Jira automation · rotating squads · weighted quality score" },

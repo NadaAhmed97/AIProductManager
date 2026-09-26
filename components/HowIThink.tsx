@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { principles } from "@/data/thinking";
 import Section from "./Section";
+import NadaParticles from "./NadaParticles";
 
 export const openCase = (id: string) => {
   window.dispatchEvent(new CustomEvent("open-case", { detail: id }));
@@ -20,6 +21,16 @@ export default function HowIThink() {
       title={`${principles.length} principles I actually work by, each with a real example.`}
       intro="These aren't frameworks from a book. Each one comes from a decision I made on a real product, and you can open the full case study behind it."
     >
+      <div className="mb-10 grid items-center gap-6 lg:grid-cols-[1fr_340px]">
+        <NadaParticles />
+        <div>
+          <p className="font-mono text-xs text-accent">WHAT I DO, IN ONE LOOP</p>
+          <p className="mt-3 text-2xl font-bold leading-snug">I take chaos and give it structure, in Arabic and English.</p>
+          <p className="mt-3 text-sm text-neutral-400">
+            Every principle below is one way I do that. Each comes from a real decision on a real product.
+          </p>
+        </div>
+      </div>
       <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
         {/* principle list: horizontal scroller on mobile, vertical list on desktop */}
         <div className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">

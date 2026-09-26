@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { buildCategories, builds, type BuildCategory } from "@/data/content";
 import Section from "./Section";
+import Mockup, { mockFor } from "./Mockup";
 
 const pipeline = ["Problem", "Figma", "Prompt / Cursor", "Ship", "Measure"];
 const hues: Record<BuildCategory, string> = {
@@ -59,11 +60,9 @@ export default function BuildLab() {
             <article key={tab + b.name} className="card group flex animate-rise flex-col overflow-hidden p-6 hover:border-white/25"
               style={{ animationDelay: `${i * 0.05}s` }}>
               {/* placeholder visual until real screenshots are added */}
-              <div className="grid-bg relative -mx-6 -mt-6 mb-5 flex h-24 items-center justify-center overflow-hidden border-b border-white/10"
+              <div className="grid-bg relative -mx-6 -mt-6 mb-5 flex h-28 items-center justify-center overflow-hidden border-b border-white/10"
                 style={{ background: `radial-gradient(circle at 30% 20%, ${c}33, transparent 60%), radial-gradient(circle at 80% 90%, ${c}22, transparent 50%)` }}>
-                <span className="font-mono text-3xl font-bold opacity-80 transition duration-500 group-hover:rotate-[-4deg] group-hover:scale-110" style={{ color: c }}>
-                  {b.glyph}
-                </span>
+                <Mockup type={mockFor(b.name)} color={c} />
               </div>
               <p className="font-mono text-[11px]" style={{ color: c }}>{b.category.toUpperCase()}{b.where ? ` · ${b.where}` : ""}</p>
               <h3 className="mt-1 text-lg font-semibold">{b.name}</h3>
