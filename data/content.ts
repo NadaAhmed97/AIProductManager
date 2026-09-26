@@ -39,6 +39,7 @@ export const themes: Theme[] = ["0 → 1", "No playbook", "Stakeholders", "Data 
 
 export type CaseStudy = {
   id: string;
+  featured?: boolean;
   theme: Theme;
   tag: string;
   title: string;
@@ -61,6 +62,7 @@ export const isFilled = (v: string) => !v.includes("[");
 export const caseStudies: CaseStudy[] = [
   {
     id: "underwriting",
+    featured: true,
     theme: "0 → 1",
     tag: "0 → 1 · the hardest one",
     title: "Defining an AI underwriting product for institutional investors, in a domain that was new to me",
@@ -118,6 +120,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "yallagain",
+    featured: true,
     theme: "0 → 1",
     tag: "0 → 1 · led and built",
     title: "Taking an AI fitness coach from MVP to in-house product, and building the app myself",
@@ -365,6 +368,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "muab-ai",
+    featured: true,
     theme: "0 → 1",
     tag: "Bringing AI into a platform",
     title: "Growing an ed-tech platform into an AI-enabled one",
@@ -512,6 +516,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "mumzworld",
+    featured: true,
     theme: "No playbook",
     tag: "Documentation at scale",
     title: "Documenting a 5M-user app that had never been documented, during a platform migration",
@@ -655,6 +660,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "law71",
+    featured: true,
     theme: "Stakeholders",
     tag: "Arabic AI · government",
     title: "Making a legal AI work as well in Arabic as in English, for a ministry and a defence group",
@@ -706,6 +712,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "xpay",
+    featured: true,
     theme: "No playbook",
     tag: "Core migration · zero downtime",
     title: "Migrating a live payment gateway to a new core without a minute of downtime",

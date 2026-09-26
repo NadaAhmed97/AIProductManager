@@ -9,7 +9,7 @@ type Step = (typeof steps)[number];
 
 export default function CaseStudies() {
   const [open, setOpen] = useState<CaseStudy | null>(null);
-  const [filter, setFilter] = useState<Theme | "All">("All");
+  const [filter, setFilter] = useState<Theme | "All" | "Featured">("Featured");
   useEffect(() => {
     const onOpen = (e: Event) => {
       const cs = caseStudies.find((c) => c.id === (e as CustomEvent<string>).detail);
@@ -18,7 +18,7 @@ export default function CaseStudies() {
     window.addEventListener("open-case", onOpen);
     return () => window.removeEventListener("open-case", onOpen);
   }, []);
-  const shown = caseStudies.filter((cs) => filter === "All" || cs.theme === filter);
+  const shown = caseStudies.filter((cs) => filter === "All" || (filter === "Featured" ? cs.featured : cs.theme === filter));
 
   return (
     <Section
@@ -29,14 +29,14 @@ export default function CaseStudies() {
       intro="Each one follows the same frame: Problem → Ownership → Decisions → Delivery → Result. Open one to step through it."
     >
       <div className="mb-8 flex flex-wrap gap-2">
-        {(["All", ...themes] as const).map((t) => (
+        {(["Featured", ...themes, "All"] as const).map((t) => (
           <button key={t} onClick={() => setFilter(t)}
             className={`rounded-full border px-4 py-1.5 text-sm transition ${
               filter === t ? "border-accent bg-accent text-ink" : "border-white/15 text-neutral-400 hover:border-white/40"
             }`}>
-            {t}
+            {t === "Featured" ? "★ Featured" : t === "All" ? "See all" : t}
             <span className="ml-1.5 font-mono text-[10px] opacity-60">
-              {t === "All" ? caseStudies.length : caseStudies.filter((c) => c.theme === t).length}
+              {t === "All" ? caseStudies.length : t === "Featured" ? caseStudies.filter((c) => c.featured).length : caseStudies.filter((c) => c.theme === t).length}
             </span>
           </button>
         ))}
@@ -50,7 +50,7 @@ export default function CaseStudies() {
           >
             <div className="flex items-center justify-between">
               <span className="chip border-accent/40 text-accent">{cs.tag}</span>
-              <span className="font-mono text-xs text-neutral-600">0{i + 1}</span>
+              <span className="font-mono text-xs text-neutral-600">{String(i + 1).padStart(2, "0")}</span>
             </div>
             <h3 className="mt-6 text-xl font-semibold leading-snug">{cs.title}</h3>
             <p className="mt-2 font-mono text-xs text-neutral-500">{cs.company}</p>
@@ -65,6 +65,12 @@ export default function CaseStudies() {
           </button>
         ))}
       </div>
+      {filter === "Featured" && (
+        <button onClick={() => setFilter("All")}
+          className="mt-8 rounded-full border border-white/15 px-5 py-2.5 text-sm text-neutral-300 transition hover:border-accent hover:text-white">
+          See all {caseStudies.length} case studies →
+        </button>
+      )}
       {open && <Drawer cs={open} onClose={() => setOpen(null)} />}
     </Section>
   );
