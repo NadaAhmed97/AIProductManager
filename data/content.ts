@@ -427,6 +427,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "AI earns its place when it removes the bottleneck the business actually has. For a marketplace, that's making supply easy and quality visible.",
+    images: [
+      { src: "/shots/muab-admin.webp", caption: "MUAB's admin panel: every creator post with an AI quality score, engagement and reports, used for moderation and to feed recommendations. (Creator names blurred.)" },
+    ],
   },
   {
     id: "prd",
@@ -994,6 +997,7 @@ export const builds: Build[] = [
       "An AI-powered system that flags risky content and users, and a scoring model combining user behaviour and content quality that feeds the recommendation engine.",
     stack: ["LLM", "Moderation", "Recommendations", "Scoring"],
     link: "[link]",
+    image: "/shots/muab-admin.webp",
   },
   {
     name: "YallaGain mobile web app",
