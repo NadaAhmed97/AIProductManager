@@ -11,6 +11,21 @@ export const profile = {
   cv: "/Nada_Ahmed_CV.pdf",
 };
 
+// "Shipped for & with" strip. Logos load from each site's icon; drop an SVG into
+// public/logos/<id>.svg and set logo: "/logos/<id>.svg" to use an official logo instead.
+export const clients: { id: string; name: string; note?: string; url: string; domain: string; logo?: string }[] = [
+  { id: "smartbricks", name: "Smart Bricks", note: "a16z-backed", url: "https://smart-bricks.com", domain: "smart-bricks.com" },
+  { id: "law71", name: "Law71", note: "by AI71", url: "https://ai71.ai", domain: "ai71.ai" },
+  { id: "mofa", name: "UAE Ministry of Foreign Affairs", url: "https://www.mofa.gov.ae", domain: "mofa.gov.ae" },
+  { id: "edge", name: "EDGE Group", url: "https://edgegroup.ae", domain: "edgegroup.ae" },
+  { id: "mumzworld", name: "Mumzworld", url: "https://www.mumzworld.com", domain: "mumzworld.com" },
+  { id: "muab", name: "MUAB", url: "https://muab.info", domain: "muab.info" },
+  { id: "xpay", name: "XPay", url: "https://xpay.app", domain: "xpay.app" },
+  { id: "pleny", name: "Pleny", note: "social platform for foodies", url: "https://pleny.com", domain: "pleny.com" },
+  { id: "gooding", name: "Gooding & Company", url: "https://www.goodingco.com", domain: "goodingco.com" },
+  { id: "postscan", name: "PostScan Mail", url: "https://www.postscanmail.com", domain: "postscanmail.com" },
+];
+
 export const proof = [
   { value: "5+", label: "years shipping AI, fintech & e-com products" },
   { value: "0→1", label: "products taken from blank page to launch" },

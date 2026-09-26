@@ -1,4 +1,8 @@
-import { profile, proof } from "@/data/content";
+"use client";
+
+import { clients, profile, proof } from "@/data/content";
+import StopMotion from "./StopMotion";
+import LogoMark from "./LogoMark";
 
 export default function Hero() {
   return (
@@ -7,6 +11,8 @@ export default function Hero() {
       <div className="orb right-[-5%] top-[20%] h-[360px] w-[360px] bg-purple-500/40 [animation-delay:-6s]" />
       <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
       <div className="container-x relative">
+        <div className="grid items-center gap-12 xl:grid-cols-[1fr_380px]">
+        <div>
         <p className="mb-6 inline-flex animate-rise items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs text-accent">
           <span className="relative flex h-2 w-2"><span className="absolute h-full w-full animate-ping rounded-full bg-accent/70" /><span className="relative h-2 w-2 rounded-full bg-accent" /></span>
           Open to 0→1 AI product roles
@@ -15,7 +21,7 @@ export default function Hero() {
           <span className="mr-2 inline-block h-2 w-2 rounded-full bg-accent align-middle" />
           {profile.role} · {profile.location}
         </p>
-        <h1 className="mt-6 max-w-5xl animate-rise text-5xl font-extrabold leading-[1.02] tracking-tight [animation-delay:.1s] md:text-7xl lg:text-8xl">
+        <h1 className="mt-6 max-w-5xl animate-rise text-5xl font-extrabold leading-[1.02] tracking-tight [animation-delay:.1s] md:text-7xl lg:text-8xl xl:text-7xl">
           I don&apos;t hand off specs.
           <br />
           <span className="text-neutral-500">I ship the</span> <span className="shimmer whitespace-nowrap">0 → 1</span>
@@ -33,13 +39,21 @@ export default function Hero() {
             See how Nada thinks
           </a>
         </div>
+        </div>
+        <StopMotion className="mx-auto w-full max-w-[380px] animate-rise [animation-delay:.3s]" />
+        </div>
         <div className="mt-16 animate-rise [animation-delay:.35s]">
           <p className="eyebrow">Shipped for &amp; with</p>
           <div className="marquee mt-4 overflow-hidden">
-            <div className="marquee-track gap-12 text-lg font-semibold text-neutral-500">
+            <div className="marquee-track gap-10">
               {[0, 1].map((k) =>
-                ["UAE Ministry of Foreign Affairs", "EDGE Group", "a16z-backed Smart Bricks", "Mumzworld", "XPay", "MUAB", "YallaGain", "Pleny"].map((n) => (
-                  <span key={n + k} aria-hidden={k === 1} className="shrink-0 whitespace-nowrap pr-12 transition hover:text-white">{n}</span>
+                clients.map((c) => (
+                  <a key={c.id + k} href={c.url} target="_blank" rel="noreferrer" aria-hidden={k === 1} tabIndex={k === 1 ? -1 : 0}
+                    className="group flex shrink-0 items-center gap-3 whitespace-nowrap pr-10 text-lg font-semibold text-neutral-500 transition hover:text-white">
+                    <LogoMark src={c.logo ?? `https://www.google.com/s2/favicons?domain=${c.domain}&sz=64`} name={c.name} />
+                    {c.name}
+                    {c.note && <span className="font-mono text-[11px] font-normal text-neutral-600">{c.note}</span>}
+                  </a>
                 )),
               )}
             </div>

@@ -6,3 +6,4 @@
 4. OK to add Vercel Analytics + LinkedIn/Google link previews? (needs nothing from Nada)
 5. AI Advisor monetisation case: why 4 tiers, why 7-day trial, what was argued against
 6. Next projects to add from "so much more"
+7. Gooding & Company and PostScan Mail: what was your role/work there? (currently only in the logo strip)
