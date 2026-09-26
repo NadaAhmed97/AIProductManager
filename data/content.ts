@@ -249,9 +249,9 @@ export const caseStudies: CaseStudy[] = [
     theme: "Stakeholders",
     tag: "Founder alignment",
     title: "Rewriting a product's rulebook mid-flight and getting the CEO's sign-off in one session",
-    company: "Creator-economy platform · Product Manager",
+    company: "Ed-tech platform · Product Manager",
     context:
-      "A fast-moving learning and creator marketplace preparing to launch in Saudi Arabia, where the real roadmap lived mostly in the founder's head.",
+      "A fast-moving ed-tech platform connecting creators with learners, preparing to launch in Saudi Arabia, where the real roadmap lived mostly in the founder's head.",
     summary:
       "The PRD had drifted far from what the CEO wanted. I rewrote it across nine feature areas, rebuilt it live as he changed direction, and pushed back where the logic didn't hold.",
     headline: { value: "5 → 0", label: "open decisions locked, no rework after" },
@@ -261,6 +261,7 @@ export const caseStudies: CaseStudy[] = [
       "The full consolidated PRD across nine feature areas (trust, digital products, learning requests, assignments, projects, chat, circles, sessions, quizzes)",
       "Live rework of the document during the CEO review",
       "A compliance workstream for creator verification and platform liability",
+      "Pushing for and introducing AI-powered features, growing the platform into an AI-enabled learning product",
     ],
     decisions: [
       {
@@ -298,9 +299,9 @@ export const caseStudies: CaseStudy[] = [
     theme: "Data & quality",
     tag: "Pre-launch risk",
     title: "Finding the launch-blocking failures before a platform went live",
-    company: "Creator-economy platform · Product Manager",
+    company: "Ed-tech platform · Product Manager",
     context:
-      "The same marketplace was shipping more than 130 tickets per sprint and nobody had ever audited the backend end to end. The CEO couldn't see whether money actually reached creators.",
+      "The same ed-tech platform was shipping more than 130 tickets per sprint and nobody had ever audited the backend end to end. The CEO couldn't see whether money actually reached creators.",
     summary:
       "I audited ~140 tickets across six sprints, then traced the real money and login paths myself. I found critical payment and security failures and took them to the CEO as launch blockers.",
     headline: { value: "4", label: "critical launch blockers found pre-launch" },
@@ -514,6 +515,7 @@ export const experience = [
   { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach MVP" },
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
+  { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
   { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Legal AI for MOFA & EDGE" },
   { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · QA → PM in 4 months" },
   { when: "2020–24", org: "Engineering roots", role: "Software & QC Engineer", note: "Novomind, Pleny, Blink 22" },
