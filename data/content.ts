@@ -56,7 +56,7 @@ export type CaseStudy = {
   results: { value: string; label: string }[];
   learned: string;
   // Real screenshots, shown in the case study drawer. Files live in public/shots/.
-  images?: { src: string; caption: string }[];
+  images?: { src: string; caption: string; phone?: boolean }[];
 };
 
 // Values containing "[" are placeholders and are hidden on the live site until filled in.
@@ -139,7 +139,7 @@ export const caseStudies: CaseStudy[] = [
       "The end-to-end MVP launch: roadmap, discovery, build and go-to-market",
       "AI personalisation: adaptive workout plans, AI progress tracking and conversational coaching",
       "The user journey from onboarding and goal-setting to daily engagement and retention, with AI nudges at each stage",
-      "Building the mobile web app myself with Figma Make, Copilot and Supabase",
+      "Designing every screen myself in Figma Make, then building the mobile web app with Copilot and Supabase",
       "Hands-on work on the digital-twin avatar and movement correction, using body joint-point analysis",
     ],
     decisions: [
@@ -171,6 +171,12 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "Owning the outcome sometimes means challenging how the work gets done, not just what gets built. If a partner keeps failing, fixing that is the product decision.",
+    images: [
+      { src: "/shots/yallagain-progress.webp", caption: "Digital-twin avatar: where you are now vs your goal body, with connected devices and live calorie burn.", phone: true },
+      { src: "/shots/yallagain-home.webp", caption: "Home: coins, challenges, live AI-tracked workout rooms and avatar progress. (User details blurred.)", phone: true },
+      { src: "/shots/yallagain-rewards.webp", caption: "Rewards and streaks, including an 'AI Form Check' challenge that uses movement correction.", phone: true },
+      { src: "/shots/yallagain-plans.webp", caption: "Plans and pricing: Free, Gold and Platinum, monthly or annual.", phone: true },
+    ],
   },
   {
     id: "zeki",
@@ -735,6 +741,7 @@ export const caseStudies: CaseStudy[] = [
       "The whole migration from legacy system to new platform, as the only PM",
       "Requirements for the rebuilt financial engine: balances, transaction processing and settlement",
       "Keeping 100% uptime for live merchants throughout the cut-over",
+      "Rebuilding the merchant dashboard to the CEO's brief: a mirror of Stripe's dashboard",
       "Product input to the Central Bank of Egypt licensing process",
       "Setting up the product operating system from scratch: full documentation, PRDs, Linear connected to GitHub, and feedback triage connected to Slack",
       "Introducing PostHog and setting it up fully, plus Arabic localisation",
@@ -764,6 +771,11 @@ export const caseStudies: CaseStudy[] = [
         call: "Build the operating system before scaling the team's output",
         why: "With no process, work got lost between people. I set up Linear connected to GitHub so every change traced back to a ticket, and built triage flows connected to Slack so feedback from clients and other teams landed in one place instead of in DMs.",
         tradeoff: "Some early friction while engineers and stakeholders adopted the new flow.",
+      },
+      {
+        call: "Use my own Stripe experience to rebuild the dashboard",
+        why: "The CEO wanted the new merchant dashboard to mirror Stripe's. I had used Stripe many times, so I knew how it works from a merchant's side, not just how it looks. That made the rebuild faster and more accurate.",
+        tradeoff: "Adapting Stripe's patterns to Egyptian payment methods and local merchant needs, rather than copying them blindly.",
       },
       {
         call: "Benchmark against Stripe and Paymob to choose where to be different",
@@ -991,9 +1003,10 @@ export const builds: Build[] = [
     where: "YallaGain",
     featured: true,
     blurb:
-      "I built the whole mobile web app for YallaGain, an AI fitness-coach platform in the UAE, using Figma Make for design, Copilot for code and Supabase for the back end.",
+      "I designed every screen in Figma Make and built the whole mobile web app for YallaGain, an AI fitness-coach platform in the UAE, with Copilot and Supabase. It covers home, challenges and rewards, live AI-tracked workout rooms, the avatar and plans.",
     stack: ["Figma Make", "Copilot", "Supabase", "Mobile web"],
     link: "[link]",
+    image: "/shots/yallagain-rewards.webp",
   },
   {
     name: "Digital-twin avatar & form correction",
@@ -1005,6 +1018,7 @@ export const builds: Build[] = [
       "Worked hands-on on a digital-twin avatar that mirrors the user's workout, and on movement correction: analysing body joint points to spot bad form and correct it.",
     stack: ["Pose estimation", "Joint-point analysis", "Avatar"],
     link: "[link]",
+    image: "/shots/yallagain-avatar.webp",
   },
   {
     name: "Aria",

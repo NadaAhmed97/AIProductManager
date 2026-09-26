@@ -51,7 +51,7 @@ export default function CaseStudies() {
             {cs.images && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={cs.images[0].src} alt="" loading="lazy"
-                className="-mx-7 -mt-7 mb-6 h-36 w-[calc(100%+3.5rem)] max-w-none border-b border-white/10 object-cover transition duration-700 group-hover:scale-[1.03]" />
+                className={`-mx-7 -mt-7 mb-6 h-36 w-[calc(100%+3.5rem)] max-w-none border-b border-white/10 object-cover transition duration-700 group-hover:scale-[1.03] ${cs.images[0].phone ? "object-[50%_55%]" : "object-top"}`} />
             )}
             <div className="flex items-center justify-between">
               <span className="chip border-accent/40 text-accent">{cs.tag}</span>
@@ -161,7 +161,7 @@ function Drawer({ cs, onClose }: { cs: CaseStudy; onClose: () => void }) {
             </div>
           )}
           {step === "Delivery" && cs.images && (
-            <div className="mb-8 space-y-4">
+            <div className={`mb-8 grid gap-4 ${cs.images.every((im) => im.phone) ? "grid-cols-2" : ""}`}>
               {cs.images.map((im) => (
                 <figure key={im.src} className="overflow-hidden rounded-xl border border-white/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

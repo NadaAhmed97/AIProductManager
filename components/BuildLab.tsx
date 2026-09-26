@@ -65,7 +65,7 @@ export default function BuildLab() {
                 {b.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={b.image} alt={`${b.name} screenshot`} loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105" />
+                    className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-105" />
                 ) : (
                   <Mockup type={mockFor(b.name)} color={c} />
                 )}
