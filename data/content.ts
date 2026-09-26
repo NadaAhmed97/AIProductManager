@@ -584,6 +584,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "You can't safely change a system you can't explain. Documentation isn't admin work; it's how a team gets its memory back.",
+    images: [
+      { src: "/shots/mumzworld-site.webp", caption: "Mumzworld: the region's largest family e-commerce platform, bilingual Arabic and English." },
+    ],
   },
   {
     id: "pleny",
@@ -687,7 +690,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Making a legal AI work as well in Arabic as in English, for a ministry and a defence group",
     company: "Law71 by AI71 · Technical Product Lead / Scrum Master",
     context:
-      "Law71 is a legal AI platform built by AI71, an Abu Dhabi AI company. It was adopted by the UAE Ministry of Foreign Affairs and EDGE Group, a UAE defence group. Wrong answers in legal work aren't an option.",
+      "Law71 (earlier called Specter) is a legal AI platform built by AI71, an Abu Dhabi AI company. It was adopted by the UAE Ministry of Foreign Affairs and EDGE Group, a UAE defence group. Wrong answers in legal work aren't an option.",
     summary:
       "I was the only Arabic speaker on the team. I worked with the head of product to make the Arabic portal as good as the English one, and built an AI testing framework that checked every answer and showed where documents were missing.",
     headline: { value: "A+", label: "quality bar held in Arabic and English" },
@@ -730,6 +733,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "In Arabic AI, quality is hidden in the details only a native speaker can see. Owning it meant being the team's eyes and building tools so nobody had to guess.",
+    images: [
+      { src: "/shots/law71-specter.webp", caption: "The product's public launch, under its earlier name Specter: legal summaries generated in seconds from contracts." },
+    ],
   },
   {
     id: "xpay",
@@ -810,6 +816,9 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "Migrating money-moving systems is like changing an engine mid-flight. The product job is to make every step reversible and invisible to the customer.",
+    images: [
+      { src: "/shots/xpay-site.webp", caption: "XPay today: the public site, with merchants such as Hilton trusting it in production." },
+    ],
   },
 ];
 
