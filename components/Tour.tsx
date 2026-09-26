@@ -109,6 +109,10 @@ export default function Tour() {
                 <h2 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
                   I take unclear problems and turn them into <span className="shimmer">AI products people trust.</span>
                 </h2>
+                <div className="mt-5 flex flex-wrap gap-2 text-xs">
+                  <span className="rounded-full border border-purple-400/40 bg-purple-500/10 px-3 py-1 text-purple-200">✦ Women in AI Ambassador — Egypt</span>
+                  <span className="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-sky-200">B.Eng. Computer &amp; Communications Engineering</span>
+                </div>
                 <p className="mt-6 max-w-2xl text-lg text-neutral-400">
                   Engineer and QA by background. Sole PM at six companies. Comfortable with ambiguity, changing priorities and
                   government stakeholders, in Arabic and English.

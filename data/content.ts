@@ -285,6 +285,12 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "The best 0→1 insight is a problem you're living. Being your own first user shortens every feedback loop.",
+    images: [
+      { src: "/shots/zaffa-nour.webp", caption: "Chatting with Nour: advice on bridesmaid dresses, then 'add a task' and 'show me photographers' handled in the same conversation." },
+      { src: "/shots/zaffa-home.webp", caption: "Home: countdown, planning progress, guest list at a glance, budget snapshot and moodboard. (Budget blurred.)" },
+      { src: "/shots/zaffa-guests.webp", caption: "Guest list and RSVPs, with an AI summary of guests' dietary preferences." },
+      { src: "/shots/zaffa-seating.webp", caption: "Seating chart with drag-and-drop tables and 'AI Suggest'. (Guest names blurred.)" },
+    ],
   },
   {
     id: "analytics",

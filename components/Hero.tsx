@@ -14,10 +14,19 @@ export default function Hero() {
       <div className="container-x relative">
         <div className="grid items-center gap-12 xl:grid-cols-[1fr_380px]">
         <div>
-        <p className="mb-6 inline-flex animate-rise items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs text-accent">
+
+        <div className="mb-5 flex animate-rise flex-wrap gap-2">
+        <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs text-accent">
           <span className="relative flex h-2 w-2"><span className="absolute h-full w-full animate-ping rounded-full bg-accent/70" /><span className="relative h-2 w-2 rounded-full bg-accent" /></span>
           Open to 0→1 AI product roles
-        </p>
+        </span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-200">
+            ✦ Women in AI Ambassador — Egypt
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-xs font-medium text-sky-200">
+            B.Eng. Computer &amp; Communications Engineering
+          </span>
+        </div>
         <p className="eyebrow animate-rise">
           <span className="mr-2 inline-block h-2 w-2 rounded-full bg-accent align-middle" />
           {profile.role} · {profile.location}
