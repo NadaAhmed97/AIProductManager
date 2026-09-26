@@ -102,7 +102,7 @@ export const tour: TourChapter[] = [
       delivered: "A platform where every stakeholder could see the trade-offs and the evidence.",
       outcome: "Adopted by MOFA and EDGE Group, with fewer late escalations.",
     },
-    alsoSee: ["MUAB: prioritised by blast radius, putting payments and security before cosmetic bugs"],
+    alsoSee: ["Mumzworld: the only app PM, in Egypt, aligning with a UAE web team of 3–4 PMs through constant sync and written sign-offs", "MUAB: prioritised by blast radius, putting payments and security before cosmetic bugs"],
     caseId: "law71",
   },
   {
@@ -113,7 +113,7 @@ export const tour: TourChapter[] = [
     example: {
       project: "Mumzworld · the Middle East's largest family e-commerce app (5M+ users)",
       problem: "No documentation, many connected tools, and a platform migration underway.",
-      owned: "The app as its sole product leader, working with squads, QA engineers, design and data.",
+      owned: "The app as its sole product leader, from Egypt, working with squads, QA, design and data, and staying in sync with a 3–4 PM web team in the UAE.",
       decided: "Map the system before changing it: end-to-end documentation and dependency charts.",
       delivered: "Guides for every integration, dependency maps, and the team's onboarding process.",
       outcome: "99.9% uptime through Black Friday peak traffic, and promotion from QA to PM in four months.",

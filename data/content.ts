@@ -555,17 +555,30 @@ export const caseStudies: CaseStudy[] = [
     context:
       "Mumzworld is the largest e-commerce platform for mothers and families in the Middle East, live for many years with over 5 million active users.",
     summary:
-      "I joined a mature app with no documentation at all, in the middle of a move from Magento 1 to Magento 2. I documented the whole app end to end and mapped every integration and dependency.",
+      "I was the only PM on the mobile app, working from Egypt, while the web team in the UAE had 3–4 PMs. It's one Mumzworld, so I had to stay in constant sync with them, document an app that had never been documented, and get written sign-off on decisions with many people steering the same boat.",
     headline: { value: "0 → full", label: "end-to-end app documentation" },
     problem:
-      "The app had been live for years with 5M+ users but had no documentation. Knowledge lived in people's heads. At the same time the platform was moving from Magento 1 to Magento 2, and the app depended on many connected tools: Blueshift, Mixpanel, Google Analytics, Firebase and more. Nobody could say with confidence what would break if one part changed.",
+      "The web team sat in the UAE with 3–4 product managers; I led the mobile app team alone, from Egypt. Customers see one Mumzworld, so every app decision had to line up with web, and many people had a say. On top of that, the app had been live for years with 5M+ users but had no documentation. Knowledge lived in people's heads. At the same time the platform was moving from Magento 1 to Magento 2, and the app depended on many connected tools: Blueshift, Mixpanel, Google Analytics, Firebase and more. Nobody could say with confidence what would break if one part changed.",
     ownership: [
+      "The mobile app, as its sole product manager, from Egypt",
+      "Staying in sync with the UAE web team and its 3–4 PMs, so app and web stayed one product",
+      "Written sign-offs on decisions from everyone involved",
       "Full end-to-end documentation of the app, written from scratch",
       "How-to guides for every integrated tool, including how each one behaved across the Magento 1 → 2 migration",
       "Dependency charts showing how all the connected parts of the system rely on each other",
       "A new-hire onboarding process built on that documentation",
     ],
     decisions: [
+      {
+        call: "Get every decision signed off in writing",
+        why: "With many people steering the same boat across two countries, verbal agreement didn't hold. A written sign-off meant everyone agreed to the same thing, and nothing was relitigated later.",
+        tradeoff: "More process and follow-up on every decision, under real pressure to move fast.",
+      },
+      {
+        call: "Treat communication as part of the job, not overhead",
+        why: "As one PM facing a larger team in another country, the app only stayed aligned with web if I over-communicated: regular syncs, shared documents and clear updates.",
+        tradeoff: "A lot of my time went into alignment rather than building.",
+      },
       {
         call: "Document the system before changing it",
         why: "A migration without a map is guesswork. Knowing every dependency first made the risks visible before they became incidents.",
@@ -593,7 +606,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "1", label: "single source of truth for the app" },
     ],
     learned:
-      "You can't safely change a system you can't explain. Documentation isn't admin work; it's how a team gets its memory back.",
+      "When you're outnumbered and many people steer the same boat, clarity is your leverage: write it down, get it signed, and keep everyone in sync.",
     images: [
       { src: "/shots/mumzworld-site.webp", caption: "Mumzworld: the region's largest family e-commerce platform, bilingual Arabic and English." },
     ],
@@ -1225,7 +1238,7 @@ export const experience = [
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · brought AI into the platform: creator assistant, AI flagging, recommendation scoring. Joined as QA/QC, also covering localisation & GTM" },
   { when: "2023–24", org: "LocAI (acquired by AI71)", role: "Technical Product Lead", note: "Only Arabic speaker on the team · Arabic portal at parity with English · built the LLM testing framework" },
-  { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · documented it end to end · QA → PM in 4 months" },
+  { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app, from Egypt, in sync with a 3–4 PM web team in the UAE · 5M+ users · documented it end to end · QA → PM in 4 months" },
   { when: "2024", org: "Novomind iShop", role: "Agile & QA Process Manager", note: "Jira automation · rotating squads · weighted quality score" },
   { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · introduced Mixpanel analytics after the rebrand · localised the whole platform to Arabic solo" },
   { when: "2020–21", org: "Engineering roots", role: "Software Engineer & Teaching Assistant", note: "Blink 22 · Alexandria University" },
