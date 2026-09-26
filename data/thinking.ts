@@ -21,6 +21,7 @@ export const principles: Principle[] = [
     situation:
       "Private-equity firms and funds were the target buyers, and they won't tolerate an AI that guesses at numbers. One invented figure and they'd never trust the product again.",
     move: [
+      "Found through investor interviews that the real need wasn't speed but trust and memory: checked calculations, surfaced conflicts and a full audit trail",
       "Designed the product so the AI never produces a financial number itself",
       "Put deterministic financial engines behind every figure and kept a human approval step before capital moves",
       "Applied the same idea at Law71, where I built a framework that scored every AI answer for quality, relevance and correctness",

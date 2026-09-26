@@ -68,8 +68,8 @@ export const caseStudies: CaseStudy[] = [
     context:
       "Smart Bricks is an a16z-backed AI startup in Dubai building agentic AI for real-estate investing. It pivoted from retail investors to institutional capital: private-equity firms, family offices and large funds.",
     summary:
-      "A new domain, few competitors (none of them public), very few requirements, and almost no real documents to learn from. I built the understanding from scratch, and my research led me to change the CEO's value proposition.",
-    headline: { value: "Flow X > Y", label: "value proposition changed, based on research" },
+      "A new domain, few competitors (none of them public), very few requirements, and almost no real documents to learn from. I built the understanding from scratch, and my research showed the real pain wasn't speed. I changed the CEO's value proposition accordingly.",
+    headline: { value: "Speed → Memory", label: "value proposition reframed, based on investor research" },
     problem:
       "Institutional underwriting was new to me and to the company. The few competitors don't sell publicly, so there was little to learn from. The CEO had very few clear requirements, and there were almost no real documents or models to study. Meanwhile the buyers (private-equity firms and funds) won't trust an AI that guesses at numbers.",
     ownership: [
@@ -82,8 +82,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     decisions: [
       {
-        call: "Change the value proposition from flow Y to flow X",
-        why: "My research with investors showed the other flow solved their real pain better. I made the case to the CEO with evidence, not opinion.",
+        call: "Reframe the value proposition from 'faster underwriting' to a fund's memory and brain",
+        why: "The CEO's pitch was speed, but investors told me underwriting already doesn't take long. Their real pain was keeping a 'company brain' that understands how the fund works, remembering every past deal, checking calculations and surfacing gaps and conflicts quickly, preparing memos for the investment committee, and collaborating with a full audit trail and due diligence. I made that case with evidence, not opinion.",
         tradeoff: "A hard conversation: asking the CEO to move away from the original idea.",
       },
       {
@@ -107,7 +107,7 @@ export const caseStudies: CaseStudy[] = [
       "Mapped the end-to-end flows and visualised them in Figma",
       "Built a clickable prototype of nine screens and a test plan despite limited real data",
       "Delivered the v1 roadmap, competitor analysis and GTM plan after several audit rounds",
-      "Changed the value proposition with the CEO's agreement",
+      "Reframed the value proposition from speed to fund memory, collaboration and audit trail, with the CEO's agreement",
     ],
     results: [
       { value: "v1", label: "roadmap, PRD, prototype and GTM ready" },
