@@ -77,7 +77,7 @@ export default function DecisionSimulator() {
       index="02b"
       eyebrow="How Nada thinks · try it yourself"
       title="Decision simulator: what ships in a 6-week AI MVP?"
-      intro="An illustrative scenario modelled on an AI fitness-coach MVP I led. Seven candidate features, two engineers, 9 effort points. Pick a context or drag the weights yourself — the backlog re-ranks and the cut line moves in real time."
+      intro="An illustrative scenario modelled on YallaGain, the AI fitness-coach MVP I led and built. Seven candidate features, two engineers, 9 effort points. Pick a context or drag the weights yourself — the backlog re-ranks and the cut line moves in real time."
     >
       <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
         <div className="card p-6">

@@ -131,7 +131,7 @@ export const tour: TourChapter[] = [
       delivered: "A dashboard with outreach tracking, behaviour cohorts (dormant, high-intent and so on) and campaign links. Plus a call-insights tool, a metrics watchdog posting to Slack, a guided product tour, a decision-log listener, and bots for kudos, competitor intel and feedback-to-Jira.",
       outcome: "CS works from data instead of guesswork, and the team gets tools in days instead of waiting for a sprint.",
     },
-    alsoSee: ["Zeki and the nine-screen underwriting prototype, both built myself", "This portfolio: the walkthrough, assistant, animations and system map"],
+    alsoSee: ["YallaGain: built the whole mobile web app with Figma Make, Copilot and Supabase", "Testify: an AI tool that finds gaps in requirements, then writes dev checklists and QA test cases", "Zeki and the nine-screen underwriting prototype, both built myself", "This portfolio: the walkthrough, assistant, animations and system map"],
     caseId: "zeki",
   },
   {

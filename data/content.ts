@@ -860,6 +860,40 @@ export const builds: Build[] = [
     link: "[link]",
   },
   {
+    name: "YallaGain mobile web app",
+    glyph: "▯ ⚡",
+    kind: "Full app · Figma Make + Copilot + Supabase",
+    category: "Product",
+    where: "YallaGain",
+    featured: true,
+    blurb:
+      "I built the whole mobile web app for YallaGain, an AI fitness-coach platform in the UAE, using Figma Make for design, Copilot for code and Supabase for the back end.",
+    stack: ["Figma Make", "Copilot", "Supabase", "Mobile web"],
+    link: "[link]",
+  },
+  {
+    name: "Digital-twin avatar & form correction",
+    glyph: "⟟ ⟲ ⟟",
+    kind: "Computer vision · hands-on",
+    category: "Product",
+    where: "YallaGain",
+    blurb:
+      "Worked hands-on on a digital-twin avatar that mirrors the user's workout, and on movement correction: analysing body joint points to spot bad form and correct it.",
+    stack: ["Pose estimation", "Joint-point analysis", "Avatar"],
+    link: "[link]",
+  },
+  {
+    name: "Aria",
+    glyph: "◈ AI",
+    kind: "Real-estate intelligence agent · hackathon",
+    category: "Product",
+    where: "Smart Bricks hackathon",
+    blurb:
+      "An AI agent that analyses your property portfolio, market comparables and market shifts, and helps you make the right investment decisions. Built for the Smart Bricks hackathon.",
+    stack: ["AI agent", "Market data", "Portfolio analysis"],
+    link: "[link]",
+  },
+  {
     name: "Platform features & Figma designs",
     glyph: "◧ → </>",
     kind: "Hands-on with the dev team",
@@ -908,8 +942,8 @@ export const builds: Build[] = [
     kind: "AI product · built solo",
     category: "Product",
     blurb:
-      "An AI platform that checks requirements and generates testing and development checklists. Semi-finalist in ITIDA's national competition (Egypt's Ministry of Communications).",
-    stack: ["LLM", "Prompt engineering", "Figma", "Full-stack"],
+      "Takes in user stories, Jira links and documents, and helps three people at once. For the product owner, it finds gaps in stories and requirements and helps resolve them. For developers, it builds a pre-development checklist and proposes a technical approach. For QA, it writes the test cases. Semi-finalist in ITIDA's national competition (Egypt's Ministry of Communications).",
+    stack: ["LLM", "Jira", "Prompt engineering", "Full-stack"],
     link: "[link]",
   },
   {
@@ -926,7 +960,7 @@ export const builds: Build[] = [
 
 export const experience = [
   { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "Sole PM · new B2B institutional vertical · also wore the marketing and CS hats, and vibe-coded internal tools and bots" },
-  { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach MVP" },
+  { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach · built the mobile web app myself · digital-twin avatar and movement correction" },
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing · built the product operating system (docs, Linear + GitHub, Slack triage, PostHog)" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
