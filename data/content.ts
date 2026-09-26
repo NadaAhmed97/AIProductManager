@@ -5,7 +5,7 @@
 export const profile = {
   name: "Nada Ahmed",
   role: "AI & Growth Product Manager",
-  location: "Abu Dhabi · Cairo · Remote",
+  location: "UAE · Egypt · Remote",
   email: "nadaahmed296@gmail.com",
   linkedin: "https://linkedin.com/in/nadaah",
   cv: "/Nada_Ahmed_CV.pdf",
@@ -13,9 +13,10 @@ export const profile = {
 
 export const proof = [
   { value: "5+", label: "years shipping AI, fintech & e-com products" },
-  { value: "0→1", label: "products taken from blank page to launch, solo and with teams" },
-  { value: "Sole PM", label: "XPay V3.0 — a top-7 Egyptian payment gateway" },
-  { value: "Gov-grade", label: "Law71 legal AI adopted by UAE MOFA & EDGE" },
+  { value: "0→1", label: "products taken from blank page to launch" },
+  { value: "Sole PM", label: "at Smart Bricks, YallaGain, MUAB, XPay, Mumzworld's app and Pleny" },
+  { value: "AR / EN", label: "owned Arabic localisation on every product I joined" },
+  { value: "Gov AI", label: "Law71 legal AI adopted by UAE MOFA & EDGE" },
 ];
 
 export type Theme = "0 → 1" | "No playbook" | "Stakeholders" | "Data & quality";
@@ -52,12 +53,14 @@ export const caseStudies: CaseStudy[] = [
     context:
       "Smart Bricks is an a16z-backed AI startup in Dubai building agentic AI for real-estate investing. It pivoted from retail investors to institutional capital: private-equity firms, family offices and large funds.",
     summary:
-      "No spec, no validated buyer, and buyers who won't tolerate an AI that guesses at numbers. I took it from a founder's PRD to buyer-tested product definition and a clickable prototype.",
+      "I'm solely responsible for introducing a new B2B product for institutional investors: plan, requirements, agentic AI orchestration and deterministic financial engines. I took it from a founder's PRD to buyer-tested definition and a clickable prototype.",
     headline: { value: "9 surfaces", label: "clickable prototype, vibe-coded solo" },
     problem:
       "After the pivot to institutional capital there was no product spec and no validated buyer, only the CEO's master PRD. Institutional investors underwrite deals worth millions. An AI that invents a number once loses them for good, so trust had to be designed in from day one rather than added later.",
     ownership: [
+      "Sole owner of the new B2B institutional vertical: the project plan, requirements and everything needed to introduce it, built from the ground up",
       "Product definition end to end: four structured discovery sessions → Product Definition v2.0 → versioned MVP PRD",
+      "Requirements for agentic AI harnesses and orchestration, and for complex deterministic financial engines",
       "Buyer discovery run directly with senior investors (a VP at a global alternative-asset manager, a real-estate firm founder)",
       "Competitive teardowns of AI tools for real-estate and legal professionals",
       "A clickable prototype covering nine surfaces: intake, pipeline, deal workspace, portfolio, precedents, vault, team, Ask and more",
@@ -355,7 +358,7 @@ export const caseStudies: CaseStudy[] = [
     ownership: [
       "Product quality and delivery for Law71",
       "Sprint execution and backlog across multi-stakeholder programmes",
-      "The strategy for validating LLM output",
+      "The strategy for validating LLM output, in both English and Arabic",
       "Aligning agencies, legal teams and defence organisations",
     ],
     decisions: [
@@ -376,13 +379,14 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     delivery: [
-      "Built a Selenium-based validation framework for LLM output in high-stakes legal workflows",
+      "Built an automated test framework (Selenium) covering the complex platform end to end in both English and Arabic",
       "Ran sprints and backlog across agency, legal and defence stakeholders",
       "Turned compliance and security needs into testable criteria",
       "Delivered a platform adopted by UAE MOFA and EDGE Group",
     ],
     results: [
       { value: "2", label: "government-grade clients (MOFA, EDGE)" },
+      { value: "AR + EN", label: "automated test coverage in both languages" },
       { value: "[X]%", label: "validated output accuracy" },
     ],
     learned:
@@ -391,51 +395,54 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "xpay",
     theme: "No playbook",
-    tag: "Clarity without a playbook",
-    title: "Being the only PM on a payment gateway rebuild",
+    tag: "Core migration · zero downtime",
+    title: "Migrating a live payment gateway to a new core without a minute of downtime",
     company: "XPay Egypt · Lead Technical PM",
     context:
-      "XPay is one of Egypt's top payment gateways, the infrastructure that lets merchants accept online payments.",
+      "XPay is one of Egypt's top payment gateways, the infrastructure that lets merchants accept online payments. Payment gateways in Egypt operate under a Central Bank of Egypt (CBE) licence.",
     summary:
-      "I joined as the only PM, with no roadmap, no PRD culture and an ambitious V3.0. I built the product process first, then shipped the MVP on schedule.",
-    headline: { value: "On time", label: "XPay V3.0 MVP shipped on schedule" },
+      "As the only PM, I led the move from XPay's legacy system to a new platform, including a rebuilt financial core, while live merchants kept transacting. I also took part in securing the Central Bank of Egypt licence.",
+    headline: { value: "100%", label: "uptime for live merchants during the migration" },
     problem:
-      "XPay needed V3.0 (balances, transaction processing, merchant dashboards and a developer hub) but had no product function. Requests came from everywhere, priorities shifted weekly, and nobody could say what 'done' meant.",
+      "XPay's legacy system couldn't support where the business needed to go, so the financial engine at its core had to be rebuilt and every merchant moved to a new platform. Live clients were processing real payments the whole time, so any downtime or reconciliation error meant lost money and lost trust. There was also no product function: no roadmap, no PRDs, and priorities that shifted weekly. On top of that, the platform had to meet Central Bank of Egypt licensing requirements.",
     ownership: [
-      "The whole product lifecycle, from discovery to post-launch optimisation",
-      "Setting up the product process from scratch: PRDs, backlog and delivery cadence",
-      "Competitive positioning against Stripe and Paymob",
-      "Coaching product owners to run the process without me",
+      "The whole migration from legacy system to new platform, as the only PM",
+      "Requirements for the rebuilt financial engine: balances, transaction processing and settlement",
+      "Keeping 100% uptime for live merchants throughout the cut-over",
+      "Product input to the Central Bank of Egypt licensing process",
+      "Setting up the product process from scratch (PRDs, backlog, cadence) and Arabic localisation",
     ],
     decisions: [
       {
-        call: "Define the scope in writing before building the roadmap",
-        why: "A one-page MVP definition ended the 'everything is P0' debates faster than any framework.",
-        tradeoff: "Some features stakeholders wanted in V3.0 were explicitly deferred.",
+        call: "Migrate in stages with the old and new systems running side by side",
+        why: "Live merchants couldn't absorb downtime or a failed big-bang switch, so each stage had to be reversible.",
+        tradeoff: "A longer migration and the cost of running two systems in parallel.",
+      },
+      {
+        call: "Build the financial core to regulatory requirements from day one",
+        why: "Designing for the Central Bank's requirements up front avoided rework during licensing.",
+        tradeoff: "Slower early feature delivery.",
       },
       {
         call: "Benchmark against Stripe and Paymob to choose where to be different",
         why: "Match them on core payment rails; stand out on merchant experience and the developer hub.",
         tradeoff: "Chose not to chase every competitor feature.",
       },
-      {
-        call: "Instrument before optimising (PostHog, Mixpanel, feature flags)",
-        why: "It turned opinion-driven debates into funnel data.",
-        tradeoff: "Early sprint capacity went to tracking instead of features.",
-      },
     ],
     delivery: [
-      "Introduced PRD templates, a single prioritised backlog and a predictable delivery cadence",
+      "Rebuilt the financial engine and moved merchants to the new platform with zero downtime",
       "Shipped balance management, transaction processing, merchant dashboards and the developer hub",
-      "Ran funnel tracking, feature flags and A/B tests across merchant touchpoints",
+      "Took part in obtaining the Central Bank of Egypt licence",
+      "Instrumented funnels, feature flags and A/B tests in PostHog and Mixpanel",
       "Mentored product owners on discovery, PRD writing and prioritisation",
     ],
     results: [
-      { value: "V3.0", label: "MVP launched on schedule" },
+      { value: "100%", label: "uptime through the migration" },
+      { value: "CBE", label: "licence process supported" },
       { value: "[X]%", label: "merchant activation lift" },
     ],
     learned:
-      "When there's no playbook, the first product is the process. Clarity is a deliverable.",
+      "Migrating money-moving systems is like changing an engine mid-flight. The product job is to make every step reversible and invisible to the customer.",
   },
 ];
 
@@ -491,11 +498,11 @@ export const builds = [
 ];
 
 export const experience = [
-  { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "a16z-backed agentic AI proptech" },
+  { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "Sole PM · new B2B institutional vertical" },
   { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach MVP" },
-  { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM, V3.0 launch" },
+  { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Legal AI for MOFA & EDGE" },
-  { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Mobile app, 5M+ users, QA → PM in 4 months" },
+  { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · QA → PM in 4 months" },
   { when: "2020–24", org: "Engineering roots", role: "Software & QC Engineer", note: "Novomind, Pleny, Blink 22" },
 ];

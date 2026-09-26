@@ -12,7 +12,7 @@ export default function Hero() {
         <h1 className="mt-6 max-w-5xl animate-rise text-5xl font-extrabold leading-[1.02] tracking-tight [animation-delay:.1s] md:text-7xl lg:text-8xl">
           I don&apos;t hand off specs.
           <br />
-          <span className="text-neutral-500">I ship the</span> <span className="text-accent">0 → 1</span>
+          <span className="text-neutral-500">I ship the</span> <span className="whitespace-nowrap text-accent">0 → 1</span>
           <span className="text-neutral-500">.</span>
         </h1>
         <p className="mt-8 max-w-2xl animate-rise text-lg text-neutral-400 [animation-delay:.2s] md:text-xl">
@@ -24,10 +24,10 @@ export default function Hero() {
             View interactive case studies <span className="inline-block transition group-hover:translate-x-1">→</span>
           </a>
           <a href="#simulator" className="rounded-full border border-white/20 px-6 py-3 font-semibold transition hover:border-white">
-            Try the decision simulator
+            See how Nada thinks
           </a>
         </div>
-        <div className="mt-24 grid animate-rise grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 [animation-delay:.4s] md:grid-cols-4">
+        <div className="mt-24 grid animate-rise grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 [animation-delay:.4s] md:grid-cols-3 lg:grid-cols-5">
           {proof.map((p) => (
             <div key={p.label} className="bg-ink p-6">
               <div className="text-2xl font-bold tracking-tight md:text-3xl">{p.value}</div>
