@@ -335,6 +335,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "You can't be data-driven on numbers nobody trusts. Sometimes the highest-leverage product work is fixing the ruler.",
+    images: [
+      { src: "/shots/sb-metrics-sheet.webp", caption: "The single source of truth: one master sheet, auto-refreshed from PostHog, internal traffic excluded, production only. (Values blurred.)" },
+      { src: "/shots/sb-metrics-slack.webp", caption: "Every refresh is posted to Slack automatically, with the definitions catalogue attached. (Link blurred.)" },
+    ],
   },
   {
     id: "uk",
@@ -1030,9 +1034,14 @@ export const builds: Build[] = [
     category: "Data & ops",
     where: "Smart Bricks",
     blurb:
-      "Pulls product analytics into automated weekly, monthly, CTA and UTM reports. It's on v11.5+ and replaced all manual reporting.",
+      "Maps PostHog events and UTM campaigns into one master metrics sheet in Google Sheets, with weekly, monthly, CTA and UTM tabs and a definitions catalogue, then posts a refreshed snapshot to Slack. It's on v11.5+ and replaced all manual reporting.",
     stack: ["Apps Script", "PostHog", "SQL", "Google Sheets"],
     link: "[link]",
+    image: "/shots/sb-metrics-sheet.webp",
+    gallery: [
+      { src: "/shots/sb-metrics-sheet.webp", caption: "The master metrics sheet: every metric by month, auto-refreshed from PostHog with internal users excluded. (Values blurred.)" },
+      { src: "/shots/sb-metrics-slack.webp", caption: "The weekly Slack post: Weekly, Monthly, CTA and UTM tabs refreshed from PostHog, with a snapshot attached. (Link blurred.)" },
+    ],
   },
   {
     name: "Jira reporting automation",
