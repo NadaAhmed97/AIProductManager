@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import AskNada from "@/components/AskNada";
 import Effects from "@/components/Effects";
 import Tour from "@/components/Tour";
+import SafeBoundary from "@/components/SafeBoundary";
 
 export default function Home() {
   return (
@@ -26,8 +27,8 @@ export default function Home() {
         <Experience />
         <Contact />
       </main>
-      <AskNada />
-      <Tour />
+      <SafeBoundary><AskNada /></SafeBoundary>
+      <SafeBoundary><Tour /></SafeBoundary>
     </>
   );
 }

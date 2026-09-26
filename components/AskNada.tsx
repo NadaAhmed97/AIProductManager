@@ -113,7 +113,7 @@ export default function AskNada() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink/60" />
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-ink" />
         </span>
-        {open ? "Close" : "Ask Nada's AI"}
+        <span>{open ? "Close" : "Ask Nada's AI"}</span>
       </button>
 
       {open && (
@@ -127,10 +127,10 @@ export default function AskNada() {
               <div key={i} className={`flex animate-rise ${m.from === "user" ? "justify-end" : ""}`}>
                 <div className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm ${
                   m.from === "user" ? "bg-accent text-ink" : "bg-white/[0.06] text-neutral-200"}`}>
-                  {m.text}
+                  <span>{m.text}</span>
                   {m.link && (
                     <a href={m.link.href} onClick={() => setOpen(false)} className="mt-2 block text-xs text-accent hover:underline">
-                      {m.link.label} →
+                      <span>{m.link.label} →</span>
                     </a>
                   )}
                 </div>
@@ -147,13 +147,13 @@ export default function AskNada() {
           </div>
           <div className="max-h-[42%] overflow-y-auto border-t border-white/10 p-3">
             <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-neutral-500">
-              {remaining.length ? "Choose a question" : "That's everything"}
+              <span>{remaining.length ? "Choose a question" : "That's everything"}</span>
             </p>
             <div className="flex flex-wrap gap-2">
               {remaining.map((q) => (
                 <button key={q.i} onClick={() => ask(q.i)} disabled={typing}
                   className="rounded-full border border-white/15 px-3 py-1.5 text-left text-xs text-neutral-200 transition hover:border-accent hover:text-white disabled:opacity-40">
-                  {q.q}
+                  <span>{q.q}</span>
                 </button>
               ))}
               {!remaining.length && (
