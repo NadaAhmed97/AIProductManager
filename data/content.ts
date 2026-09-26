@@ -120,6 +120,11 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "In a new domain, humility is a method: talk to the people who do the work, research until the picture holds, and then be confident enough to change the plan, even the CEO's.",
+    images: [
+      { src: "/shots/inst-deal.webp", caption: "The deal workspace: an early teaser screens in, but the product shows a range with low confidence, lists what's missing and drafts the request, instead of inventing a number." },
+      { src: "/shots/inst-components.webp", caption: "Built to surface gaps and conflicts: exception rows flag where documents disagree, what's missing, and what breaches fund policy, with the downstream impact of each." },
+      { src: "/shots/inst-flows.webp", caption: "The end-to-end flow maps I built: Company Brain setup and the three ways a new analysis comes in." },
+    ],
   },
   {
     id: "yallagain",
@@ -1005,6 +1010,8 @@ export const builds: Build[] = [
     gallery: [
       { src: "/shots/sb-platform-health.webp", caption: "Platform Health: five metrics, each compared with its own trailing 4-week average. (Values blurred.)" },
       { src: "/shots/sb-cs-user.webp", caption: "A user's page: AI talking points for the call, call log, notes and product activity. (Notes blurred.)" },
+      { src: "/shots/sb-leaderboard.webp", caption: "Leaderboard of power users, scored across six feature categories and weighted to reward breadth over depth. (User details blurred.)" },
+      { src: "/shots/sb-heatmaps.webp", caption: "Feature heatmaps: which features are heating up or cooling down week by week, each row scaled to its own busiest week. (Counts blurred.)" },
     ],
   },
   {
@@ -1100,15 +1107,22 @@ export const builds: Build[] = [
     link: "[link]",
   },
   {
-    name: "Underwriting prototype",
+    name: "Institutional underwriting platform",
     glyph: "▦ ▦ ▦",
-    kind: "Clickable prototype · 9 screens",
+    kind: "B2B platform · flows, prototype and design system",
     category: "Product",
     where: "Smart Bricks",
+    featured: true,
     blurb:
-      "An institutional underwriting workspace covering intake, pipeline, deal room, portfolio and an AI 'Ask' panel, built to test flows with investors before production code.",
-    stack: ["Figma", "Vibe-coded", "Product design"],
+      "The B2B product for institutional investors, from flow maps to a working workspace. A deal chat that explains and proposes but never commits a number, a Company Brain set up once per fund, and a design system built around surfacing conflicts, gaps and policy exceptions before a deal can go to committee.",
+    stack: ["Figma", "Vibe-coded", "Agentic AI", "Design system"],
     link: "[link]",
+    image: "/shots/inst-deal.webp",
+    gallery: [
+      { src: "/shots/inst-deal.webp", caption: "A deal from a 4-page teaser: it screens in, gives a range not a number, lists what's missing, and drafts the request to the broker. The chat never commits a number." },
+      { src: "/shots/inst-flows.webp", caption: "End-to-end flow maps: Company Brain setup and new-analysis intake, with each screen's status tracked." },
+      { src: "/shots/inst-components.webp", caption: "Design-system components for trust: data-state chips, blocker bars, and exception rows for conflicts, gaps, policy and unreadable documents." },
+    ],
   },
   {
     name: "Zeki",

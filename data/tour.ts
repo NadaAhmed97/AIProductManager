@@ -17,6 +17,7 @@ export type TourChapter = {
   };
   alsoSee?: string[];
   caseId?: string;
+  image?: { src: string; caption: string };
 };
 
 export const tour: TourChapter[] = [
@@ -37,6 +38,7 @@ export const tour: TourChapter[] = [
     },
     alsoSee: ["YallaGain: led the AI fitness-coach MVP, built the app myself, and moved development in-house", "Zaffa AI: founded it and launched Nour, an AI wedding planner", "Zeki: a bilingual kids' AI app I built solo"],
     caseId: "underwriting",
+    image: { src: "/shots/inst-flows.webp", caption: "My flow maps for the institutional platform" },
   },
   {
     id: "clarity",
@@ -69,6 +71,7 @@ export const tour: TourChapter[] = [
     },
     alsoSee: ["Smart Bricks analytics: leadership needed trusted numbers more than new reports", "MUAB: the roadmap said payouts worked; I checked, and they didn't"],
     caseId: "underwriting",
+    image: { src: "/shots/inst-deal.webp", caption: "The result: it shows a range, what's missing and what to ask for, and never invents a number" },
   },
   {
     id: "requirements",
@@ -133,6 +136,7 @@ export const tour: TourChapter[] = [
     },
     alsoSee: ["YallaGain: built the whole mobile web app with Figma Make, Copilot and Supabase", "Testify: an AI tool that finds gaps in requirements, then writes dev checklists and QA test cases", "Zeki and the nine-screen underwriting prototype, both built myself", "This portfolio: the walkthrough, assistant, animations and system map"],
     caseId: "zeki",
+    image: { src: "/shots/sb-cs-user.webp", caption: "AI-written call talking points for each user, from a CS tool I vibe-coded" },
   },
   {
     id: "difficult",

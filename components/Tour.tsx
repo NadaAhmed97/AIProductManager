@@ -133,6 +133,13 @@ export default function Tour() {
                 <p className="font-mono text-xs text-accent">QUESTION {qNum} / {answers.length}</p>
                 <p className="mt-3 text-lg text-neutral-400">{c.question}</p>
                 <h2 className="mt-4 text-2xl font-bold leading-snug tracking-tight md:text-3xl">{c.answer}</h2>
+                {c.image && (
+                  <figure className="mt-6 overflow-hidden rounded-xl border border-white/10">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={c.image.src} alt={c.image.caption} className="max-h-56 w-full object-cover object-left-top" />
+                    <figcaption className="border-t border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-neutral-400">{c.image.caption}</figcaption>
+                  </figure>
+                )}
                 {c.alsoSee && (
                   <div className="mt-8">
                     <p className="eyebrow">Also</p>
