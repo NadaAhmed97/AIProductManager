@@ -9,6 +9,7 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import AskNada from "@/components/AskNada";
 import Effects from "@/components/Effects";
+import Tour from "@/components/Tour";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Contact />
       </main>
       <AskNada />
+      <Tour />
     </>
   );
 }

@@ -69,10 +69,10 @@ function path(a: Node, b: Node) {
   return `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
 }
 
-export default function Blueprint() {
+export function BlueprintMap({ autoPlay = false }: { autoPlay?: boolean }) {
   const [selected, setSelected] = useState<string>("econ");
   const [step, setStep] = useState<number | null>(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(autoPlay);
 
   useEffect(() => {
     if (!playing) return;
@@ -88,13 +88,6 @@ export default function Blueprint() {
   const node = byId[selected];
 
   return (
-    <Section
-      id="blueprint"
-      index="03"
-      eyebrow="How I architect AI products"
-      title="Blueprint: an AI decision-support product for government."
-      intro="This is how I'd structure an AI product that helps senior decision-makers understand the impact of policies and investments. Press play to follow one policy question through it, or click any part to see why it's there."
-    >
       <div className="card overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 p-4">
           <div className="flex flex-wrap gap-3">
@@ -189,6 +182,19 @@ export default function Blueprint() {
           </div>
         </div>
       </div>
+  );
+}
+
+export default function Blueprint() {
+  return (
+    <Section
+      id="blueprint"
+      index="03"
+      eyebrow="How I architect AI products"
+      title="Blueprint: an AI decision-support product for government."
+      intro="This is how I'd structure an AI product that helps senior decision-makers understand the impact of policies and investments. Press play to follow one policy question through it, or click any part to see why it's there."
+    >
+      <BlueprintMap />
     </Section>
   );
 }

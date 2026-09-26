@@ -3,6 +3,7 @@
 import { clients, profile, proof } from "@/data/content";
 import StopMotion from "./StopMotion";
 import LogoMark from "./LogoMark";
+import { openTour } from "./Tour";
 
 export default function Hero() {
   return (
@@ -38,6 +39,9 @@ export default function Hero() {
           <a href="#thinking" className="rounded-full border border-white/20 px-6 py-3 font-semibold transition hover:border-white">
             See how Nada thinks
           </a>
+          <button onClick={openTour} className="rounded-full px-4 py-3 font-semibold text-neutral-400 transition hover:text-accent">
+            ▶ 10-minute walkthrough
+          </button>
         </div>
         </div>
         <StopMotion className="mx-auto w-full max-w-[380px] animate-rise [animation-delay:.3s]" />

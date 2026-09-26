@@ -317,7 +317,7 @@ export const caseStudies: CaseStudy[] = [
     context:
       "A fast-moving ed-tech platform connecting creators with learners, preparing to launch in Saudi Arabia, where the real roadmap lived mostly in the founder's head.",
     summary:
-      "The PRD had drifted far from what the CEO wanted. I rewrote it across nine feature areas, rebuilt it live as he changed direction, and pushed back where the logic didn't hold.",
+      "The PRD had drifted far from what the CEO wanted. I rewrote it across nine feature areas, rebuilt it live as the CEO changed direction, and pushed back where the logic didn't hold.",
     headline: { value: "5 → 0", label: "open decisions locked, no rework after" },
     problem:
       "Categories, restriction rules and account structure had all changed in conversation but never reached a document engineering could build against. That's the classic 0→1 trap: the roadmap lives in one person's head.",
