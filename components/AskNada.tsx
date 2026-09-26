@@ -27,10 +27,16 @@ const intents: { keys: string[]; answer: string; link?: Msg["link"] }[] = [
     link: { label: "Open the Law71 case", href: "#work" },
   },
   {
-    keys: ["build", "code", "coding", "vibe", "technical", "engineer", "engineering", "prototype", "prototyping", "figma", "tools", "stack"],
+    keys: ["build", "code", "coding", "vibe", "technical", "engineer", "engineering", "prototype", "prototyping", "figma", "stack"],
     answer:
       "She builds what she designs. She uses Figma, then Claude Code, Cursor, Lovable or v0 to ship working prototypes. Recent builds include an analytics pipeline in Apps Script, the Zeki app in React/TypeScript, a nine-screen underwriting prototype, and this portfolio.",
     link: { label: "Visit the Build lab", href: "#build" },
+  },
+  {
+    keys: ["marketing", "customer", "success", "cs", "bot", "bots", "slack", "dashboard", "automation", "automations", "internal", "tools", "tool"],
+    answer:
+      "Beyond product, she builds tools for the teams around her. For customer success: a dashboard with next-best actions and AI-written questions per user, and a call-insights tool. For marketing: email campaigns, a guided product tour and an AI content engine. For the team: a metrics watchdog, a decision-log listener, and Slack bots for kudos, competitor intel and feedback-to-Jira.",
+    link: { label: "Browse the Build lab", href: "#build" },
   },
   {
     keys: ["ai", "agent", "agents", "agentic", "llm", "orchestration", "trust", "hallucination", "deterministic", "satellite", "econometric", "econometrics", "imagery", "decision-support", "impact"],

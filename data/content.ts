@@ -681,38 +681,168 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const builds = [
+export type BuildCategory = "Customer success" | "Growth & marketing" | "Data & ops" | "Team bots" | "Product";
+export const buildCategories: BuildCategory[] = ["Customer success", "Growth & marketing", "Data & ops", "Team bots", "Product"];
+
+export type Build = {
+  name: string;
+  glyph: string;
+  kind: string;
+  category: BuildCategory;
+  where?: string;
+  featured?: boolean;
+  blurb: string;
+  stack: string[];
+  link: string;
+};
+
+// "Vibe-coded" means I built it myself with AI coding tools (Claude Code, Cursor, etc.).
+export const builds: Build[] = [
+  {
+    name: "CS command centre",
+    glyph: "◎ → ✆",
+    kind: "Admin dashboard · vibe-coded",
+    category: "Customer success",
+    where: "Smart Bricks",
+    featured: true,
+    blurb:
+      "Shows the customer success team every user: what they've done on the platform, their top journeys, and the next-best action for approaching them. AI writes a tailored set of questions for each user based on their behaviour and persona. It also tracks whether and how often CS has reached out, places each user in a cohort (dormant, high-intent and so on), and links them to the marketing campaign that brought them in.",
+    stack: ["Vibe-coded", "PostHog", "LLM", "Cohorts"],
+    link: "[link]",
+  },
+  {
+    name: "Call insights",
+    glyph: "◖ ⟶ ≡",
+    kind: "AI tool · vibe-coded",
+    category: "Customer success",
+    where: "Smart Bricks",
+    featured: true,
+    blurb:
+      "The team uploads recordings of customer calls. AI transcribes them and produces one report of the collective feedback and pain points for Operations.",
+    stack: ["Vibe-coded", "Speech-to-text", "LLM"],
+    link: "[link]",
+  },
+  {
+    name: "Metrics watchdog",
+    glyph: "∿ ! ∿",
+    kind: "Automation · PostHog → Sheets → Slack",
+    category: "Data & ops",
+    where: "Smart Bricks",
+    featured: true,
+    blurb:
+      "Scripts that pull metrics on their own, calculate changes, flag important dips and spikes, suggest next-best actions, and post it all to a dedicated Slack channel.",
+    stack: ["PostHog", "Apps Script", "Google Sheets", "Slack"],
+    link: "[link]",
+  },
+  {
+    name: "Guided product tour",
+    glyph: "① ② ③",
+    kind: "In-product onboarding · vibe-coded A–Z",
+    category: "Growth & marketing",
+    where: "Smart Bricks",
+    featured: true,
+    blurb: "A guided tour inside the platform that walks new users through the product, built by me from start to finish.",
+    stack: ["Vibe-coded", "Onboarding", "Activation"],
+    link: "[link]",
+  },
+  {
+    name: "Decision log listener",
+    glyph: "◉ ◉ → ✎",
+    kind: "AI tool",
+    category: "Data & ops",
+    featured: true,
+    blurb:
+      "Listens to meetings, notes, Slack and 1:1s and keeps a running log of every decision made, so nobody has to remember who decided what and why.",
+    stack: ["LLM", "Slack", "Meeting notes"],
+    link: "[link]",
+  },
+  {
+    name: "AI marketing content engine",
+    glyph: "▣ → ✦",
+    kind: "AI tool",
+    category: "Growth & marketing",
+    where: "Smart Bricks",
+    blurb:
+      "Takes fresh platform screenshots from a Google Drive that Claude keeps up to date automatically, and turns them into marketing content for the marketing team.",
+    stack: ["Claude", "Google Drive", "Content generation"],
+    link: "[link]",
+  },
+  {
+    name: "Email campaigns & product sequence",
+    glyph: "✉ ✉ ✉",
+    kind: "Lifecycle marketing",
+    category: "Growth & marketing",
+    where: "Smart Bricks",
+    blurb:
+      "Email campaigns that increased click-through rates, and an email sequence that explains the product to new users step by step.",
+    stack: ["Email", "Lifecycle", "Copy"],
+    link: "[link]",
+  },
+  {
+    name: "Wearing the marketing hat",
+    glyph: "✦ ✦",
+    kind: "Growth · alongside marketing",
+    category: "Growth & marketing",
+    where: "Smart Bricks",
+    blurb:
+      "Product-focused social media posts, reviews of marketing blog posts, and UTM campaign analytics tracked side by side with the marketing team.",
+    stack: ["Social", "Content", "UTM", "Analytics"],
+    link: "[link]",
+  },
+  {
+    name: "Company playbook",
+    glyph: "▤ ▤",
+    kind: "Operating documentation",
+    category: "Growth & marketing",
+    where: "Smart Bricks",
+    blurb: "A company playbook that captures how Smart Bricks works, sells and supports its customers.",
+    stack: ["Documentation", "GTM"],
+    link: "[link]",
+  },
+  {
+    name: "Kudos bot",
+    glyph: "★ ★ ★",
+    kind: "Slack bot",
+    category: "Team bots",
+    blurb: "A Slack bot that lets the team give kudos to people who did a great job, to lift the team's spirit.",
+    stack: ["Slack", "Bot"],
+    link: "[link]",
+  },
+  {
+    name: "Competitor intel bot",
+    glyph: "◐ ⌕",
+    kind: "Slack bot · weekly",
+    category: "Team bots",
+    blurb: "Sweeps the market every week for competitor news and posts the most important updates to the team.",
+    stack: ["Slack", "LLM", "Web research"],
+    link: "[link]",
+  },
+  {
+    name: "Feedback-to-Jira bot",
+    glyph: "✉ → ▥",
+    kind: "Slack bot",
+    category: "Team bots",
+    blurb: "Picks up feedback shared in Slack and automatically creates tickets for it in a dedicated Jira backlog.",
+    stack: ["Slack", "Jira", "Automation"],
+    link: "[link]",
+  },
   {
     name: "Metrics pipeline",
     glyph: "∑ → ▤",
     kind: "Data automation · Apps Script",
+    category: "Data & ops",
+    where: "Smart Bricks",
     blurb:
-      "Pulls product analytics into automated weekly, monthly, CTA and UTM reports. It's on v11.5+ and replaced all manual reporting at an AI startup.",
+      "Pulls product analytics into automated weekly, monthly, CTA and UTM reports. It's on v11.5+ and replaced all manual reporting.",
     stack: ["Apps Script", "PostHog", "SQL", "Google Sheets"],
-    link: "[link]",
-  },
-  {
-    name: "Zeki",
-    glyph: "ع / A",
-    kind: "Kids' AI-literacy app · built solo",
-    blurb:
-      "Bilingual Arabic/English PWA with right-to-left switching and lessons stored as data. I wrote the spec, then vibe-coded the MVP in Claude Code.",
-    stack: ["React", "TypeScript", "Tailwind", "PWA", "Claude Code"],
-    link: "[link]",
-  },
-  {
-    name: "Underwriting prototype",
-    glyph: "▦ ▦ ▦",
-    kind: "Clickable prototype · 9 surfaces",
-    blurb:
-      "An institutional real-estate underwriting workspace covering intake, pipeline, deal room, portfolio and an AI 'Ask' panel. I built it to test flows with buyers before writing a line of production code.",
-    stack: ["Figma", "Vibe-coding", "Product design"],
     link: "[link]",
   },
   {
     name: "Jira reporting automation",
     glyph: "⚙ → ▥",
     kind: "Process automation",
+    category: "Data & ops",
+    where: "Novomind",
     blurb:
       "Jira automations built from scratch to calculate velocity, capacity and a weighted quality score, so management reports produce themselves.",
     stack: ["Jira", "Automation rules", "Agile metrics"],
@@ -722,42 +852,80 @@ export const builds = [
     name: "Dependency maps",
     glyph: "◉—◉—◉",
     kind: "Systems documentation",
+    category: "Data & ops",
+    where: "Mumzworld",
     blurb:
       "Charts of how a 5M-user app's integrations (Magento, Blueshift, Mixpanel, GA, Firebase) depend on each other, made during a platform migration.",
     stack: ["Systems mapping", "Magento", "Integrations"],
     link: "[link]",
   },
   {
-    name: "Testify",
-    glyph: "✓ ✓ ✓",
-    kind: "AI product · built solo",
+    name: "Platform features & Figma designs",
+    glyph: "◧ → </>",
+    kind: "Hands-on with the dev team",
+    category: "Product",
+    where: "Smart Bricks",
+    blurb: "Full designs in Figma, and several areas of the platform vibe-coded hands-on alongside the engineering team.",
+    stack: ["Figma", "Vibe-coded", "Product design"],
+    link: "[link]",
+  },
+  {
+    name: "Underwriting prototype",
+    glyph: "▦ ▦ ▦",
+    kind: "Clickable prototype · 9 screens",
+    category: "Product",
+    where: "Smart Bricks",
     blurb:
-      "An AI platform that checks requirements and generates testing and development checklists. Semi-finalist in ITIDA's national competition (Egypt's Ministry of Communications).",
-    stack: ["LLM", "Prompt engineering", "Figma", "Full-stack"],
+      "An institutional underwriting workspace covering intake, pipeline, deal room, portfolio and an AI 'Ask' panel, built to test flows with investors before production code.",
+    stack: ["Figma", "Vibe-coded", "Product design"],
+    link: "[link]",
+  },
+  {
+    name: "Zeki",
+    glyph: "ع / A",
+    kind: "Kids' AI-literacy app · built solo",
+    category: "Product",
+    featured: true,
+    blurb:
+      "Bilingual Arabic/English PWA with right-to-left switching and lessons stored as data. I wrote the spec, then vibe-coded the MVP in Claude Code.",
+    stack: ["React", "TypeScript", "Tailwind", "PWA", "Claude Code"],
     link: "[link]",
   },
   {
     name: "LLM validation harness",
     glyph: "AI ⇄ ✓",
     kind: "QA tooling",
+    category: "Product",
+    where: "Law71",
     blurb:
       "An AI automation framework that scores LLM answers for quality, relevance and correctness in Arabic and English, and flags where documents are missing.",
     stack: ["Selenium", "Python", "LLM evaluation", "RAG", "Arabic NLP"],
     link: "[link]",
   },
   {
+    name: "Testify",
+    glyph: "✓ ✓ ✓",
+    kind: "AI product · built solo",
+    category: "Product",
+    blurb:
+      "An AI platform that checks requirements and generates testing and development checklists. Semi-finalist in ITIDA's national competition (Egypt's Ministry of Communications).",
+    stack: ["LLM", "Prompt engineering", "Figma", "Full-stack"],
+    link: "[link]",
+  },
+  {
     name: "This portfolio",
     glyph: "</>",
     kind: "Figma → code",
+    category: "Product",
     blurb:
-      "Designed, then vibe-coded in Next.js and Tailwind. The chat assistant, Blueprint map and decision simulator are all real, working components.",
+      "Designed, then vibe-coded in Next.js and Tailwind. The walkthrough, chat assistant, Blueprint map, stop-motion and decision simulator are all real, working components.",
     stack: ["Next.js", "Tailwind", "Claude", "Cursor"],
     link: "https://github.com/NadaAhmed97/AIProductManager",
   },
 ];
 
 export const experience = [
-  { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "Sole PM · new B2B institutional vertical" },
+  { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "Sole PM · new B2B institutional vertical · also wore the marketing and CS hats, and vibe-coded internal tools and bots" },
   { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach MVP" },
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing · built the product operating system (docs, Linear + GitHub, Slack triage, PostHog)" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
