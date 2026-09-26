@@ -22,4 +22,8 @@ All copy is in **`data/content.ts`**.
 
 ## Before publishing
 - Replace every `[X]` / `[link]` placeholder in `data/content.ts` with real numbers or links.
-- Add a CV to `public/Nada_Ahmed_CV.pdf`. Consider removing phone numbers first, since the repo is public.
+
+## Deploy to Vercel
+1. vercel.com → **Add New… → Project** → import `NadaAhmed97/AIProductManager`.
+2. Framework preset: **Next.js** (auto-detected). Leave build settings at their defaults.
+3. Pick the production branch (Settings → Git) and click **Deploy**.
