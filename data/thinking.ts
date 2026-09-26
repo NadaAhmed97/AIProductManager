@@ -75,6 +75,22 @@ export const principles: Principle[] = [
     caseId: "mumzworld",
   },
   {
+    id: "system",
+    principle: "Build the operating system first",
+    oneLiner: "Before a team can move fast, work has to stop getting lost.",
+    project: "XPay · payment gateway",
+    situation:
+      "As the only PM, I found no documentation, no shared process, and feedback from clients and other teams arriving everywhere: chats, calls, DMs.",
+    move: [
+      "Wrote full product documentation",
+      "Set up Linear for the dev team and connected it to GitHub, so every change traced back to a ticket",
+      "Built triage flows connected to Slack, so all external and internal feedback landed in one place",
+      "Introduced PostHog and set it up fully, so decisions came from data",
+    ],
+    why: "Process isn't bureaucracy when it's designed well. It's what lets a small team handle a lot without dropping anything.",
+    caseId: "xpay",
+  },
+  {
     id: "measure",
     principle: "Measure what you want more of",
     oneLiner: "Measure only speed and you get speed. Measure quality and you get better work.",

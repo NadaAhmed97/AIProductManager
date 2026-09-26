@@ -619,7 +619,8 @@ export const caseStudies: CaseStudy[] = [
       "Requirements for the rebuilt financial engine: balances, transaction processing and settlement",
       "Keeping 100% uptime for live merchants throughout the cut-over",
       "Product input to the Central Bank of Egypt licensing process",
-      "Setting up the product process from scratch (PRDs, backlog, cadence) and Arabic localisation",
+      "Setting up the product operating system from scratch: full documentation, PRDs, Linear connected to GitHub, and feedback triage connected to Slack",
+      "Introducing PostHog and setting it up fully, plus Arabic localisation",
     ],
     decisions: [
       {
@@ -643,6 +644,11 @@ export const caseStudies: CaseStudy[] = [
         tradeoff: "Slower early feature delivery.",
       },
       {
+        call: "Build the operating system before scaling the team's output",
+        why: "With no process, work got lost between people. I set up Linear connected to GitHub so every change traced back to a ticket, and built triage flows connected to Slack so feedback from clients and other teams landed in one place instead of in DMs.",
+        tradeoff: "Some early friction while engineers and stakeholders adopted the new flow.",
+      },
+      {
         call: "Benchmark against Stripe and Paymob to choose where to be different",
         why: "Match them on core payment rails; stand out on merchant experience and the developer hub.",
         tradeoff: "Chose not to chase every competitor feature.",
@@ -654,7 +660,10 @@ export const caseStudies: CaseStudy[] = [
       "Coordinated with Customer Success and Business Development to align with every migrated merchant",
       "Shipped balance management, transaction processing, merchant dashboards and the developer hub",
       "Took part in obtaining the Central Bank of Egypt licence",
-      "Instrumented funnels, feature flags and A/B tests in PostHog and Mixpanel",
+      "Introduced full product documentation",
+      "Set up Linear for the dev team and connected it to GitHub, so code changes followed a traceable process",
+      "Built feedback triage connected to Slack for external clients and internal teams",
+      "Introduced PostHog and set it up fully: funnels, feature flags and A/B tests (alongside Mixpanel)",
       "Mentored product owners on discovery, PRD writing and prioritisation",
     ],
     results: [
@@ -745,7 +754,7 @@ export const builds = [
 export const experience = [
   { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "Sole PM · new B2B institutional vertical" },
   { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach MVP" },
-  { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing" },
+  { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing · built the product operating system (docs, Linear + GitHub, Slack triage, PostHog)" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
   { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Only Arabic speaker on the team · Arabic portal at parity with English · built the LLM testing framework" },
