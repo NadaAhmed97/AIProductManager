@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { caseStudies, type CaseStudy } from "@/data/content";
+import { caseStudies, themes, isFilled, type CaseStudy, type Theme } from "@/data/content";
 import Section from "./Section";
 
 const steps = ["Problem", "Ownership", "Decisions", "Delivery", "Result"] as const;
@@ -9,21 +9,36 @@ type Step = (typeof steps)[number];
 
 export default function CaseStudies() {
   const [open, setOpen] = useState<CaseStudy | null>(null);
+  const [filter, setFilter] = useState<Theme | "All">("All");
+  const shown = caseStudies.filter((cs) => filter === "All" || cs.theme === filter);
 
   return (
     <Section
       id="work"
       index="01"
       eyebrow="Case studies"
-      title="Three situations every 0→1 PM hits. How I handled each."
+      title="The situations every 0→1 PM hits, and how I handled each."
       intro="Each one follows the same frame: Problem → Ownership → Decisions → Delivery → Result. Open one to step through it."
     >
-      <div className="grid gap-5 md:grid-cols-3">
-        {caseStudies.map((cs, i) => (
+      <div className="mb-8 flex flex-wrap gap-2">
+        {(["All", ...themes] as const).map((t) => (
+          <button key={t} onClick={() => setFilter(t)}
+            className={`rounded-full border px-4 py-1.5 text-sm transition ${
+              filter === t ? "border-accent bg-accent text-ink" : "border-white/15 text-neutral-400 hover:border-white/40"
+            }`}>
+            {t}
+            <span className="ml-1.5 font-mono text-[10px] opacity-60">
+              {t === "All" ? caseStudies.length : caseStudies.filter((c) => c.theme === t).length}
+            </span>
+          </button>
+        ))}
+      </div>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {shown.map((cs, i) => (
           <button
             key={cs.id}
             onClick={() => setOpen(cs)}
-            className="card group flex flex-col p-7 text-left hover:-translate-y-1 hover:border-accent/60 hover:bg-white/[0.05]"
+            className="card group flex animate-rise flex-col p-7 text-left hover:-translate-y-1 hover:border-accent/60 hover:bg-white/[0.05]"
           >
             <div className="flex items-center justify-between">
               <span className="chip border-accent/40 text-accent">{cs.tag}</span>
@@ -37,7 +52,7 @@ export default function CaseStudies() {
                 <div className="text-2xl font-bold">{cs.headline.value}</div>
                 <div className="text-xs text-neutral-500">{cs.headline.label}</div>
               </div>
-              <span className="text-sm text-neutral-400 transition group-hover:text-accent">Open →</span>
+              <span className="shrink-0 whitespace-nowrap pl-3 text-sm text-neutral-400 transition group-hover:text-accent">Open →</span>
             </div>
           </button>
         ))}
@@ -95,7 +110,15 @@ function Drawer({ cs, onClose }: { cs: CaseStudy; onClose: () => void }) {
         </div>
 
         <div key={step} className="flex-1 animate-rise overflow-y-auto p-6 md:p-8">
-          {step === "Problem" && <p className="text-lg leading-relaxed text-neutral-300">{cs.problem}</p>}
+          {step === "Problem" && (
+            <>
+              <div className="card mb-6 p-4 text-sm text-neutral-400">
+                <p className="font-mono text-[11px] text-neutral-500">CONTEXT</p>
+                <p className="mt-1">{cs.context}</p>
+              </div>
+              <p className="text-lg leading-relaxed text-neutral-300">{cs.problem}</p>
+            </>
+          )}
           {step === "Ownership" && (
             <ul className="space-y-3">
               {cs.ownership.map((o) => (
@@ -130,8 +153,8 @@ function Drawer({ cs, onClose }: { cs: CaseStudy; onClose: () => void }) {
           )}
           {step === "Result" && (
             <>
-              <div className="grid grid-cols-3 gap-3">
-                {cs.results.map((r) => (
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {cs.results.filter((r) => isFilled(r.value)).map((r) => (
                   <div key={r.label} className="card p-4">
                     <div className="text-2xl font-bold text-accent">{r.value}</div>
                     <div className="mt-1 text-xs text-neutral-500">{r.label}</div>

@@ -21,7 +21,7 @@ npm run build   # static site in ./out (deploy to Vercel or GitHub Pages)
 All copy is in **`data/content.ts`**.
 
 ## Before publishing
-- Replace every `[X]` / `[link]` placeholder in `data/content.ts` with real numbers or links.
+- Replace every `[X]` / `[link]` placeholder in `data/content.ts`. Unfilled results and links are hidden on the live site automatically.
 
 ## Deploy to Vercel
 1. vercel.com → **Add New… → Project** → import `NadaAhmed97/AIProductManager`.
