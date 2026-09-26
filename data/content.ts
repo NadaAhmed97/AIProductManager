@@ -55,6 +55,8 @@ export type CaseStudy = {
   delivery: string[];
   results: { value: string; label: string }[];
   learned: string;
+  // Real screenshots, shown in the case study drawer. Files live in public/shots/.
+  images?: { src: string; caption: string }[];
 };
 
 // Values containing "[" are placeholders and are hidden on the live site until filled in.
@@ -174,7 +176,7 @@ export const caseStudies: CaseStudy[] = [
     id: "zeki",
     theme: "0 → 1",
     tag: "0 → 1 · built solo",
-    title: "Building a bilingual AI-literacy app for kids, alone, from spec to working product",
+    title: "Building a bilingual app that teaches kids AI, alone, from spec to working product",
     company: "Zeki · Founder & builder",
     context:
       "The UAE made AI education part of the public-school curriculum (KG–Grade 12) from the 2025–26 school year. Zeki is my self-serve, gamified app that teaches AI to children aged 6–12 in Arabic and English.",
@@ -219,6 +221,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "Solo 0→1 is a scoping discipline more than a coding skill. What I left out mattered as much as what I built.",
+    images: [
+      { src: "/shots/zeki-map.webp", caption: "The learning journey: a star map of lessons that unlock one by one (Arabic, right-to-left)." },
+      { src: "/shots/zeki-lesson.webp", caption: "A pattern-recognition lesson: spot the pattern, pick what comes next, check your answer." },
+    ],
   },
   {
     id: "zaffa",
@@ -800,6 +806,7 @@ export type Build = {
   blurb: string;
   stack: string[];
   link: string;
+  image?: string; // real screenshot in public/shots/; falls back to an illustrated mock-up
 };
 
 // "Vibe-coded" means I built it myself with AI coding tools (Claude Code, Cursor, etc.).
@@ -1038,9 +1045,10 @@ export const builds: Build[] = [
     category: "Product",
     featured: true,
     blurb:
-      "Bilingual Arabic/English PWA with right-to-left switching and lessons stored as data. I wrote the spec, then vibe-coded the MVP in Claude Code.",
+      "Teaches children machine learning, AI and pattern recognition through a star-map journey of lessons. Bilingual Arabic/English with right-to-left switching, and lessons stored as data. I wrote the spec, then vibe-coded the MVP in Claude Code.",
     stack: ["React", "TypeScript", "Tailwind", "PWA", "Claude Code"],
     link: "[link]",
+    image: "/shots/zeki-lesson.webp",
   },
   {
     name: "LLM validation harness",

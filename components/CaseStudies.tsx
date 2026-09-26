@@ -46,8 +46,13 @@ export default function CaseStudies() {
           <button
             key={cs.id}
             onClick={() => setOpen(cs)}
-            className="card group flex animate-rise flex-col p-7 text-left hover:-translate-y-1 hover:border-accent/60 hover:bg-white/[0.05]"
+            className="card group flex animate-rise flex-col overflow-hidden p-7 text-left hover:-translate-y-1 hover:border-accent/60 hover:bg-white/[0.05]"
           >
+            {cs.images && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={cs.images[0].src} alt="" loading="lazy"
+                className="-mx-7 -mt-7 mb-6 h-36 w-[calc(100%+3.5rem)] max-w-none border-b border-white/10 object-cover transition duration-700 group-hover:scale-[1.03]" />
+            )}
             <div className="flex items-center justify-between">
               <span className="chip border-accent/40 text-accent">{cs.tag}</span>
               <span className="font-mono text-xs text-neutral-600">{String(i + 1).padStart(2, "0")}</span>
@@ -152,6 +157,17 @@ function Drawer({ cs, onClose }: { cs: CaseStudy; onClose: () => void }) {
                   <p className="mt-3 text-sm text-neutral-400"><span className="text-neutral-200">Why · </span>{d.why}</p>
                   <p className="mt-2 text-sm text-neutral-400"><span className="text-neutral-200">Trade-off · </span>{d.tradeoff}</p>
                 </div>
+              ))}
+            </div>
+          )}
+          {step === "Delivery" && cs.images && (
+            <div className="mb-8 space-y-4">
+              {cs.images.map((im) => (
+                <figure key={im.src} className="overflow-hidden rounded-xl border border-white/10">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={im.src} alt={im.caption} loading="lazy" className="w-full" />
+                  <figcaption className="border-t border-white/10 bg-white/[0.02] px-4 py-2.5 text-xs text-neutral-400">{im.caption}</figcaption>
+                </figure>
               ))}
             </div>
           )}
