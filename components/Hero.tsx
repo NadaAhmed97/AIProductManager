@@ -63,7 +63,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="mt-12 grid animate-rise grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 [animation-delay:.4s] md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-12 grid animate-rise grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 [animation-delay:.4s] md:grid-cols-3">
           {proof.map((p) => (
             <div key={p.label} className="bg-ink p-6">
               <div className="text-2xl font-bold tracking-tight md:text-3xl">{p.value}</div>

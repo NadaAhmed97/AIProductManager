@@ -31,6 +31,7 @@ export const proof = [
   { value: "0→1", label: "products taken from blank page to launch" },
   { value: "Sole PM", label: "at Smart Bricks, YallaGain, MUAB, XPay, Mumzworld's app and Pleny" },
   { value: "AR / EN", label: "owned Arabic localisation on every product I joined" },
+  { value: "20+", label: "tools, apps and bots I built myself with AI" },
   { value: "Gov AI", label: "Law71 legal AI adopted by UAE MOFA & EDGE" },
 ];
 
