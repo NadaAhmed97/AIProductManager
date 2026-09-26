@@ -27,7 +27,7 @@ export default function Home() {
         <Experience />
         <Contact />
       </main>
-      <SafeBoundary><AskNada /></SafeBoundary>
+      <SafeBoundary report><AskNada /></SafeBoundary>
       <SafeBoundary><Tour /></SafeBoundary>
     </>
   );
