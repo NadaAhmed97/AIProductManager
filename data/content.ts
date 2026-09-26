@@ -822,6 +822,7 @@ export type Build = {
   stack: string[];
   link: string;
   image?: string; // real screenshot in public/shots/; falls back to an illustrated mock-up
+  gallery?: { src: string; caption: string }[]; // extra screenshots, opened by clicking the card
 };
 
 // "Vibe-coded" means I built it myself with AI coding tools (Claude Code, Cursor, etc.).
@@ -838,6 +839,10 @@ export const builds: Build[] = [
     stack: ["Vibe-coded", "PostHog", "LLM", "Cohorts"],
     link: "[link]",
     image: "/shots/sb-cs-dashboard.webp",
+    gallery: [
+      { src: "/shots/sb-cs-dashboard.webp", caption: "The weekly product-and-sales check-in: who needs a first touch, and why. (Names blurred.)" },
+      { src: "/shots/sb-cs-user.webp", caption: "AI-generated talking points for each user, based on their onboarding answers and activity." },
+    ],
   },
   {
     name: "Call insights",
@@ -954,9 +959,14 @@ export const builds: Build[] = [
     glyph: "✉ → ▥",
     kind: "Slack bot",
     category: "Team & culture",
-    blurb: "Picks up feedback shared in Slack and automatically creates tickets for it in a dedicated Jira backlog.",
+    blurb: "Anyone can log external feedback from Slack in a short form (title, description, priority, user impact, screenshots), and the bot creates the ticket in a dedicated Jira backlog automatically.",
     stack: ["Slack", "Jira", "Automation"],
     link: "[link]",
+    image: "/shots/sb-feedback-modal.webp",
+    gallery: [
+      { src: "/shots/sb-feedback-modal.webp", caption: "Logging external feedback straight from Slack: title, description, priority, user impact and screenshots." },
+      { src: "/shots/sb-jira-tickets.webp", caption: "The tickets it creates, landing in a dedicated Jira backlog." },
+    ],
   },
   {
     name: "Knowledge wheel sessions",
@@ -967,6 +977,35 @@ export const builds: Build[] = [
     blurb: "A fortnightly session I introduced where the whole team shares and discusses new tools, strategies and useful tips, so what one person learns spreads to everyone.",
     stack: ["Culture", "Learning", "AI adoption"],
     link: "[link]",
+  },
+  {
+    name: "Product pipeline",
+    glyph: "▦ ⇅",
+    kind: "Feedback intelligence · vibe-coded",
+    category: "Data & ops",
+    where: "Smart Bricks",
+    featured: true,
+    blurb:
+      "Pulls every piece of feedback from Slack channels and email, counts how many times each thing has been asked for, scores impact against effort, and organises it all into a board by product area and growth metric, with a roadmap and an impact-vs-effort view.",
+    stack: ["Vibe-coded", "Slack", "Email", "Prioritisation"],
+    link: "[link]",
+    image: "/shots/sb-pipeline.webp",
+  },
+  {
+    name: "Ops & CS admin dashboard",
+    glyph: "♡ ▤",
+    kind: "Internal platform · vibe-coded",
+    category: "Customer success",
+    where: "Smart Bricks",
+    blurb:
+      "One admin tool for operations, customer success and lead capture. Platform Health tracks five headline metrics (acquisition, activation, engagement, retention, monetisation) against their own trailing average and flags drops as Watch or Critical. Each user's page has AI-generated call talking points from their onboarding answers and activity, a call log, notes, usage stats and live billing.",
+    stack: ["Vibe-coded", "PostHog", "Postgres", "Stripe", "LLM"],
+    link: "[link]",
+    image: "/shots/sb-platform-health.webp",
+    gallery: [
+      { src: "/shots/sb-platform-health.webp", caption: "Platform Health: five metrics, each compared with its own trailing 4-week average. (Values blurred.)" },
+      { src: "/shots/sb-cs-user.webp", caption: "A user's page: AI talking points for the call, call log, notes and product activity. (Notes blurred.)" },
+    ],
   },
   {
     name: "Metrics pipeline",
