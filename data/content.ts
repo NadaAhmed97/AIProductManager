@@ -684,6 +684,7 @@ export const caseStudies: CaseStudy[] = [
       "Ran planning poker sessions with the teams",
       "Designed and rolled out the rotating squad process",
       "Introduced the weighted quality score to guide improvement",
+      "Built a QA peer-testing workbook: UAT results per ticket, quality flags per developer, complexity × severity breakdowns and a sprint-by-sprint quality trend",
     ],
     results: [
       { value: "0", label: "manual reporting after automation" },
@@ -691,6 +692,13 @@ export const caseStudies: CaseStudy[] = [
     ],
     learned:
       "What you measure shapes how teams behave. Measure only speed and you get speed; measure quality and you get better work.",
+    images: [
+      { src: "/shots/novo-capacity.webp", caption: "Sprint capacity and velocity report: estimation accuracy per person, scope changes and next-sprint capacity. (Names blurred.)" },
+      { src: "/shots/novo-uat.webp", caption: "QA peer-testing sheet: every ticket's type, complexity, test cases, result and severity. (People blurred.)" },
+      { src: "/shots/novo-flags.webp", caption: "Quality flags per developer: missed acceptance criteria, issues missed, broken fixed scenarios, missed testing comments, weighted into one score." },
+      { src: "/shots/novo-team.webp", caption: "Tickets broken down by complexity × severity for each team member." },
+      { src: "/shots/novo-overview.webp", caption: "Sprint quality overview: passed, failed and blocked test cases, code quality %, quality-flag % and the trend across sprints." },
+    ],
   },
   {
     id: "law71",
@@ -1059,6 +1067,14 @@ export const builds: Build[] = [
       "Jira automations built from scratch to calculate velocity, capacity and a weighted quality score, so management reports produce themselves.",
     stack: ["Jira", "Automation rules", "Agile metrics"],
     link: "[link]",
+    image: "/shots/novo-overview.webp",
+    gallery: [
+      { src: "/shots/novo-capacity.webp", caption: "Sprint capacity and velocity report: estimation accuracy per person, scope changes and next-sprint capacity. (Names blurred.)" },
+      { src: "/shots/novo-uat.webp", caption: "QA peer-testing sheet: every ticket's type, complexity, test cases, result and severity. (People blurred.)" },
+      { src: "/shots/novo-flags.webp", caption: "Quality flags per developer: missed acceptance criteria, issues missed, broken fixed scenarios, missed testing comments, weighted into one score." },
+      { src: "/shots/novo-team.webp", caption: "Tickets broken down by complexity × severity for each team member." },
+      { src: "/shots/novo-overview.webp", caption: "Sprint quality overview: passed, failed and blocked test cases, code quality %, quality-flag % and the trend across sprints." },
+    ],
   },
   {
     name: "Dependency maps",
