@@ -35,7 +35,7 @@ export const tour: TourChapter[] = [
       delivered: "Product Definition v2.0, a v1 roadmap, competitor analysis and GTM, tested through several audit rounds, plus a nine-screen prototype I built myself.",
       outcome: "A clear, investor-validated v1 in a domain I started with no knowledge of, and a stronger value proposition than the one we started with.",
     },
-    alsoSee: ["Zaffa AI: founded it and launched Nour, an AI wedding planner", "Zeki: a bilingual kids' AI app I built solo"],
+    alsoSee: ["YallaGain: led the AI fitness-coach MVP, built the app myself, and moved development in-house", "Zaffa AI: founded it and launched Nour, an AI wedding planner", "Zeki: a bilingual kids' AI app I built solo"],
     caseId: "underwriting",
   },
   {
@@ -147,7 +147,7 @@ export const tour: TourChapter[] = [
       delivered: "A reversed decision on capping learner interests, and a clear launch-blocker briefing to the CEO.",
       outcome: "Critical failures caught before launch, and a CEO who trusted my challenges because they came with evidence.",
     },
-    alsoSee: ["Smart Bricks: persuaded the CEO to reframe the value proposition, backed by investor research", "Law71: kept government and defence clients aligned with shared evidence"],
+    alsoSee: ["YallaGain: pushed leadership to move development in-house after an outsourced vendor's repeated delivery failures", "Smart Bricks: persuaded the CEO to reframe the value proposition, backed by investor research", "Law71: kept government and defence clients aligned with shared evidence"],
     caseId: "audit",
   },
   { id: "blueprint", kind: "blueprint" },

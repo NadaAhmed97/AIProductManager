@@ -117,6 +117,56 @@ export const caseStudies: CaseStudy[] = [
       "In a new domain, humility is a method: talk to the people who do the work, research until the picture holds, and then be confident enough to change the plan, even the CEO's.",
   },
   {
+    id: "yallagain",
+    theme: "0 → 1",
+    tag: "0 → 1 · led and built",
+    title: "Taking an AI fitness coach from MVP to in-house product, and building the app myself",
+    company: "YallaGain · Senior AI PM",
+    context:
+      "YallaGain is one of the UAE's first AI-powered fitness-coach platforms, with adaptive workout plans, AI progress tracking and conversational coaching.",
+    summary:
+      "When I joined, development was outsourced and the vendor kept missing deliveries. I fought to bring development in-house, and we did. I also built the mobile web app myself and worked hands-on on the AI avatar and form correction.",
+    headline: { value: "In-house", label: "development brought in after I made the case" },
+    problem:
+      "The MVP depended on an outsourced development company that failed to deliver several times. Every delay pushed the launch back, and the product's most important parts, AI personalisation and movement correction, were too core to leave with a partner who couldn't deliver.",
+    ownership: [
+      "The end-to-end MVP launch: roadmap, discovery, build and go-to-market",
+      "AI personalisation: adaptive workout plans, AI progress tracking and conversational coaching",
+      "The user journey from onboarding and goal-setting to daily engagement and retention, with AI nudges at each stage",
+      "Building the mobile web app myself with Figma Make, Copilot and Supabase",
+      "Hands-on work on the digital-twin avatar and movement correction, using body joint-point analysis",
+    ],
+    decisions: [
+      {
+        call: "Bring development in-house instead of staying with the outsourced vendor",
+        why: "The vendor had failed to deliver several times, and the core of the product couldn't depend on a partner that kept missing. I pushed hard for this decision, using the delivery record as evidence, and we built in-house.",
+        tradeoff: "Short-term cost and effort to set up in-house capability, and a difficult conversation with leadership.",
+      },
+      {
+        call: "Build the mobile web app myself while the team was being set up",
+        why: "Using Figma Make, Copilot and Supabase, I could get a working product in front of users without waiting.",
+        tradeoff: "My time went into building as well as managing.",
+      },
+      {
+        call: "Put AI nudges at every stage of the journey",
+        why: "Fitness apps lose people in the first weeks, so onboarding, goal-setting and daily habits each needed a reason to come back.",
+        tradeoff: "More journey design and more behaviour to track.",
+      },
+    ],
+    delivery: [
+      "Moved development in-house after the outsourced vendor's repeated delivery failures",
+      "Built the mobile web app end to end with Figma Make, Copilot and Supabase",
+      "Worked on the digital-twin avatar and joint-point-based movement correction",
+      "Designed the journey, referral loops and activation triggers, tracked through activation, engagement, AI-feature adoption and retention cohorts",
+    ],
+    results: [
+      { value: "In-house", label: "development team, replacing the failing vendor" },
+      { value: "1", label: "mobile web app built by me" },
+    ],
+    learned:
+      "Owning the outcome sometimes means challenging how the work gets done, not just what gets built. If a partner keeps failing, fixing that is the product decision.",
+  },
+  {
     id: "zeki",
     theme: "0 → 1",
     tag: "0 → 1 · built solo",
@@ -960,7 +1010,7 @@ export const builds: Build[] = [
 
 export const experience = [
   { when: "2026 —", org: "Smart Bricks", role: "Senior AI & Growth PM (contract)", note: "Sole PM · new B2B institutional vertical · also wore the marketing and CS hats, and vibe-coded internal tools and bots" },
-  { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach · built the mobile web app myself · digital-twin avatar and movement correction" },
+  { when: "2026 —", org: "Yalla Development", role: "Senior AI PM (freelance)", note: "YallaGain AI fitness coach · moved dev in-house · built the mobile web app myself · digital-twin avatar and movement correction" },
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing · built the product operating system (docs, Linear + GitHub, Slack triage, PostHog)" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
