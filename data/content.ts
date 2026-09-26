@@ -408,6 +408,147 @@ export const caseStudies: CaseStudy[] = [
       "My QA background is a product superpower. Checking whether the product actually works is the cheapest way to protect the business.",
   },
   {
+    id: "mumzworld",
+    theme: "No playbook",
+    tag: "Documentation at scale",
+    title: "Documenting a 5M-user app that had never been documented, during a platform migration",
+    company: "Mumzworld · Product Manager",
+    context:
+      "Mumzworld is the largest e-commerce platform for mothers and families in the Middle East, live for many years with over 5 million active users.",
+    summary:
+      "I joined a mature app with no documentation at all, in the middle of a move from Magento 1 to Magento 2. I documented the whole app end to end and mapped every integration and dependency.",
+    headline: { value: "0 → full", label: "end-to-end app documentation" },
+    problem:
+      "The app had been live for years with 5M+ users but had no documentation. Knowledge lived in people's heads. At the same time the platform was moving from Magento 1 to Magento 2, and the app depended on many connected tools: Blueshift, Mixpanel, Google Analytics, Firebase and more. Nobody could say with confidence what would break if one part changed.",
+    ownership: [
+      "Full end-to-end documentation of the app, written from scratch",
+      "How-to guides for every integrated tool, including how each one behaved across the Magento 1 → 2 migration",
+      "Dependency charts showing how all the connected parts of the system rely on each other",
+      "A new-hire onboarding process built on that documentation",
+    ],
+    decisions: [
+      {
+        call: "Document the system before changing it",
+        why: "A migration without a map is guesswork. Knowing every dependency first made the risks visible before they became incidents.",
+        tradeoff: "Time spent writing instead of shipping features in my first months.",
+      },
+      {
+        call: "Map dependencies visually, not only in text",
+        why: "With this many integrations, a chart shows in seconds what pages of text can't: what breaks if this changes.",
+        tradeoff: "Charts have to be kept current as the system changes.",
+      },
+      {
+        call: "Write for the next person, not just for me",
+        why: "Documentation only matters if a new engineer or PM can pick it up and work from it.",
+        tradeoff: "More effort per page, but it turned into our onboarding process.",
+      },
+    ],
+    delivery: [
+      "Documented the app end to end",
+      "Wrote usage guides for Blueshift, Mixpanel, Google Analytics, Firebase and other integrations",
+      "Built dependency charts for the connected systems during the Magento 1 → 2 move",
+      "Used the documentation to create the team's onboarding and new-hire ramp-up",
+    ],
+    results: [
+      { value: "5M+", label: "users on the app I documented" },
+      { value: "1", label: "single source of truth for the app" },
+    ],
+    learned:
+      "You can't safely change a system you can't explain. Documentation isn't admin work; it's how a team gets its memory back.",
+  },
+  {
+    id: "pleny",
+    theme: "Data & quality",
+    tag: "Analytics from zero",
+    title: "Introducing product analytics to a rebranded social app",
+    company: "Pleny · QC Engineer → Product Manager",
+    context:
+      "Pleny is a social network for food lovers across Egypt, the UAE and Saudi Arabia, where people share meals, find restaurants and follow other foodies. It had just rebranded from its earlier product, Qurba.",
+    summary:
+      "After a full rebrand, the team knew almost nothing about who its new users were or how they behaved. I introduced product analytics with Mixpanel so decisions could be based on real behaviour.",
+    headline: { value: "Mixpanel", label: "analytics introduced from scratch" },
+    problem:
+      "A rebrand resets what you know. The product had a new name, new positioning and new users, but no reliable way to see who they were, how they used the app, or where they dropped off.",
+    ownership: [
+      "Introducing product analytics to the company",
+      "Choosing what to track and defining the events",
+      "Setting up Mixpanel and the reports the team used",
+      "Arabic localisation of the product",
+    ],
+    decisions: [
+      {
+        call: "Track as much user detail as possible early on",
+        why: "Right after a rebrand, every assumption about the audience needed checking against what users actually did.",
+        tradeoff: "More events to define and maintain.",
+      },
+      {
+        call: "Use Mixpanel for event-based product analytics",
+        why: "A social app is about behaviour (posting, following, searching), which event-based analytics captures better than page views.",
+        tradeoff: "Setup time and discipline in naming events.",
+      },
+    ],
+    delivery: [
+      "Defined the tracking plan for the rebranded app",
+      "Set up Mixpanel and the team's core reports",
+      "Gave product decisions a data foundation for the first time",
+    ],
+    results: [
+      { value: "1st", label: "product analytics setup at the company" },
+    ],
+    learned:
+      "After a rebrand, your old knowledge about users expires. Instrument early so you learn who your new users really are.",
+  },
+  {
+    id: "novomind",
+    theme: "No playbook",
+    tag: "Delivery system design",
+    title: "Building a delivery system that measured quality, not just speed",
+    company: "Novomind iShop · Agile & QA Process Manager",
+    context:
+      "Novomind is a German e-commerce software company. Its iShop teams were growing and needed a delivery process that worked for bigger teams.",
+    summary:
+      "I joined to run agile and QA processes. I automated Jira reporting from scratch, introduced rotating squads based on Spotify's model, and designed a weighted quality score to show where our work was slipping.",
+    headline: { value: "Squads", label: "Spotify-style rotating squad model introduced" },
+    problem:
+      "Management had no reliable view of team velocity, capacity or quality, and pulling reports took manual effort. The process that worked for small teams was breaking as teams grew, and 'quality' was judged by feel.",
+    ownership: [
+      "Velocity and capacity reporting for management",
+      "Jira automation, built from scratch, to calculate and produce those reports",
+      "Planning poker sessions for estimation",
+      "A new process for larger teams, including rotating squads",
+      "A weighted quality score across sprint points, capacity, velocity, bugs raised, points completed and bug severity",
+    ],
+    decisions: [
+      {
+        call: "Automate reporting inside Jira instead of building spreadsheets",
+        why: "Reports that build themselves stay accurate and free the team from manual admin.",
+        tradeoff: "Upfront effort to set up the automation properly.",
+      },
+      {
+        call: "Rotating squads, based on Spotify's model",
+        why: "Rotation spreads knowledge across the team, reduces single points of failure, and keeps bigger teams working like small ones.",
+        tradeoff: "Some ramp-up time each time people rotate.",
+      },
+      {
+        call: "Measure quality with a weighted score, not one metric",
+        why: "Velocity alone rewards speed. Weighting bugs and their severity against points delivered shows whether we're getting better or just faster.",
+        tradeoff: "A more complex metric that needed explaining and agreement.",
+      },
+    ],
+    delivery: [
+      "Automated Jira to produce velocity, capacity and quality reports",
+      "Ran planning poker sessions with the teams",
+      "Designed and rolled out the rotating squad process",
+      "Introduced the weighted quality score to guide improvement",
+    ],
+    results: [
+      { value: "0", label: "manual reporting after automation" },
+      { value: "6", label: "signals weighted into one quality score" },
+    ],
+    learned:
+      "What you measure shapes how teams behave. Measure only speed and you get speed; measure quality and you get better work.",
+  },
+  {
     id: "law71",
     theme: "Stakeholders",
     tag: "Government stakeholders",
@@ -552,6 +693,24 @@ export const builds = [
     link: "[link]",
   },
   {
+    name: "Jira reporting automation",
+    glyph: "⚙ → ▥",
+    kind: "Process automation",
+    blurb:
+      "Jira automations built from scratch to calculate velocity, capacity and a weighted quality score, so management reports produce themselves.",
+    stack: ["Jira", "Automation rules", "Agile metrics"],
+    link: "[link]",
+  },
+  {
+    name: "Dependency maps",
+    glyph: "◉—◉—◉",
+    kind: "Systems documentation",
+    blurb:
+      "Charts of how a 5M-user app's integrations (Magento, Blueshift, Mixpanel, GA, Firebase) depend on each other, made during a platform migration.",
+    stack: ["Systems mapping", "Magento", "Integrations"],
+    link: "[link]",
+  },
+  {
     name: "Testify",
     glyph: "✓ ✓ ✓",
     kind: "AI product · built solo",
@@ -587,7 +746,8 @@ export const experience = [
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
   { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Legal AI for MOFA & EDGE" },
-  { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · QA → PM in 4 months" },
-  { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · heavy analytics ownership · Arabic localisation" },
-  { when: "2020–24", org: "Engineering roots", role: "Software & QC Engineer", note: "Novomind, Blink 22" },
+  { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · documented it end to end · QA → PM in 4 months" },
+  { when: "2024", org: "Novomind iShop", role: "Agile & QA Process Manager", note: "Jira automation · rotating squads · weighted quality score" },
+  { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · introduced Mixpanel analytics after the rebrand · Arabic localisation" },
+  { when: "2020–21", org: "Engineering roots", role: "Software Engineer & Teaching Assistant", note: "Blink 22 · Alexandria University" },
 ];

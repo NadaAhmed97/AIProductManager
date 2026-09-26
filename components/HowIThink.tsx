@@ -17,7 +17,7 @@ export default function HowIThink() {
       id="thinking"
       index="02"
       eyebrow="How Nada thinks"
-      title="Nine principles I actually work by, each with a real example."
+      title={`${principles.length} principles I actually work by, each with a real example.`}
       intro="These aren't frameworks from a book. Each one comes from a decision I made on a real product, and you can open the full case study behind it."
     >
       <div className="grid gap-6 lg:grid-cols-[340px_1fr]">

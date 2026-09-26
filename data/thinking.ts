@@ -39,6 +39,7 @@ export const principles: Principle[] = [
       "Wrote the company's metric definitions: one agreed set of events that counts as 'active'",
       "Coded the reporting pipeline myself and fixed three silent data bugs underneath it",
       "Once the data was trustworthy, it exposed a funnel dropping to zero, which I traced to a broken lead form",
+      "Earlier, at Pleny, introduced Mixpanel analytics after a rebrand, when the team knew almost nothing about its new users",
     ],
     why: "The highest-leverage product work is sometimes invisible: making sure everyone argues from the same numbers.",
     caseId: "analytics",
@@ -57,6 +58,36 @@ export const principles: Principle[] = [
     ],
     why: "Risk isn't removed by being careful once. It's removed by designing a process where mistakes are cheap.",
     caseId: "xpay",
+  },
+  {
+    id: "map",
+    principle: "Map the system before you change it",
+    oneLiner: "You can't safely change what you can't explain.",
+    project: "Mumzworld · 5M-user app, Magento 1 → 2 migration",
+    situation:
+      "I joined an app that had been live for years with no documentation at all, just as the platform was moving to Magento 2 with many connected tools depending on it.",
+    move: [
+      "Documented the whole app end to end, from scratch",
+      "Wrote how-to guides for every integration: Blueshift, Mixpanel, Google Analytics, Firebase and more",
+      "Built dependency charts so everyone could see what breaks if one part changes",
+    ],
+    why: "Documentation is how a team gets its memory back, and it turns a risky migration into a planned one.",
+    caseId: "mumzworld",
+  },
+  {
+    id: "measure",
+    principle: "Measure what you want more of",
+    oneLiner: "Measure only speed and you get speed. Measure quality and you get better work.",
+    project: "Novomind iShop · delivery process",
+    situation:
+      "Teams were growing, reporting was manual, and quality was judged by feel. Velocity alone was rewarding speed over good work.",
+    move: [
+      "Automated Jira from scratch to produce velocity and capacity reports",
+      "Designed a weighted quality score combining points, capacity, velocity, bugs raised and bug severity",
+      "Introduced rotating squads, based on Spotify's model, so bigger teams kept working like small ones",
+    ],
+    why: "Metrics shape behaviour. Choosing what to measure is a product decision about the team itself.",
+    caseId: "novomind",
   },
   {
     id: "blast",
