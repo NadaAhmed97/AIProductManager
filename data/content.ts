@@ -511,6 +511,7 @@ export const caseStudies: CaseStudy[] = [
 export const builds = [
   {
     name: "Metrics pipeline",
+    glyph: "∑ → ▤",
     kind: "Data automation · Apps Script",
     blurb:
       "Pulls product analytics into automated weekly, monthly, CTA and UTM reports. It's on v11.5+ and replaced all manual reporting at an AI startup.",
@@ -519,6 +520,7 @@ export const builds = [
   },
   {
     name: "Zeki",
+    glyph: "ع / A",
     kind: "Kids' AI-literacy app · built solo",
     blurb:
       "Bilingual Arabic/English PWA with right-to-left switching and lessons stored as data. I wrote the spec, then vibe-coded the MVP in Claude Code.",
@@ -527,6 +529,7 @@ export const builds = [
   },
   {
     name: "Underwriting prototype",
+    glyph: "▦ ▦ ▦",
     kind: "Clickable prototype · 9 surfaces",
     blurb:
       "An institutional real-estate underwriting workspace covering intake, pipeline, deal room, portfolio and an AI 'Ask' panel. I built it to test flows with buyers before writing a line of production code.",
@@ -535,6 +538,7 @@ export const builds = [
   },
   {
     name: "Testify",
+    glyph: "✓ ✓ ✓",
     kind: "AI product · built solo",
     blurb:
       "An AI platform that checks requirements and generates testing and development checklists. Semi-finalist in ITIDA's national competition (Egypt's Ministry of Communications).",
@@ -543,6 +547,7 @@ export const builds = [
   },
   {
     name: "LLM validation harness",
+    glyph: "AI ⇄ ✓",
     kind: "QA tooling",
     blurb:
       "A Selenium-driven framework that checks LLM answers against expected legal outputs, turning AI quality into a pass/fail signal for a government client.",
@@ -551,9 +556,10 @@ export const builds = [
   },
   {
     name: "This portfolio",
+    glyph: "</>",
     kind: "Figma → code",
     blurb:
-      "Designed, then vibe-coded in Next.js and Tailwind. The decision simulator below is a real, working component.",
+      "Designed, then vibe-coded in Next.js and Tailwind. The chat assistant, Blueprint map and decision simulator are all real, working components.",
     stack: ["Next.js", "Tailwind", "Claude", "Cursor"],
     link: "https://github.com/NadaAhmed97/AIProductManager",
   },

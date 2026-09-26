@@ -21,10 +21,19 @@ export default function BuildLab() {
         ))}
       </div>
       <div className="grid gap-5 md:grid-cols-2">
-        {builds.map((b) => {
+        {builds.map((b, i) => {
+          const hues = ["#C6FF3D", "#60A5FA", "#C084FC", "#FBBF24", "#F472B6", "#34D399"];
+          const c = hues[i % hues.length];
           const live = b.link.startsWith("http");
           return (
             <article key={b.name} className="card group relative overflow-hidden p-7 hover:border-white/25">
+              {/* placeholder visual until real screenshots are added */}
+              <div className="grid-bg relative -mx-7 -mt-7 mb-6 flex h-32 items-center justify-center overflow-hidden border-b border-white/10"
+                style={{ background: `radial-gradient(circle at 30% 20%, ${c}33, transparent 60%), radial-gradient(circle at 80% 90%, ${c}22, transparent 50%)` }}>
+                <span className="font-mono text-4xl font-bold opacity-80 transition duration-500 group-hover:scale-110 group-hover:rotate-[-4deg]" style={{ color: c }}>
+                  {b.glyph}
+                </span>
+              </div>
               <div className="flex items-baseline justify-between gap-4">
                 <h3 className="text-xl font-semibold">{b.name}</h3>
                 <span className="font-mono text-[11px] text-neutral-500">{b.kind}</span>

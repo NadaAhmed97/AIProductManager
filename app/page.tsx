@@ -8,10 +8,12 @@ import DecisionSimulator from "@/components/DecisionSimulator";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import AskNada from "@/components/AskNada";
+import Effects from "@/components/Effects";
 
 export default function Home() {
   return (
     <>
+      <Effects />
       <Nav />
       <main>
         <Hero />
