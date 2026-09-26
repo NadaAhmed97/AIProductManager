@@ -1014,7 +1014,7 @@ export const experience = [
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing · built the product operating system (docs, Linear + GitHub, Slack triage, PostHog)" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
-  { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Only Arabic speaker on the team · Arabic portal at parity with English · built the LLM testing framework" },
+  { when: "2023–24", org: "LocAI (acquired by AI71)", role: "Technical Product Lead", note: "Only Arabic speaker on the team · Arabic portal at parity with English · built the LLM testing framework" },
   { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · documented it end to end · QA → PM in 4 months" },
   { when: "2024", org: "Novomind iShop", role: "Agile & QA Process Manager", note: "Jira automation · rotating squads · weighted quality score" },
   { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · introduced Mixpanel analytics after the rebrand · localised the whole platform to Arabic solo" },
