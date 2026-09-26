@@ -41,7 +41,7 @@ const intents: { keys: string[]; answer: string; link?: Msg["link"] }[] = [
   {
     keys: ["arabic", "localisation", "localization", "language", "bilingual", "rtl"],
     answer:
-      "Arabic is her native language, and she has owned Arabic localisation on every product she's joined, from payment gateways to legal AI. At Law71 she built automated tests covering the platform in both Arabic and English.",
+      "Arabic is her native language, and she has owned Arabic localisation on every product she's joined. At Law71 she was the only Arabic speaker on the team and brought the Arabic legal-AI portal to the same quality as English, despite dialects, messier data and different retrieval behaviour. At Pleny she localised the entire platform on her own.",
   },
   {
     keys: ["data", "analytics", "metrics", "experiment", "a/b", "growth", "retention", "activation", "funnel"],

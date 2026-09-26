@@ -465,7 +465,7 @@ export const caseStudies: CaseStudy[] = [
     context:
       "Pleny is a social network for food lovers across Egypt, the UAE and Saudi Arabia, where people share meals, find restaurants and follow other foodies. It had just rebranded from its earlier product, Qurba.",
     summary:
-      "After a full rebrand, the team knew almost nothing about who its new users were or how they behaved. I introduced product analytics with Mixpanel so decisions could be based on real behaviour.",
+      "After a full rebrand, the team knew almost nothing about who its new users were or how they behaved. I introduced product analytics with Mixpanel, and single-handedly localised the whole platform into Arabic.",
     headline: { value: "Mixpanel", label: "analytics introduced from scratch" },
     problem:
       "A rebrand resets what you know. The product had a new name, new positioning and new users, but no reliable way to see who they were, how they used the app, or where they dropped off.",
@@ -473,7 +473,7 @@ export const caseStudies: CaseStudy[] = [
       "Introducing product analytics to the company",
       "Choosing what to track and defining the events",
       "Setting up Mixpanel and the reports the team used",
-      "Arabic localisation of the product",
+      "The full Arabic localisation of the platform, on my own",
     ],
     decisions: [
       {
@@ -491,9 +491,11 @@ export const caseStudies: CaseStudy[] = [
       "Defined the tracking plan for the rebranded app",
       "Set up Mixpanel and the team's core reports",
       "Gave product decisions a data foundation for the first time",
+      "Localised the entire platform into Arabic, single-handedly",
     ],
     results: [
       { value: "1st", label: "product analytics setup at the company" },
+      { value: "100%", label: "of the platform localised to Arabic, solo" },
     ],
     learned:
       "After a rebrand, your old knowledge about users expires. Instrument early so you learn who your new users really are.",
@@ -551,52 +553,53 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "law71",
     theme: "Stakeholders",
-    tag: "Government stakeholders",
-    title: "Shipping legal AI to a government ministry and a defence group",
-    company: "LocAI (Al71) · Technical Product Lead / Scrum Master",
+    tag: "Arabic AI · government",
+    title: "Making a legal AI work as well in Arabic as in English, for a ministry and a defence group",
+    company: "Law71 by AI71 · Technical Product Lead / Scrum Master",
     context:
-      "Law71 is a legal AI platform used by the UAE Ministry of Foreign Affairs and EDGE Group, a UAE defence conglomerate. Wrong answers in legal work aren't an option.",
+      "Law71 is a legal AI platform built by AI71, an Abu Dhabi AI company. It was adopted by the UAE Ministry of Foreign Affairs and EDGE Group, a UAE defence group. Wrong answers in legal work aren't an option.",
     summary:
-      "Ministry, defence, legal and engineering teams all had to be satisfied at once, with zero tolerance for wrong AI answers.",
-    headline: { value: "MOFA + EDGE", label: "adopted Law71 legal AI" },
+      "I was the only Arabic speaker on the team. I worked with the head of product to make the Arabic portal as good as the English one, and built an AI testing framework that checked every answer and showed where documents were missing.",
+    headline: { value: "A+", label: "quality bar held in Arabic and English" },
     problem:
-      "Each government and defence client had its own compliance rules, review cycles and definition of 'correct'. Legal wanted accuracy, security wanted control and leadership wanted speed. An LLM that hallucinates is a non-starter in legal work.",
+      "Arabic AI is much harder than English AI. There are many dialects, the data needs far more cleaning, and search and retrieval (the vector and RAG layers that find the right documents) behave differently in Arabic. Government and defence clients expected the Arabic portal to be every bit as accurate as the English one, and nobody else on the team could read it.",
     ownership: [
-      "Product quality and delivery for Law71",
-      "Sprint execution and backlog across multi-stakeholder programmes",
-      "The strategy for validating LLM output, in both English and Arabic",
-      "Aligning agencies, legal teams and defence organisations",
+      "Arabic quality of the whole product, as the only Arabic speaker on the team",
+      "Working with the head of product to bring the Arabic portal to parity with English",
+      "An AI automation framework I built to test the quality of LLM answers",
+      "Localisation, plus how-to guides and demos for stakeholders and the business development team",
+      "Sprint delivery across government, legal and defence stakeholders, as Scrum Master",
     ],
     decisions: [
       {
-        call: "Make quality measurable with automated LLM output validation",
-        why: "It replaced subjective 'this feels wrong' feedback with evidence every stakeholder could trust.",
-        tradeoff: "Built a validation framework before new features.",
+        call: "Hold Arabic to the same bar as English, not 'good enough'",
+        why: "For a UAE ministry, Arabic is the primary language, not a translation. A weaker Arabic portal would have undermined trust in the whole product.",
+        tradeoff: "Much more work on data cleaning, dialects and retrieval than an English-only launch.",
       },
       {
-        call: "One shared backlog, visible to every stakeholder",
-        why: "Competing priorities became explicit trade-offs instead of side-channel escalations.",
-        tradeoff: "More negotiation up front, far fewer surprises later.",
+        call: "Automate answer checking instead of reviewing by hand",
+        why: "I built a framework that scored LLM answers for quality, relevance and correctness, in both languages, and flagged every issue. Quality became evidence, not opinion.",
+        tradeoff: "Time spent building test tooling before new features.",
       },
       {
-        call: "Compliance requirements as acceptance criteria, not a final gate",
-        why: "It avoided late rejections in government review cycles.",
-        tradeoff: "Longer story definitions.",
+        call: "Use test failures to find missing data, not only bad answers",
+        why: "Many wrong answers came from documents the system didn't have. The framework pointed out those gaps, so we fixed the cause, not just the symptom.",
+        tradeoff: "Extra work sourcing and preparing documents.",
       },
     ],
     delivery: [
-      "Built an automated test framework (Selenium) covering the complex platform end to end in both English and Arabic",
-      "Ran sprints and backlog across agency, legal and defence stakeholders",
-      "Turned compliance and security needs into testable criteria",
+      "Brought the Arabic portal to the same quality as English with the head of product",
+      "Built the automated LLM evaluation framework for quality, relevance and correctness",
+      "Surfaced gaps in the document library so the team could fill them",
+      "Handled localisation and created product guides and demos for stakeholders and business development",
       "Delivered a platform adopted by UAE MOFA and EDGE Group",
     ],
     results: [
       { value: "2", label: "government-grade clients (MOFA, EDGE)" },
-      { value: "AR + EN", label: "automated test coverage in both languages" },
-      { value: "[X]%", label: "validated output accuracy" },
+      { value: "AR = EN", label: "Arabic portal at parity with English" },
     ],
     learned:
-      "Difficult stakeholders are usually stakeholders without shared evidence. Give them a common source of truth and the politics shrink.",
+      "In Arabic AI, quality is hidden in the details only a native speaker can see. Owning it meant being the team's eyes and building tools so nobody had to guess.",
   },
   {
     id: "xpay",
@@ -724,8 +727,8 @@ export const builds = [
     glyph: "AI ⇄ ✓",
     kind: "QA tooling",
     blurb:
-      "A Selenium-driven framework that checks LLM answers against expected legal outputs, turning AI quality into a pass/fail signal for a government client.",
-    stack: ["Selenium", "Python", "LLM evaluation"],
+      "An AI automation framework that scores LLM answers for quality, relevance and correctness in Arabic and English, and flags where documents are missing.",
+    stack: ["Selenium", "Python", "LLM evaluation", "RAG", "Arabic NLP"],
     link: "[link]",
   },
   {
@@ -745,9 +748,9 @@ export const experience = [
   { when: "2025 —", org: "XPay Egypt", role: "Lead Technical PM", note: "Sole PM · core migration & CBE licensing" },
   { when: "2025 —", org: "Zaffa AI", role: "Founder & CEO", note: "0→1 AI wedding planning" },
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
-  { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Legal AI for MOFA & EDGE" },
+  { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Only Arabic speaker on the team · Arabic portal at parity with English · built the LLM testing framework" },
   { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · documented it end to end · QA → PM in 4 months" },
   { when: "2024", org: "Novomind iShop", role: "Agile & QA Process Manager", note: "Jira automation · rotating squads · weighted quality score" },
-  { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · introduced Mixpanel analytics after the rebrand · Arabic localisation" },
+  { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · introduced Mixpanel analytics after the rebrand · localised the whole platform to Arabic solo" },
   { when: "2020–21", org: "Engineering roots", role: "Software Engineer & Teaching Assistant", note: "Blink 22 · Alexandria University" },
 ];

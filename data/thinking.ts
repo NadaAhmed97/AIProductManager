@@ -23,7 +23,7 @@ export const principles: Principle[] = [
     move: [
       "Designed the product so the AI never produces a financial number itself",
       "Put deterministic financial engines behind every figure and kept a human approval step before capital moves",
-      "Applied the same idea at Law71, with automated validation of every AI answer for a government legal platform",
+      "Applied the same idea at Law71, where I built a framework that scored every AI answer for quality, relevance and correctness",
     ],
     why: "In high-stakes products, deciding what the AI must never do matters more than any feature.",
     caseId: "underwriting",
@@ -173,8 +173,9 @@ export const principles: Principle[] = [
       "In MENA, Arabic support is often added late and treated as a translation task. That's where products lose trust with users and governments.",
     move: [
       "Owned Arabic localisation on every product I joined",
-      "At Law71, built automated tests covering the platform in both Arabic and English",
-      "Designed Zeki bilingual from day one, with full right-to-left support",
+      "At Law71, as the only Arabic speaker, brought the Arabic legal-AI portal to parity with English, despite dialects, messier data and different retrieval behaviour",
+      "Built an automated framework that scored AI answers in both languages and flagged missing documents",
+      "At Pleny, localised the entire platform into Arabic on my own",
     ],
     why: "For government and regional products, language quality is part of whether people trust the product.",
     caseId: "law71",
