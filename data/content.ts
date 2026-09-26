@@ -249,7 +249,7 @@ export const caseStudies: CaseStudy[] = [
     theme: "Stakeholders",
     tag: "Founder alignment",
     title: "Rewriting a product's rulebook mid-flight and getting the CEO's sign-off in one session",
-    company: "Ed-tech platform · Product Manager",
+    company: "MUAB · Product Manager",
     context:
       "A fast-moving ed-tech platform connecting creators with learners, preparing to launch in Saudi Arabia, where the real roadmap lived mostly in the founder's head.",
     summary:
@@ -299,7 +299,7 @@ export const caseStudies: CaseStudy[] = [
     theme: "Data & quality",
     tag: "Pre-launch risk",
     title: "Finding the launch-blocking failures before a platform went live",
-    company: "Ed-tech platform · Product Manager",
+    company: "MUAB · Product Manager",
     context:
       "The same ed-tech platform was shipping more than 130 tickets per sprint and nobody had ever audited the backend end to end. The CEO couldn't see whether money actually reached creators.",
     summary:
@@ -518,5 +518,6 @@ export const experience = [
   { when: "2024 —", org: "MUAB", role: "Product Manager", note: "Sole PM · ed-tech platform · led the move into AI features. Joined as QA/QC, also covering localisation & GTM" },
   { when: "2023–24", org: "LocAI (Al71)", role: "Technical Product Lead", note: "Legal AI for MOFA & EDGE" },
   { when: "2023–24", org: "Mumzworld", role: "Product Manager", note: "Sole PM of the app · 5M+ users · QA → PM in 4 months" },
-  { when: "2020–24", org: "Engineering roots", role: "Software & QC Engineer", note: "Novomind, Pleny, Blink 22" },
+  { when: "2021–22", org: "Pleny", role: "QC Engineer → Product Manager", note: "Sole PM · heavy analytics ownership · Arabic localisation" },
+  { when: "2020–24", org: "Engineering roots", role: "Software & QC Engineer", note: "Novomind, Blink 22" },
 ];
