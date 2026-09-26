@@ -808,8 +808,8 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export type BuildCategory = "Customer success" | "Growth & marketing" | "Data & ops" | "Team bots" | "Product";
-export const buildCategories: BuildCategory[] = ["Customer success", "Growth & marketing", "Data & ops", "Team bots", "Product"];
+export type BuildCategory = "Customer success" | "Growth & marketing" | "Data & ops" | "Team & culture" | "Product";
+export const buildCategories: BuildCategory[] = ["Customer success", "Growth & marketing", "Data & ops", "Team & culture", "Product"];
 
 export type Build = {
   name: string;
@@ -834,9 +834,10 @@ export const builds: Build[] = [
     where: "Smart Bricks",
     featured: true,
     blurb:
-      "Shows the customer success team every user: what they've done on the platform, their top journeys, and the next-best action for approaching them. AI writes a tailored set of questions for each user based on their behaviour and persona. It also tracks whether and how often CS has reached out, places each user in a cohort (dormant, high-intent and so on), and links them to the marketing campaign that brought them in.",
+      "The weekly product-and-sales check-in in one place, with people, an outreach log, weekly review and calls. It shows the customer success team every user: what they've done on the platform, their top journeys, and the next-best action for approaching them. AI writes a tailored set of questions for each user based on their behaviour and persona. It also tracks whether and how often CS has reached out, places each user in a cohort (dormant, high-intent and so on), and links them to the marketing campaign that brought them in.",
     stack: ["Vibe-coded", "PostHog", "LLM", "Cohorts"],
     link: "[link]",
+    image: "/shots/sb-cs-dashboard.webp",
   },
   {
     name: "Call insights",
@@ -923,35 +924,48 @@ export const builds: Build[] = [
     kind: "Operating documentation",
     category: "Growth & marketing",
     where: "Smart Bricks",
-    blurb: "A company playbook that captures how Smart Bricks works, sells and supports its customers.",
+    blurb: "A product playbook that walks people through Smart Bricks end to end: the markets that are live (UAE and UK), residential and commercial, and how to get started, with annotated screens throughout.",
     stack: ["Documentation", "GTM"],
     link: "[link]",
+    image: "/shots/sb-playbook.webp",
   },
   {
     name: "Kudos bot",
     glyph: "★ ★ ★",
     kind: "Slack bot",
-    category: "Team bots",
-    blurb: "A Slack bot that lets the team give kudos to people who did a great job, to lift the team's spirit.",
+    category: "Team & culture",
+    blurb: "A Slack bot that lets anyone give a colleague kudos for great work, with a short message the whole team sees. It lifts the team's spirit, and it's where the quote in my track record came from.",
     stack: ["Slack", "Bot"],
     link: "[link]",
+    image: "/shots/sb-kudos.webp",
   },
   {
     name: "Competitor intel bot",
     glyph: "◐ ⌕",
     kind: "Slack bot · weekly",
-    category: "Team bots",
-    blurb: "Sweeps the market every week for competitor news and posts the most important updates to the team.",
+    category: "Team & culture",
+    blurb: "Sweeps the market for competitor news and posts a ranked briefing to Slack: each item rated High or Medium, with who, what, why it matters for us, and how confident the sources are. Stale or off-target news is discarded.",
     stack: ["Slack", "LLM", "Web research"],
     link: "[link]",
+    image: "/shots/sb-competitor-intel.webp",
   },
   {
     name: "Feedback-to-Jira bot",
     glyph: "✉ → ▥",
     kind: "Slack bot",
-    category: "Team bots",
+    category: "Team & culture",
     blurb: "Picks up feedback shared in Slack and automatically creates tickets for it in a dedicated Jira backlog.",
     stack: ["Slack", "Jira", "Automation"],
+    link: "[link]",
+  },
+  {
+    name: "Knowledge wheel sessions",
+    glyph: "◔ ◑ ◕",
+    kind: "Team ritual · every two weeks",
+    category: "Team & culture",
+    where: "Smart Bricks",
+    blurb: "A fortnightly session I introduced where the whole team shares and discusses new tools, strategies and useful tips, so what one person learns spreads to everyone.",
+    stack: ["Culture", "Learning", "AI adoption"],
     link: "[link]",
   },
   {
@@ -1031,9 +1045,10 @@ export const builds: Build[] = [
     category: "Product",
     where: "Smart Bricks hackathon",
     blurb:
-      "An AI agent that analyses your property portfolio, market comparables and market shifts, and helps you make the right investment decisions. Built for the Smart Bricks hackathon.",
+      "An AI agent that watches your property portfolio and raises alerts that need action: an upcoming lease renewal, an exit window when comparable units sell, an illegal rent increase under Dubai's rent rules, or Golden Visa eligibility. Each alert triggers a live analysis by specialist agents (counsel, analyst, closer). Built for the Smart Bricks hackathon.",
     stack: ["AI agent", "Market data", "Portfolio analysis"],
     link: "[link]",
+    image: "/shots/sb-aria.webp",
   },
   {
     name: "Platform features & Figma designs",
@@ -1098,6 +1113,15 @@ export const builds: Build[] = [
       "Designed, then vibe-coded in Next.js and Tailwind. The walkthrough, chat assistant, Blueprint map, stop-motion and decision simulator are all real, working components.",
     stack: ["Next.js", "Tailwind", "Claude", "Cursor"],
     link: "https://github.com/NadaAhmed97/AIProductManager",
+  },
+];
+
+export const testimonials = [
+  {
+    quote:
+      "For always being so supportive and for always taking quick action on suggestions and feedback. I truly appreciate how you listen to everyone's suggestions and make sure every idea is heard and considered. Your responsiveness, support, and positive attitude really make a difference! You're truly an incredible colleague!!",
+    who: "A Smart Bricks colleague",
+    via: "posted through the Kudos bot I built",
   },
 ];
 

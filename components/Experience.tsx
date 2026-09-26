@@ -1,4 +1,4 @@
-import { experience } from "@/data/content";
+import { experience, testimonials } from "@/data/content";
 import Section from "./Section";
 
 export default function Experience() {
@@ -27,6 +27,15 @@ export default function Experience() {
           </button>
         ))}
       </div>
+      {testimonials.map((t) => (
+        <figure key={t.quote} className="card mt-10 p-6 md:p-8">
+          <span className="font-mono text-4xl leading-none text-accent">&ldquo;</span>
+          <blockquote className="mt-2 text-lg leading-relaxed text-neutral-200 md:text-xl">{t.quote}</blockquote>
+          <figcaption className="mt-4 text-sm text-neutral-500">
+            {t.who} <span className="text-neutral-600">· {t.via}</span>
+          </figcaption>
+        </figure>
+      ))}
       <p className="mt-8 text-sm text-neutral-500">
         Women in AI Ambassador — Egypt · ITIDA semi-finalist (Testify) · B.Eng. Computer &amp; Communications, Alexandria University
       </p>
