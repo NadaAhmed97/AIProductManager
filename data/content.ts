@@ -147,6 +147,55 @@ export const caseStudies: CaseStudy[] = [
       "Solo 0→1 is a scoping discipline more than a coding skill. What I left out mattered as much as what I built.",
   },
   {
+    id: "zaffa",
+    theme: "0 → 1",
+    tag: "0 → 1 · founder",
+    title: "Turning my own wedding chaos into MENA's first AI wedding planner",
+    company: "Zaffa AI · Founder & CEO",
+    context:
+      "Zaffa AI is a wedding-planning platform I founded, built around Nour, an AI wedding planner. It started as a tool for planning my own wedding.",
+    summary:
+      "I was planning my own wedding and the tools didn't fit how weddings work in the region. I built what I needed, from dream boards to seating plans, then added Nour, an AI planner who helps emotionally, strategically and financially.",
+    headline: { value: "Nour", label: "AI wedding planner: emotional, strategic, financial" },
+    problem:
+      "Planning a wedding in MENA means dozens of decisions, many vendors, family expectations and a budget that keeps moving, mostly managed over chats and spreadsheets. Planning my own wedding, I found no tool that handled the logistics and the emotional weight of it together.",
+    ownership: [
+      "Product vision, roadmap, monetisation and go-to-market, as founder",
+      "Planning tools built from scratch: dream boards, invitations and seating plans",
+      "Nour, the AI planner: her persona, conversation design and prompt engineering",
+      "Automated flows for vendor matching, budget planning and timelines",
+    ],
+    decisions: [
+      {
+        call: "Start from my own problem and be the first user",
+        why: "I was living every decision as it happened, so each feature was tested against a real wedding, not an imagined one.",
+        tradeoff: "The risk of building for one person, so the next step was testing with other couples.",
+      },
+      {
+        call: "Give the AI a persona, Nour, rather than a generic chatbot",
+        why: "Wedding planning is emotional as well as logistical. People open up to a planner who supports them, not only to a checklist that tracks them.",
+        tradeoff: "Persona and tone take more design and prompt work to get right.",
+      },
+      {
+        call: "Keep emotional, strategic and financial planning in one assistant",
+        why: "Wedding decisions are connected: a venue choice changes the budget, and the budget changes the guest list. One planner can reason across all of it.",
+        tradeoff: "A broader scope for the AI to handle well.",
+      },
+    ],
+    delivery: [
+      "Built dream boards, invitation creation and seating plans",
+      "Launched Nour to guide couples through decisions, stress and budget",
+      "Designed conversational journeys for vendor matching, budgeting and timelines",
+      "Automated lead capture, qualification, nurturing and conversion",
+    ],
+    results: [
+      { value: "1st", label: "AI-powered wedding planning platform in MENA" },
+      { value: "[X]", label: "couples using Zaffa" },
+    ],
+    learned:
+      "The best 0→1 insight is a problem you're living. Being your own first user shortens every feedback loop.",
+  },
+  {
     id: "analytics",
     theme: "Data & quality",
     tag: "Data · built in code",
