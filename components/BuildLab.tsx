@@ -7,7 +7,7 @@ export default function BuildLab() {
   return (
     <Section
       id="build"
-      index="03"
+      index="04"
       eyebrow="Vibe-code & build lab"
       title="Things I built myself — no engineering ticket required."
       intro="An engineering background plus AI tooling means I can prototype, automate and validate before asking for a single sprint."

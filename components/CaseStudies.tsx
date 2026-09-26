@@ -10,6 +10,14 @@ type Step = (typeof steps)[number];
 export default function CaseStudies() {
   const [open, setOpen] = useState<CaseStudy | null>(null);
   const [filter, setFilter] = useState<Theme | "All">("All");
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const cs = caseStudies.find((c) => c.id === (e as CustomEvent<string>).detail);
+      if (cs) setOpen(cs);
+    };
+    window.addEventListener("open-case", onOpen);
+    return () => window.removeEventListener("open-case", onOpen);
+  }, []);
   const shown = caseStudies.filter((cs) => filter === "All" || cs.theme === filter);
 
   return (

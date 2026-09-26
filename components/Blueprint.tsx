@@ -90,7 +90,7 @@ export default function Blueprint() {
   return (
     <Section
       id="blueprint"
-      index="02"
+      index="03"
       eyebrow="How I architect AI products"
       title="Blueprint: an AI decision-support product for government."
       intro="This is how I'd structure an AI product that helps senior decision-makers understand the impact of policies and investments. Press play to follow one policy question through it, or click any part to see why it's there."
