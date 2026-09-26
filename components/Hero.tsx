@@ -16,8 +16,8 @@ export default function Hero() {
           <span className="text-neutral-500">.</span>
         </h1>
         <p className="mt-8 max-w-2xl animate-rise text-lg text-neutral-400 [animation-delay:.2s] md:text-xl">
-          Product manager with an engineering core. I find the problem, design it in Figma, and build the
-          first version myself with AI and code — then scale it with data, not opinions.
+          I work between strategy, users and engineering. I turn ambiguous problems into AI products that
+          senior decision-makers trust, and I prototype them myself with AI and code before asking for a single sprint.
         </p>
         <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:.3s]">
           <a href="#work" className="group rounded-full bg-accent px-6 py-3 font-semibold text-ink transition hover:brightness-110">

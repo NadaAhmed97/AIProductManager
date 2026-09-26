@@ -2,6 +2,7 @@ import { profile } from "@/data/content";
 
 const links = [
   ["Case studies", "#work"],
+  ["Blueprint", "#blueprint"],
   ["Build lab", "#build"],
   ["Simulator", "#simulator"],
   ["Experience", "#experience"],

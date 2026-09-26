@@ -74,7 +74,7 @@ export default function DecisionSimulator() {
   return (
     <Section
       id="simulator"
-      index="03"
+      index="04"
       eyebrow="Live product thinking"
       title="Decision simulator: what ships in a 6-week MVP?"
       intro="Seven candidate features, two engineers, 9 effort points. Pick a context or drag the weights yourself — the backlog re-ranks and the cut line moves in real time."

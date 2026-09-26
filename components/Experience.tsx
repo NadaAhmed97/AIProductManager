@@ -3,7 +3,7 @@ import Section from "./Section";
 
 export default function Experience() {
   return (
-    <Section id="experience" index="04" eyebrow="Track record"
+    <Section id="experience" index="05" eyebrow="Track record"
       title="From writing tests to owning the product.">
       <div className="divide-y divide-white/10 border-y border-white/10">
         {experience.map((e) => (

@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <footer className="border-t border-white/10 py-24 md:py-32">
       <div className="container-x">
-        <p className="eyebrow"><span className="text-accent">05</span> / Next step</p>
+        <p className="eyebrow"><span className="text-accent">06</span> / Next step</p>
         <h2 className="mt-4 max-w-4xl text-4xl font-extrabold tracking-tight md:text-6xl">
           Have a messy 0→1 problem and no playbook? <span className="text-accent">That&apos;s my favourite kind.</span>
         </h2>

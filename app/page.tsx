@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import CaseStudies from "@/components/CaseStudies";
+import Blueprint from "@/components/Blueprint";
 import BuildLab from "@/components/BuildLab";
 import DecisionSimulator from "@/components/DecisionSimulator";
 import Experience from "@/components/Experience";
@@ -13,6 +14,7 @@ export default function Home() {
       <main>
         <Hero />
         <CaseStudies />
+        <Blueprint />
         <BuildLab />
         <DecisionSimulator />
         <Experience />
