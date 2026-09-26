@@ -6,6 +6,7 @@ import BuildLab from "@/components/BuildLab";
 import DecisionSimulator from "@/components/DecisionSimulator";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import AskNada from "@/components/AskNada";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Experience />
         <Contact />
       </main>
+      <AskNada />
     </>
   );
 }
