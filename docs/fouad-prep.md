@@ -62,3 +62,33 @@ Format for every answer: **answer first → one specific example → outcome.** 
 - How do consultants and the product team split ownership on a client engagement?
 - What does a successful first 90 days look like to you for this role?
 - Where has a product like this struggled with a government client before?
+
+---
+
+# Running the 45 minutes
+
+| Min | Block | What you do | Screen |
+|---|---|---|---|
+| 0–3 | Open | Rapport, then agree the agenda: "I'd love 10 min to show you something I built around Career Navigator, then your questions." | None |
+| 3–5 | Who I am | 60-second pitch (below) | None |
+| 5–20 | His questions | Answer first → example → outcome. Say "I". | None |
+| 20–32 | Walkthrough | Meeting mode 1→7, with the prototype demo at screen 3 | /whiteshield/?meet=1 |
+| 32–40 | Discussion | Invite challenge: "Where am I wrong about how this works in practice?" | Leave screen 4 or ministry view up |
+| 40–45 | Your questions and close | 2 questions, then close | None |
+
+If he opens with "walk me through what you prepared", swap blocks 3 and 4.
+
+**60-second pitch:** "I'm a 0→1 product manager who started as an engineer. My sweet spot is taking an unclear problem, often with senior or government stakeholders, and turning it into a product people trust. For example, I shipped legal AI adopted by the UAE Ministry of Foreign Affairs and EDGE Group. Most recently at Smart Bricks I defined an AI underwriting product from a blank page. And I prototype myself, which is why I've brought something to show you."
+
+**Walkthrough script (one or two sentences per screen):**
+1. "My one idea: Career Navigator can become the evidence engine for labour policy, from matches to verified hires."
+2. "I started from the policy objective, not features. Everything I propose traces to this chain."
+3. "Let me show you." Prototype: onboarding (20s) → CV gap with citations (30s) → gap to course (30s) → Ministry view (60s). "The citizen gets a plan; the ministry gets proof."
+4. "The question I'd expect a ministry to ask is causality. Here's how I'd answer it." Pause and let him engage; this is his expertise.
+5. "AI reasons, engines calculate, humans decide."
+6. "My first 90 days: listen first, one outcome with one client, then ship."
+7. "In short: a PM your consultants can bring into the client room."
+
+**If he gives you a live case** (their consulting rounds are policy cases): clarify the objective and who the client is → structure the problem → state hypotheses → say what data would test them → recommend, with risks. Think aloud; say your structure before you fill it in.
+
+**Close:** "Based on today, is there anything that makes you unsure I'm the right fit? I'd rather address it now."
