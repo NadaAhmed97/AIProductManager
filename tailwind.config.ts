@@ -9,9 +9,9 @@ export default {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
-        ink: "#0A0A0A",
+        ink: "rgb(var(--ink) / <alpha-value>)",
         paper: "#FAFAF9",
-        accent: "#C6FF3D",
+        accent: "rgb(var(--accent) / <alpha-value>)",
       },
       keyframes: {
         rise: { from: { opacity: "0", transform: "translateY(16px)" }, to: { opacity: "1", transform: "none" } },

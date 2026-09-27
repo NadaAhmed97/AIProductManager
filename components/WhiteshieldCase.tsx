@@ -1,6 +1,7 @@
 "use client";
 
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
+import WsStopMotion from "@/components/WsStopMotion";
 import {
   aiLadder, aiQuestions, edge, fit, competitors, customers, facts, measurement, metricTree, navigatorFeatures,
   plan, proposals, questionsForThem, scalabilityChecks, sources, type Proposal,
@@ -19,9 +20,9 @@ const nav = [
 
 function Block({ id, n, title, intro, children }: { id: string; n: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
-      <div data-reveal>
-        <p className="eyebrow"><span className="text-accent">{n}</span> / {nav.find(([k]) => k === id)?.[1]}</p>
+    <section id={id} className="ws-sec scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+      <div>
+        <p className="eyebrow overflow-hidden"><span className="ws-num text-accent">{n}</span> / {nav.find(([k]) => k === id)?.[1]}</p>
         <h2 className="mt-3 max-w-3xl text-2xl font-bold tracking-tight md:text-4xl">{title}</h2>
         {intro && <p className="mt-4 max-w-2xl text-neutral-400">{intro}</p>}
         <div className="mt-10">{children}</div>
@@ -49,8 +50,17 @@ export default function WhiteshieldCase() {
   const p = proposals.find((x) => x.id === sel)!;
   const rank = (id: string) => ranked.findIndex((r) => r.id === id);
 
+  // Mark sections as "in" when they scroll into view, to drive the CSS transitions.
+  useEffect(() => {
+    const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && e.target.classList.add("in")), { threshold: 0.12 });
+    document.querySelectorAll(".ws-sec").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="ws relative min-h-screen">
+      <div className="ws-curtain"><span>NADA × WHITESHIELD</span></div>
+      <div className="ws-grid pointer-events-none absolute inset-x-0 top-0 h-[700px]" />
       <div className="orb left-[-10%] top-[-5%] h-[380px] w-[380px] bg-accent/30" />
       <div className="orb right-[-5%] top-[10%] h-[340px] w-[340px] bg-sky-500/30 [animation-delay:-6s]" />
 
@@ -67,7 +77,8 @@ export default function WhiteshieldCase() {
 
       <main className="container-x relative">
         {/* hero */}
-        <section className="pt-16 pb-12 md:pt-24">
+        <section className="grid items-center gap-10 pt-16 pb-12 md:pt-24 lg:grid-cols-[1fr_360px]">
+          <div>
           <p className="eyebrow animate-rise">Prepared for Whiteshield · Product Manager, Data &amp; AI</p>
           <h1 className="mt-5 max-w-4xl animate-rise text-4xl font-extrabold leading-[1.05] tracking-tight [animation-delay:.1s] md:text-6xl">
             Career Navigator: from <span className="text-neutral-500">matches</span> to <span className="shimmer">verified hires.</span>
@@ -86,11 +97,13 @@ export default function WhiteshieldCase() {
             <span className="font-semibold text-neutral-200">Built from public information only.</span> Anything marked as a
             hypothesis is an assumption I would validate with your real data in my first weeks.
           </p>
+          </div>
+          <WsStopMotion />
         </section>
 
         {/* 01 know */}
         <Block id="know" n="01" title="What I know about Whiteshield" intro="A policy-intelligence company turning data and AI into decisions for governments, with Jobs Navigator as its citizen-facing labour-market product.">
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="ws-stagger grid gap-3 md:grid-cols-3">
             {facts.map((f) => (
               <div key={f.label} className="card p-5">
                 <p className="font-mono text-[11px] uppercase text-neutral-500">{f.label}</p>
@@ -106,7 +119,7 @@ export default function WhiteshieldCase() {
 
         {/* 02 case */}
         <Block id="case" n="02" title="The case: one product, three customers" intro="Career Navigator only wins if the citizen gets a job, the employer gets a ready candidate, and the government can prove it happened. Every feature below is judged against all three.">
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="ws-stagger grid gap-4 md:grid-cols-3">
             {customers.map((c, i) => (
               <div key={c.who} className="card p-6">
                 <p className="font-mono text-[11px] text-accent">CUSTOMER {i + 1}</p>
@@ -132,7 +145,7 @@ export default function WhiteshieldCase() {
             <p className="mx-auto mt-2 max-w-xl text-sm text-neutral-400">{metricTree.northStar.why}</p>
           </div>
           <div className="mx-auto h-8 w-px bg-gradient-to-b from-accent to-white/10" />
-          <div className="grid gap-4 md:grid-cols-4">
+          <div className="ws-stagger grid gap-4 md:grid-cols-4">
             {metricTree.drivers.map((d, i) => (
               <div key={d.name} className="card animate-rise p-5" style={{ animationDelay: `${i * 0.08}s` }}>
                 <p className="font-mono text-[11px] text-neutral-500">DRIVER {i + 1}</p>
@@ -158,7 +171,7 @@ export default function WhiteshieldCase() {
                 <label key={k} className="mt-4 block">
                   <span className="flex justify-between text-sm"><span>{label} <span className="text-neutral-600">({sign})</span></span><span className="font-mono text-accent">{w[k]}</span></span>
                   <input type="range" min={0} max={5} value={w[k]} onChange={(e) => setW({ ...w, [k]: Number(e.target.value) })}
-                    className="mt-2 w-full accent-[#C6FF3D]" aria-label={label} />
+                    className="mt-2 w-full accent-[#36C2F4]" aria-label={label} />
                 </label>
               ))}
               <p className="mt-5 text-xs text-neutral-500">Score = impact × w + confidence × w − effort × w − risk × w. I'd agree these weights with the team and client before debating features.</p>
@@ -206,7 +219,7 @@ export default function WhiteshieldCase() {
                   <div>
                     <p className="eyebrow">Impact · effort · risk</p>
                     <div className="mt-2 space-y-1.5 text-sm">
-                      <p className="flex items-center justify-between">Impact <Dots n={p.impact} color="#C6FF3D" /></p>
+                      <p className="flex items-center justify-between">Impact <Dots n={p.impact} color="#36C2F4" /></p>
                       <p className="flex items-center justify-between">Confidence <Dots n={p.confidence} color="#60A5FA" /></p>
                       <p className="flex items-center justify-between">Effort <Dots n={p.effort} color="#FBBF24" /></p>
                       <p className="flex items-center justify-between">Risk <Dots n={p.risk} color="#F87171" /></p>
@@ -291,7 +304,7 @@ export default function WhiteshieldCase() {
 
         {/* 06 scale & AI */}
         <Block id="scale" n="06" title="How I check scalability, and where AI belongs" intro="Two filters every proposal passes before it reaches a roadmap.">
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="ws-stagger grid gap-6 lg:grid-cols-2">
             <div>
               <p className="eyebrow">Scalability test</p>
               <div className="mt-4 space-y-3">
@@ -328,7 +341,7 @@ export default function WhiteshieldCase() {
 
         {/* 07 measure & plan */}
         <Block id="measure" n="07" title="How I'd measure impact, and my first 90 days" intro="A loop I've run before: define the metric, test it, read it weekly, then scale or stop.">
-          <div className="grid gap-3 md:grid-cols-5">
+          <div className="ws-stagger grid gap-3 md:grid-cols-5">
             {measurement.map((m, i) => (
               <div key={m.step} className="card relative p-5">
                 <p className="font-mono text-[11px] text-accent">STEP {i + 1}</p>
