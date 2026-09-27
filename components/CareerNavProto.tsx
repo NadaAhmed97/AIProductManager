@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const C = { navy: "#0B3B5C", side: "#0A3350", sideActive: "#1D4E6E", bg: "#EBEDF0", ink: "#1F4E6B", muted: "#6B7A86" };
 
-type ScreenId = "test" | "cv" | "market" | "explore" | "provider";
+type ScreenId = "test" | "cv" | "paths" | "market" | "explore" | "provider";
 type Note = { n: number; title: string; value: string; metric: string; ier: string; ai?: string };
 
 const screens: { id: ScreenId; label: string; nav: string; kind: "upgrade" | "new"; notes: Note[]; today?: string[] }[] = [
@@ -25,6 +25,14 @@ const screens: { id: ScreenId; label: string; nav: string; kind: "upgrade" | "ne
       { n: 2, title: "Personal data removed before analysis", value: "Trust and compliance for a sovereign, government-facing product.", metric: "0 PII fields stored with skills data", ier: "Impact 4 · Effort 1 · Risk 1", ai: "Deterministic PII scrubbing runs before any model sees the text." },
       { n: 3, title: "Skills grouped, with confidence and evidence", value: "Users see why each skill was found, and can fix mistakes, so matches improve.", metric: "% of extracted skills confirmed vs removed", ier: "Impact 4 · Effort 2 · Risk 2", ai: "Each skill links to the CV sentence it came from." },
       { n: 4, title: "Top roles in your country, with the gap", value: "Goes straight from 'who I am' to 'what I can get, and what's missing'.", metric: "Match → gap plan click-through", ier: "Impact 5 · Effort 3 · Risk 2", ai: "Recommend: matching scores are deterministic; AI only explains them." },
+    ],
+  },
+  {
+    id: "paths", label: "Career paths", nav: "Career Paths", kind: "new",
+    notes: [
+      { n: 1, title: "Every path, side by side", value: "People see what each direction really takes (time, skills, pay, demand) before committing money and years.", metric: "Paths compared per user; plan created", ier: "Impact 5 · Effort 3 · Risk 2", ai: "Recommend: paths come from real career transitions in the data; AI narrates them." },
+      { n: 2, title: "Built from people who made the move", value: "'412 people moved from this role to Head of Product in the UAE' is more credible than generic advice.", metric: "Path recommendation acceptance", ier: "Impact 4 · Effort 3 · Risk 2", ai: "Deterministic transition statistics; the LLM never invents a path." },
+      { n: 3, title: "Career-shift mode", value: "Shows what carries over, what doesn't, and a realistic bridge plan, which is where people most need guidance and where governments fund reskilling.", metric: "Shift plans started → first role in new field", ier: "Impact 5 · Effort 3 · Risk 3", ai: "Recommend: transferable-skill overlap is computed; AI writes the bridge plan." },
     ],
   },
   {
@@ -138,13 +146,14 @@ export default function CareerNavProto() {
             </div>
             <div className="flex min-h-[640px]">
               <aside className="hidden w-48 shrink-0 space-y-1 p-3 md:block" style={{ background: C.side }}>
-                {["Career Test", "CV Analysis", ...(proposed ? ["My Gap Plan"] : []), "My Program", "Explore", ...(screen === "provider" ? ["Demand Signals"] : [])].map((n) => (
+                {["Career Test", "CV Analysis", ...(proposed ? ["Career Paths", "My Gap Plan"] : []), "My Program", "Explore", ...(screen === "provider" ? ["Demand Signals"] : [])].map((n) => (
                   <div key={n} className="rounded-lg px-3 py-2.5 text-sm" style={{ background: n === s.nav ? C.sideActive : "transparent", color: n === s.nav ? "#fff" : "#B8C7D3", fontWeight: n === s.nav ? 600 : 400 }}>{n}</div>
                 ))}
               </aside>
               <main className="min-w-0 flex-1 p-5 text-[#26323B] md:p-7" style={{ background: C.bg }}>
                 <div key={screen + mode} className="animate-rise">
-                  {screen === "cv" && <CvScreen proposed={proposed} hot={hot} go={() => setScreen("market")} />}
+                  {screen === "cv" && <CvScreen proposed={proposed} hot={hot} go={() => setScreen("market")} goPaths={() => setScreen("paths")} />}
+                  {screen === "paths" && <PathsScreen hot={hot} go={() => setScreen("market")} />}
                   {screen === "market" && <MarketScreen hot={hot} />}
                   {screen === "explore" && <ExploreScreen proposed={proposed} hot={hot} />}
                   {screen === "provider" && <ProviderScreen hot={hot} />}
@@ -202,13 +211,38 @@ const extracted = [
   { group: "Delivery", items: [["Agile / Scrum", 95], ["Stakeholder management", 93], ["QA & test automation", 89]] },
   { group: "Languages", items: [["Arabic (native)", 99], ["English (fluent)", 97]] },
 ] as const;
+// Where each skill came from in the CV (quotes from the sample CV)
+const cites: Record<string, { sec: string; q: string; hl: string }[]> = {
+  "Product strategy": [{ sec: "Professional summary", q: "Owns the full product lifecycle from discovery and PRDs through build, launch, experimentation, and retention.", hl: "full product lifecycle" }, { sec: "Experience · XPay Egypt", q: "Defined competitive positioning through structured market analysis benchmarked against Stripe and Paymob, informing roadmap prioritisation.", hl: "competitive positioning" }],
+  "Roadmapping": [{ sec: "Experience · Smart Bricks", q: "Partner directly with founder and engineering on roadmap prioritisation, feature scoping, and go-to-market.", hl: "roadmap prioritisation" }],
+  "PRDs": [{ sec: "Experience · XPay Egypt", q: "Sole PM for the full product lifecycle… from discovery and PRD through launch and post-live optimisation.", hl: "PRD" }],
+  "A/B testing": [{ sec: "Experience · XPay Egypt", q: "Ran data-driven iteration in PostHog and Mixpanel — funnel tracking, feature flags, and A/B testing.", hl: "A/B testing" }, { sec: "Core competencies", q: "A/B Testing & Experimentation", hl: "A/B Testing" }],
+  "LLM products": [{ sec: "Experience · LocAI (AI71)", q: "Built Selenium-based LLM output validation frameworks ensuring quality and compliance for high-stakes government AI workflows.", hl: "LLM output validation" }, { sec: "Experience · Zaffa AI", q: "Founded and lead the first LLM-powered wedding planning platform in the MENA region.", hl: "LLM-powered" }],
+  "Agentic AI": [{ sec: "Experience · Smart Bricks", q: "Drive AI product initiatives embedding agentic AI and LLM-driven intelligence into the real-estate investment workflow.", hl: "agentic AI" }],
+  "Prompt engineering": [{ sec: "Skills & tooling", q: "OpenAI / GPT API · Anthropic Claude · LangChain / LlamaIndex · Prompt Engineering", hl: "Prompt Engineering" }],
+  "SQL": [{ sec: "Skills & tooling", q: "Selenium · Appium · TestRail · Postman · Git / GitHub · GraphQL · SQL · Python · Java", hl: "SQL" }],
+  "PostHog / Mixpanel": [{ sec: "Experience · XPay Egypt", q: "Ran data-driven iteration in PostHog and Mixpanel.", hl: "PostHog and Mixpanel" }],
+  "Agile / Scrum": [{ sec: "Experience · LocAI (AI71)", q: "As Scrum Master, optimised sprint execution and backlog management across complex, multi-stakeholder government programs.", hl: "Scrum Master" }],
+  "Stakeholder management": [{ sec: "Experience · LocAI (AI71)", q: "…multi-stakeholder government programs spanning government agencies, legal teams, and defence organisations.", hl: "multi-stakeholder" }],
+  "QA & test automation": [{ sec: "Technical background · Pleny", q: "Owned fintech QA processes end-to-end and led full English-to-Arabic product localisation.", hl: "QA processes" }],
+  "Arabic (native)": [{ sec: "Header", q: "Languages: Arabic (Native) · English (Fluent)", hl: "Arabic (Native)" }],
+  "English (fluent)": [{ sec: "Header", q: "Languages: Arabic (Native) · English (Fluent)", hl: "English (Fluent)" }],
+};
+const Quote = ({ q, hl }: { q: string; hl: string }) => {
+  const i = q.indexOf(hl);
+  if (i < 0) return <>{q}</>;
+  return <>{q.slice(0, i)}<mark className="rounded bg-amber-200 px-0.5">{hl}</mark>{q.slice(i + hl.length)}</>;
+};
+
 const roles = [
   { t: "AI Product Manager", m: 92, gap: ["Python for data", "Cloud (GCP)"] },
   { t: "Growth Product Manager", m: 88, gap: ["Paid acquisition"] },
   { t: "Data Product Manager", m: 81, gap: ["dbt / data modelling", "Python for data"] },
 ];
 
-function CvScreen({ proposed, hot, go }: { proposed: boolean; hot: HotFn; go: () => void }) {
+function CvScreen({ proposed, hot, go, goPaths }: { proposed: boolean; hot: HotFn; go: () => void; goPaths: () => void }) {
+  const [picked, setPicked] = useState<string | null>(null);
+  const [removed, setRemoved] = useState<string[]>([]);
   const [phase, setPhase] = useState<"idle" | "reading" | "done">("idle");
   const [shown, setShown] = useState(0);
   useEffect(() => {
@@ -268,13 +302,31 @@ function CvScreen({ proposed, hot, go }: { proposed: boolean; hot: HotFn; go: ()
                 <div key={g.group}>
                   <p className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: C.muted }}>{g.group}</p>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
-                    {g.items.map(([name, conf]) => { k++; return k <= shown ? (
-                      <span key={name} className="animate-rise rounded-full border border-[#C9D6DF] bg-[#F3F7FA] px-2.5 py-1 text-xs" style={{ color: C.ink }}>
-                        {name} <span className={conf >= 90 ? "text-emerald-600" : "text-amber-600"}>{conf}%</span>
-                      </span>) : null; })}
+                    {g.items.map(([name, conf]) => { k++; return k <= shown && !removed.includes(name) ? (
+                      <button key={name} onClick={() => setPicked(picked === name ? null : name)}
+                        className={`animate-rise rounded-full border px-2.5 py-1 text-xs transition ${picked === name ? "border-[#1F4E6B] bg-[#1F4E6B] text-white" : "border-[#C9D6DF] bg-[#F3F7FA] hover:border-[#1F4E6B]"}`} style={picked === name ? {} : { color: C.ink }}>
+                        {name} <span className={picked === name ? "text-emerald-200" : conf >= 90 ? "text-emerald-600" : "text-amber-600"}>{conf}%</span>
+                      </button>) : null; })}
                   </div>
                 </div>
               ))}
+              {picked && cites[picked] && (
+                <div className="animate-rise rounded-xl border border-amber-200 bg-amber-50/60 p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-semibold" style={{ color: C.ink }}>Where “{picked}” came from · {cites[picked].length} source{cites[picked].length > 1 ? "s" : ""} in your CV</p>
+                    <span className="flex gap-1.5 text-[11px]">
+                      <button onClick={() => setPicked(null)} className="rounded-full border border-emerald-600 px-2 py-0.5 text-emerald-700">✓ Correct</button>
+                      <button onClick={() => { setRemoved([...removed, picked]); setPicked(null); }} className="rounded-full border border-red-400 px-2 py-0.5 text-red-600">✕ Remove</button>
+                    </span>
+                  </div>
+                  {cites[picked].map((c) => (
+                    <blockquote key={c.q} className="mt-2 border-l-2 border-amber-400 pl-3 text-xs" style={{ color: C.muted }}>
+                      <span className="block text-[10px] font-semibold uppercase tracking-wider text-amber-700">{c.sec}</span>
+                      “<Quote q={c.q} hl={c.hl} />”
+                    </blockquote>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </Card>
@@ -292,29 +344,147 @@ function CvScreen({ proposed, hot, go }: { proposed: boolean; hot: HotFn; go: ()
               </div>
             ))}
           </div>
-          <div className="mt-4 flex justify-end"><Btn onClick={go}>Build my gap-to-hire plan →</Btn></div>
+          <div className="mt-4 flex flex-wrap justify-end gap-2"><Btn ghost onClick={goPaths}>Compare career paths</Btn><Btn onClick={go}>Build my gap-to-hire plan →</Btn></div>
         </Card>
       )}
     </div>
   );
 }
 
+/* ---------------- Career paths ---------------- */
+const growPaths = [
+  { id: "a", t: "AI Product Manager", time: "6–8 weeks", pay: "AED 32–42K / month", demand: "▲ 34%", odds: "High", moved: 1240, add: ["Python for data", "Cloud (GCP)"], steps: ["Close 2 skill gaps (6–8 wks)", "Apply to 48 open roles you qualify for", "Most common next move: Senior / Lead AI PM in 2–3 yrs"], color: "#059669" },
+  { id: "b", t: "Head of Product", time: "18–30 months", pay: "AED 50–70K / month", demand: "▲ 12%", odds: "Medium", moved: 412, add: ["People leadership (5+ reports)", "P&L ownership", "Board-level communication"], steps: ["Lead a team of PMs (1–2 yrs)", "Own a product line's revenue", "Executive leadership programme"], color: "#1F4E6B" },
+  { id: "c", t: "Data Product Manager", time: "3–4 months", pay: "AED 30–38K / month", demand: "▲ 21%", odds: "High", moved: 680, add: ["Python for data", "dbt / data modelling", "Data governance"], steps: ["Close 3 gaps (3–4 months)", "Portfolio: one data product case study", "Apply to 31 open roles"], color: "#7C3AED" },
+];
+const shifts = [
+  { id: "policy", t: "Public policy & GovTech", carry: 68, keep: ["Stakeholder management", "Government programmes (Law71)", "Arabic & English", "Data-driven decisions"], gap: ["Policy analysis methods", "Public-sector procurement", "Economics fundamentals"], bridge: ["Short course: Policy analysis for digital government (8 wks)", "Volunteer / contract on one GovTech project", "Target: Product or policy roles in digital-government agencies"], time: "6–9 months", pay: "Similar to −10%", risk: "Low" },
+  { id: "ds", t: "Data Science", carry: 41, keep: ["SQL", "A/B testing", "Analytics tools", "Business framing"], gap: ["Statistics & ML", "Python (advanced)", "Model deployment"], bridge: ["Certificate: Applied data science (6 months, part-time)", "3 portfolio projects on real datasets", "Target: Product data scientist (bridges your PM background)"], time: "12–18 months", pay: "−15% at entry, recovers in ~2 yrs", risk: "Medium" },
+  { id: "ux", t: "UX Research", carry: 55, keep: ["User discovery", "Figma", "Experiment design", "Bilingual interviews"], gap: ["Research methods", "Usability testing", "Research ops"], bridge: ["UX research course (10 wks)", "Run 2 studies and publish the findings", "Target: UX researcher in Arabic-first products"], time: "4–6 months", pay: "−10% to −20%", risk: "Low" },
+];
+
+function PathsScreen({ hot, go }: { hot: HotFn; go: () => void }) {
+  const [mode, setMode] = useState<"grow" | "shift">("grow");
+  const [sel, setSel] = useState("a");
+  const [shift, setShift] = useState("policy");
+  const p = growPaths.find((x) => x.id === sel)!;
+  const sh = shifts.find((x) => x.id === shift)!;
+  return (
+    <div>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">{hot(1)}<H>Your career paths</H></div>
+        <div className="inline-flex rounded-full bg-white p-1 text-sm shadow-sm">
+          <button onClick={() => setMode("grow")} className="rounded-full px-4 py-1.5 font-semibold" style={mode === "grow" ? { background: C.ink, color: "#fff" } : { color: C.ink }}>Grow in my field</button>
+          <span className="flex items-center gap-1">{hot(3)}<button onClick={() => setMode("shift")} className="rounded-full px-4 py-1.5 font-semibold" style={mode === "shift" ? { background: C.ink, color: "#fff" } : { color: C.ink }}>I'm planning a career shift</button></span>
+        </div>
+      </div>
+
+      {mode === "grow" ? (
+        <>
+          <Card className="mt-4">
+            <div className="flex items-center gap-2 text-xs" style={{ color: C.muted }}>{hot(2)} Paths built from <b style={{ color: C.ink }}>&nbsp;2,332&nbsp;</b> real career moves of people with a profile like yours in the UAE</div>
+            <svg viewBox="0 0 760 300" className="mt-2 w-full">
+              <rect x="10" y="123" width="170" height="54" rx="12" fill="#1F4E6B" />
+              <text x="95" y="146" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="600">You today</text>
+              <text x="95" y="164" textAnchor="middle" fontSize="11" fill="#cfe0ea">Senior AI & Growth PM</text>
+              {growPaths.map((g, i) => {
+                const y = 12 + i * 98, on = g.id === sel;
+                return (
+                  <g key={g.id} onClick={() => setSel(g.id)} className="cursor-pointer">
+                    <path d={`M180 150 C 300 150, 330 ${y + 36}, 450 ${y + 36}`} fill="none" stroke={g.color} strokeWidth={on ? 4 : 2} strokeOpacity={on ? 1 : 0.35} strokeDasharray={on ? "0" : "6 6"} />
+                    <text x={315} y={(150 + y + 36) / 2 - 6} textAnchor="middle" fontSize="11" fill={g.color} fontWeight="600" opacity={on ? 1 : 0.6}>{g.time}</text>
+                    <rect x="450" y={y} width="300" height="72" rx="12" fill="#fff" stroke={g.color} strokeWidth={on ? 3 : 1.5} />
+                    <text x="466" y={y + 22} fontSize="13" fontWeight="600" fill="#1F4E6B">{g.t}</text>
+                    <text x="466" y={y + 42} fontSize="11" fill="#6B7A86">{g.pay} · demand {g.demand}</text>
+                    <text x="466" y={y + 60} fontSize="11" fill="#6B7A86">{g.moved.toLocaleString()} people made this move</text>
+                  </g>
+                );
+              })}
+            </svg>
+          </Card>
+          <div className="mt-4 grid gap-4 md:grid-cols-[1fr_1.2fr]">
+            <Card>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: p.color }}>Path · {p.t}</p>
+              <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
+                {[["Time to get there", p.time], ["Salary range", p.pay], ["Demand", p.demand], ["Likelihood for you", p.odds]].map(([k, v]) => (
+                  <div key={k} className="rounded-lg bg-[#F3F7FA] p-3"><p className="text-[11px]" style={{ color: C.muted }}>{k}</p><p className="font-semibold" style={{ color: C.ink }}>{v}</p></div>
+                ))}
+              </div>
+            </Card>
+            <Card>
+              <p className="text-sm font-semibold" style={{ color: C.ink }}>What this path requires</p>
+              <div className="mt-2 flex flex-wrap gap-1.5">{p.add.map((a) => <span key={a} className="rounded-full bg-amber-50 px-2.5 py-1 text-xs text-amber-800">+ {a}</span>)}</div>
+              <ol className="mt-3 space-y-2 text-sm" style={{ color: C.muted }}>
+                {p.steps.map((st, i) => <li key={st} className="flex gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] text-white" style={{ background: p.color }}>{i + 1}</span>{st}</li>)}
+              </ol>
+              <div className="mt-4 flex justify-end"><Btn onClick={go}>Plan this path →</Btn></div>
+            </Card>
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="mt-4 text-sm" style={{ color: C.muted }}>Where do you want to go? We'll show what carries over, what's missing, and a realistic bridge plan.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {shifts.map((x) => (
+              <button key={x.id} onClick={() => setShift(x.id)} className="rounded-full border px-4 py-2 text-sm font-semibold transition" style={shift === x.id ? { background: C.ink, color: "#fff", borderColor: C.ink } : { color: C.ink, borderColor: "#C9D6DF", background: "#fff" }}>{x.t}</button>
+            ))}
+          </div>
+          <div className="mt-4 grid animate-rise gap-4 md:grid-cols-3" key={shift}>
+            <Card>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: C.muted }}>Transferable skills</p>
+              <div className="relative mx-auto mt-3 h-32 w-32">
+                <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#EEF1F4" strokeWidth="3.5" /><circle cx="18" cy="18" r="15.9" fill="none" stroke="#059669" strokeWidth="3.5" strokeDasharray={`${sh.carry} 100`} strokeLinecap="round" /></svg>
+                <span className="absolute inset-0 flex flex-col items-center justify-center"><b className="text-2xl" style={{ color: C.ink }}>{sh.carry}%</b><span className="text-[10px]" style={{ color: C.muted }}>carries over</span></span>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-1">{sh.keep.map((k) => <span key={k} className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] text-emerald-800">✓ {k}</span>)}</div>
+            </Card>
+            <Card>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: C.muted }}>You'll need to add</p>
+              <div className="mt-3 space-y-2">{sh.gap.map((g) => <div key={g} className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">+ {g}</div>)}</div>
+              <div className="mt-4 space-y-1 text-sm">
+                <p><span style={{ color: C.muted }}>Time: </span><b style={{ color: C.ink }}>{sh.time}</b></p>
+                <p><span style={{ color: C.muted }}>Pay impact: </span><b style={{ color: C.ink }}>{sh.pay}</b></p>
+                <p><span style={{ color: C.muted }}>Risk: </span><b style={{ color: C.ink }}>{sh.risk}</b></p>
+              </div>
+            </Card>
+            <Card>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: C.muted }}>Your bridge plan</p>
+              <ol className="mt-3 space-y-3 text-sm" style={{ color: C.muted }}>
+                {sh.bridge.map((b, i) => <li key={b} className="flex gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] text-white" style={{ background: C.ink }}>{i + 1}</span>{b}</li>)}
+              </ol>
+              <div className="mt-4 flex justify-end"><Btn onClick={go}>Find courses for this shift →</Btn></div>
+            </Card>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 /* ---------------- Gap → marketplace ---------------- */
-const providers = {
+type Provider = { who: string; type: string; fmt: string; price: string; sub: boolean; hired: number; q: number; course: string; modules: string[]; start: string; mode: string; cert: string; reqs: string; learners: number };
+const providers: Record<"Python for data" | "Cloud (GCP)", Provider[]> = {
   "Python for data": [
-    { who: "A UAE university", type: "University (via EduHub)", fmt: "Short course · 6 weeks · EN", price: "AED 1,800", sub: true, hired: 71, q: 4.7 },
-    { who: "A Dubai training centre", type: "Training centre", fmt: "Bootcamp · 4 weeks · AR/EN", price: "AED 2,400", sub: true, hired: 64, q: 4.5 },
-    { who: "An independent data coach", type: "Independent educator", fmt: "Self-paced · 12 hrs · AR", price: "AED 350", sub: false, hired: 58, q: 4.8 },
+    { who: "A UAE university", type: "University (via EduHub)", fmt: "Short course · 6 weeks · EN", price: "AED 1,800", sub: true, hired: 71, q: 4.7, course: "Python for Data-Driven Product Decisions", modules: ["Python & notebooks basics", "pandas for product data", "Funnels, cohorts & retention in code", "Experiment analysis (A/B tests)", "Capstone: analyse a real product dataset"], start: "Starts 14 Oct 2026 · Tue & Thu evenings", mode: "Hybrid: campus in Abu Dhabi + online", cert: "University certificate (6 credits, stackable into a postgraduate diploma)", reqs: "Bachelor's degree; no coding experience needed", learners: 420 },
+    { who: "A Dubai training centre", type: "Training centre", fmt: "Bootcamp · 4 weeks · AR/EN", price: "AED 2,400", sub: true, hired: 64, q: 4.5, course: "Data Analytics Bootcamp for Professionals", modules: ["Python fundamentals", "SQL + Python together", "Dashboards and storytelling", "Portfolio project with a mentor"], start: "Starts 3 Nov 2026 · full-time, 4 weeks", mode: "In person, Dubai (Arabic or English cohort)", cert: "Industry certificate + portfolio review", reqs: "Basic Excel", learners: 1150 },
+    { who: "An independent data coach", type: "Independent educator", fmt: "Self-paced · 12 hrs · AR", price: "AED 350", sub: false, hired: 58, q: 4.8, course: "بايثون للبيانات للمبتدئين (Python for Data, in Arabic)", modules: ["Setup and first script", "Working with spreadsheets in Python", "Charts and insights", "Mini-project"], start: "Start anytime", mode: "Online, self-paced, Arabic", cert: "Certificate of completion", reqs: "None", learners: 3900 },
   ],
   "Cloud (GCP)": [
-    { who: "A cloud provider academy", type: "Online (partner)", fmt: "Learning path · 20 hrs · EN", price: "Free", sub: false, hired: 62, q: 4.6 },
-    { who: "A UAE university", type: "University (via EduHub)", fmt: "Evening course · 8 weeks · AR/EN", price: "AED 2,100", sub: true, hired: 69, q: 4.4 },
+    { who: "A cloud provider academy", type: "Online (partner)", fmt: "Learning path · 20 hrs · EN", price: "Free", sub: false, hired: 62, q: 4.6, course: "Cloud Fundamentals for Product Managers", modules: ["Cloud concepts & pricing", "Data & AI services overview", "Working with engineering on architecture", "Hands-on labs"], start: "Start anytime", mode: "Online, self-paced", cert: "Skill badge (verifiable)", reqs: "None", learners: 12400 },
+    { who: "A UAE university", type: "University (via EduHub)", fmt: "Evening course · 8 weeks · AR/EN", price: "AED 2,100", sub: true, hired: 69, q: 4.4, course: "Cloud & AI Infrastructure Essentials", modules: ["Cloud architecture basics", "Data platforms", "Deploying AI models", "Security & data residency", "Team project"], start: "Starts 21 Oct 2026 · Mon & Wed evenings", mode: "Hybrid, Dubai", cert: "University certificate (4 credits)", reqs: "Bachelor's degree", learners: 260 },
   ],
+};
+// Evidence behind each gap (illustrative figures)
+const gapEvidence: Record<"Python for data" | "Cloud (GCP)", { posts: number; hired: number; trend: string; titles: string[] }> = {
+  "Python for data": { posts: 61, hired: 57, trend: "+18% in job posts asking for it since last year", titles: ["AI Product Manager", "Data Product Manager", "Product Analytics Lead"] },
+  "Cloud (GCP)": { posts: 44, hired: 39, trend: "+11% since last year", titles: ["AI Product Manager", "Platform PM", "Technical PM"] },
 };
 
 function MarketScreen({ hot }: { hot: HotFn }) {
   const [skill, setSkill] = useState<keyof typeof providers>("Python for data");
   const [enrolled, setEnrolled] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(null);
+  const ev = gapEvidence[skill];
   return (
     <div>
       <p className="text-xs" style={{ color: C.muted }}>Target role</p>
@@ -325,15 +495,30 @@ function MarketScreen({ hot }: { hot: HotFn }) {
           <p className="mt-1 text-sm" style={{ color: C.muted }}>You match 11 of the 13 skills UAE employers ask for most in this role, including LLM products, A/B testing and stakeholder management. Closing <b>2 gaps</b> would put you in the top 15% of applicants. Demand for this role grew <b>34%</b> in the last 12 months.</p>
         </div></div>
       </Card>
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 rounded-lg bg-white/60 px-4 py-2.5 text-xs" style={{ color: C.muted }}>
+        <span className="font-semibold" style={{ color: C.ink }}>Based on:</span>
+        <span><b style={{ color: C.ink }}>18,420</b> UAE job posts for this role (Jun–Sep 2026)</span>
+        <span><b style={{ color: C.ink }}>2,310</b> profiles of people hired into it in 12 months</span>
+        <span><b style={{ color: C.ink }}>5,900</b> CVs of current applicants</span>
+      </div>
       <div className="mt-4 grid gap-4 lg:grid-cols-[260px_1fr]">
         <Card>
           <p className="text-sm font-semibold" style={{ color: C.ink }}>Your gaps</p>
           {(Object.keys(providers) as (keyof typeof providers)[]).map((g) => (
             <button key={g} onClick={() => setSkill(g)} className={`mt-2 block w-full rounded-lg border p-3 text-left text-sm transition ${skill === g ? "border-[#1F4E6B] bg-[#F3F7FA]" : "border-[#E2E8ED]"}`}>
               <span className="font-semibold" style={{ color: C.ink }}>{g}</span>
-              <span className="block text-xs" style={{ color: C.muted }}>Asked for in {g === "Python for data" ? "61%" : "44%"} of these roles</span>
+              <span className="block text-xs" style={{ color: C.muted }}>In {gapEvidence[g].posts}% of job posts</span>
             </button>
           ))}
+          <div className="mt-4 rounded-lg bg-[#F3F7FA] p-3 text-xs" style={{ color: C.muted }}>
+            <p className="font-semibold" style={{ color: C.ink }}>Why “{skill}” is a gap</p>
+            <p className="mt-1.5">Asked for in <b style={{ color: C.ink }}>{ev.posts}%</b> of 18,420 job posts ({Math.round(18420 * ev.posts / 100).toLocaleString()} posts)</p>
+            <div className="my-1 h-1.5 rounded-full bg-white"><div className="h-full rounded-full bg-amber-500" style={{ width: `${ev.posts}%` }} /></div>
+            <p>Held by <b style={{ color: C.ink }}>{ev.hired}%</b> of the 2,310 people hired</p>
+            <div className="my-1 h-1.5 rounded-full bg-white"><div className="h-full rounded-full bg-emerald-500" style={{ width: `${ev.hired}%` }} /></div>
+            <p>Not found in your CV · {ev.trend}</p>
+            <p className="mt-1.5">Most asked in: {ev.titles.join(", ")}</p>
+          </div>
           <p className="mt-4 text-xs" style={{ color: C.muted }}>Estimated time to job-ready: <b>6–8 weeks</b></p>
         </Card>
         <div>
@@ -342,9 +527,10 @@ function MarketScreen({ hot }: { hot: HotFn }) {
             {providers[skill].map((p) => (
               <Card key={p.who} className="animate-rise">
                 <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <p className="font-semibold" style={{ color: C.ink }}>{p.who}</p>
-                    <p className="text-xs" style={{ color: C.muted }}>{p.type} · {p.fmt}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs" style={{ color: C.muted }}>{p.who} · {p.type}</p>
+                    <p className="font-semibold" style={{ color: C.ink }}>{p.course}</p>
+                    <p className="text-xs" style={{ color: C.muted }}>{p.fmt} · {p.learners.toLocaleString()} learners so far</p>
                     <div className="mt-2 flex flex-wrap gap-2 text-xs">
                       <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-800">{p.hired}% of learners hired within 6 months</span>
                       <span className="rounded-full bg-[#F3F7FA] px-2 py-0.5" style={{ color: C.ink }}>★ {p.q} quality</span>
@@ -358,6 +544,24 @@ function MarketScreen({ hot }: { hot: HotFn }) {
                     </button>
                   </div>
                 </div>
+                <button onClick={() => setOpen(open === p.who + p.course ? null : p.who + p.course)} className="mt-3 text-xs font-semibold" style={{ color: C.ink }}>
+                  {open === p.who + p.course ? "Hide course details ▴" : "View course details ▾"}
+                </button>
+                {open === p.who + p.course && (
+                  <div className="mt-3 grid animate-rise gap-4 border-t border-[#EEF1F4] pt-3 text-xs md:grid-cols-2" style={{ color: C.muted }}>
+                    <div>
+                      <p className="font-semibold uppercase tracking-wider" style={{ color: C.ink }}>What you'll learn</p>
+                      <ol className="mt-1.5 space-y-1">{p.modules.map((m, i) => <li key={m}><span className="mr-1 font-semibold" style={{ color: C.ink }}>{i + 1}.</span>{m}{m.toLowerCase().includes("python") || m.toLowerCase().includes("cloud") ? <span className="ml-1 rounded bg-amber-100 px-1 text-[10px] text-amber-800">closes your gap</span> : null}</li>)}</ol>
+                    </div>
+                    <div className="space-y-1.5">
+                      <p><b style={{ color: C.ink }}>When:</b> {p.start}</p>
+                      <p><b style={{ color: C.ink }}>Format:</b> {p.mode}</p>
+                      <p><b style={{ color: C.ink }}>Certificate:</b> {p.cert}</p>
+                      <p><b style={{ color: C.ink }}>Entry requirements:</b> {p.reqs}</p>
+                      <p><b style={{ color: C.ink }}>Outcome:</b> {p.hired}% of learners hired within 6 months</p>
+                    </div>
+                  </div>
+                )}
               </Card>
             ))}
           </div>
