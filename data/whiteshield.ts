@@ -161,6 +161,24 @@ export const proposals: Proposal[] = [
     competitor: "National portals and job boards are web-first. WhatsApp-native career support in Arabic dialects is rare.",
     experiment: "Opt-in pilot for one cohort. Compare 30-day retention and applications with web-only users.",
   },
+  {
+    id: "marketplace",
+    name: "Skills Gap Marketplace",
+    oneLiner: "Connect Career Navigator (people with named skills gaps) to EduHub Navigator and other providers (universities, training centres, independent educators) who can close them.",
+    problem: "Today the gap analysis ends at a list of courses. Nothing connects a person's gap to a vetted provider with proof of outcomes, and providers can't see real demand.",
+    valueProp: {
+      citizen: "The right course for my gap, near me, in my language, with its hire rate and any subsidy applied",
+      government: "Gaps actually closed, not just measured, and a clear place to direct training subsidies",
+      employer: "Candidates who arrive with the missing skill already closed",
+    },
+    metrics: { leading: "Enrolments from gap plans", lagging: "Gap-closure rate, then hires after closing the gap" },
+    impact: 5, confidence: 3, effort: 4, risk: 3,
+    riskNote: "Cold start and provider quality. Seed supply with EduHub's university partners, rank by learner outcomes rather than payment, and use AI to flag low-quality providers for review, as I did with MUAB's AI quality scoring.",
+    scalability: ["Providers onboard per country; the matching logic is shared", "Demand signals are aggregated and anonymised, so they work in sovereign deployments", "Creates a two-sided network effect: more learners attract better providers"],
+    ai: { level: "Recommend", how: "AI ranks courses for each gap by outcomes, fit, language and price, and drafts demand-based suggestions for providers.", guardrail: "Ranking is outcome-based and auditable; paid placement is never mixed into recommendations." },
+    competitor: "Coursera and job boards list courses but don't tie them to a person's verified gap or report outcomes; national portals rarely have a provider side.",
+    experiment: "Pilot one role family in one country with 5–10 providers. Success = gap-plan enrolment above X% and a measurable hire uplift for completers.",
+  },
 ];
 
 export const competitors = [

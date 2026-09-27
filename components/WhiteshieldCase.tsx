@@ -76,6 +76,11 @@ export default function WhiteshieldCase() {
             proposition for every feature, impact, effort and risk scored openly, competitors checked, scalability tested, and AI
             added where it genuinely helps.
           </p>
+          <a href="/whiteshield/prototype/" className="mt-8 inline-flex animate-rise items-center gap-3 rounded-2xl border border-accent/50 bg-accent/10 px-5 py-4 transition hover:bg-accent/20 [animation-delay:.25s]">
+            <span className="text-2xl">▶</span>
+            <span><span className="block font-semibold">Open the clickable prototype</span><span className="text-sm text-neutral-400">Career Navigator rebuilt, with Today / Proposed on every screen</span></span>
+          </a>
+          <br />
           <p className="mt-6 max-w-2xl animate-rise rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-neutral-400 [animation-delay:.3s]">
             <span className="font-semibold text-neutral-200">Built from public information only.</span> Anything marked as a
             hypothesis is an assumption I would validate with your real data in my first weeks.
@@ -144,7 +149,7 @@ export default function WhiteshieldCase() {
         </Block>
 
         {/* 04 proposals */}
-        <Block id="bets" n="04" title="Five proposals, scored in the open" intro="Every feature has to name who it helps, the value it adds, the metric it moves, and its effort and risk. Move the weights to see how priorities shift, then click a proposal for the full reasoning.">
+        <Block id="bets" n="04" title="Six proposals, scored in the open" intro="Every feature has to name who it helps, the value it adds, the metric it moves, and its effort and risk. Move the weights to see how priorities shift, then click a proposal for the full reasoning.">
           <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
             <div className="card h-fit p-5">
               <p className="eyebrow">Scoring weights</p>
