@@ -242,3 +242,20 @@ export const sources = [
   { label: "Global Labour Resilience Index", url: "https://www.consultancy-me.com/news/10109/whiteshield-and-google-present-the-worlds-most-resilient-labour-markets" },
   { label: "Product Manager, Data & AI role", url: "https://apply.workable.com/whiteshield/j/886CD20448/" },
 ];
+
+// Nada × Whiteshield: what the role needs, matched to evidence
+export const fit = [
+  { need: "Take an early-stage product from 0 to 1 with incomplete requirements", proof: "Defined Smart Bricks' institutional underwriting product from a blank page: investor discovery, flow maps, a nine-screen prototype, and a value proposition I changed with the CEO based on research. Founded Zaffa AI; built Zeki solo.", where: "Case studies: Smart Bricks underwriting · Zaffa AI · Zeki" },
+  { need: "Work directly with government clients and senior stakeholders", proof: "Delivered Law71, a legal AI adopted by the UAE Ministry of Foreign Affairs and EDGE Group, aligning agencies, legal teams and defence stakeholders with shared evidence.", where: "Case study: Law71" },
+  { need: "Labour-market and education products", proof: "Led MUAB, an ed-tech platform connecting creators and learners, including AI course creation, AI flagging and recommendation scoring. Built Zeki to teach kids AI, and Testify for QA and requirements.", where: "Case studies: MUAB · Zeki · Testify" },
+  { need: "Turn complex data into decisions and products", proof: "Built Smart Bricks' single source of truth for metrics: a 36-event definition set, an automated PostHog → Sheets → Slack pipeline, and a metrics watchdog that flags dips and spikes.", where: "Case study: Smart Bricks analytics · Build lab" },
+  { need: "Work across engineering, data scientists and QA", proof: "Started as a software and QA engineer; built LLM evaluation frameworks, ran Scrum for government programmes, and set up delivery systems (Linear + GitHub, Jira automation, quality scores).", where: "Case studies: XPay · Novomind · Law71" },
+  { need: "Use AI tools to prototype and validate quickly", proof: "Vibe-coded 20+ tools, apps and bots, including the prototype linked on this page, built for this interview.", where: "Build lab · this prototype" },
+  { need: "Arabic and English, for regional governments", proof: "Native Arabic speaker; owned Arabic localisation on every product I joined, and brought Law71's Arabic legal-AI portal to parity with English.", where: "Case studies: Law71 · Pleny" },
+];
+
+export const edge = [
+  { icon: "⚖", t: "Trust by design", d: "AI reasons, models calculate, humans decide. The principle I used for a ministry and for institutional investors, and exactly what sovereign AI needs." },
+  { icon: "🛠", t: "I build what I propose", d: "Engineer and QA by background. I prototype before asking for a sprint, like the Career Navigator prototype on this page." },
+  { icon: "🌍", t: "I know the region", d: "UAE, Saudi Arabia and Egypt experience, bilingual, and used to government pace and expectations." },
+];

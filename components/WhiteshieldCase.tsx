@@ -2,7 +2,7 @@
 
 import { Fragment, useMemo, useState } from "react";
 import {
-  aiLadder, aiQuestions, competitors, customers, facts, measurement, metricTree, navigatorFeatures,
+  aiLadder, aiQuestions, edge, fit, competitors, customers, facts, measurement, metricTree, navigatorFeatures,
   plan, proposals, questionsForThem, scalabilityChecks, sources, type Proposal,
 } from "@/data/whiteshield";
 
@@ -14,6 +14,7 @@ const nav = [
   ["intel", "Competitor intel"],
   ["scale", "Scale & AI"],
   ["measure", "Measure & plan"],
+  ["fit", "Nada × Whiteshield"],
 ];
 
 function Block({ id, n, title, intro, children }: { id: string; n: string; title: string; intro?: string; children: React.ReactNode }) {
@@ -344,6 +345,38 @@ export default function WhiteshieldCase() {
               </div>
             ))}
           </div>
+        </Block>
+
+        {/* 08 fit */}
+        <Block id="fit" n="08" title="Nada × Whiteshield: what you need, and where I've already done it" intro="Each line of the role, matched to proof from my work. Every item has a full case study in my portfolio.">
+          <div className="space-y-3">
+            {fit.map((f, i) => (
+              <div key={f.need} className="card grid gap-4 p-5 md:grid-cols-[1fr_1.6fr]" style={{ animationDelay: `${i * 0.05}s` }}>
+                <div>
+                  <p className="font-mono text-[11px] text-neutral-500">YOU NEED</p>
+                  <p className="mt-1 font-semibold">{f.need}</p>
+                </div>
+                <div className="border-t border-white/10 pt-3 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+                  <p className="font-mono text-[11px] text-accent">I'VE DONE IT</p>
+                  <p className="mt-1 text-neutral-300">{f.proof}</p>
+                  <p className="mt-2 text-xs text-neutral-500">{f.where}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {edge.map((e) => (
+              <div key={e.t} className="rounded-2xl border border-accent/30 bg-accent/5 p-5">
+                <p className="text-2xl">{e.icon}</p>
+                <p className="mt-2 font-semibold">{e.t}</p>
+                <p className="mt-1 text-sm text-neutral-400">{e.d}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 rounded-xl border-l-2 border-accent bg-white/[0.03] p-5 text-lg text-neutral-200">
+            You're building AI that helps governments and citizens make better decisions. I've shipped AI for a ministry, rebuilt
+            products with no playbook, and prototyped this whole proposal myself. <span className="text-white">I'd like to do that with you, for Career Navigator.</span>
+          </p>
         </Block>
 
         {/* close */}

@@ -8,10 +8,19 @@ import { useEffect, useState } from "react";
 
 const C = { navy: "#0B3B5C", side: "#0A3350", sideActive: "#1D4E6E", bg: "#EBEDF0", ink: "#1F4E6B", muted: "#6B7A86" };
 
-type ScreenId = "test" | "cv" | "paths" | "market" | "explore" | "provider";
+type ScreenId = "onboard" | "test" | "cv" | "paths" | "market" | "explore" | "provider";
 type Note = { n: number; title: string; value: string; metric: string; ier: string; ai?: string };
 
 const screens: { id: ScreenId; label: string; nav: string; kind: "upgrade" | "new"; notes: Note[]; today?: string[] }[] = [
+  {
+    id: "onboard", label: "AI onboarding", nav: "Get Started", kind: "new",
+    notes: [
+      { n: 1, title: "A conversation, not a 60-question form", value: "People answer 6–8 adaptive questions in about 3 minutes instead of a long test, so far more of them finish.", metric: "Onboarding completion rate; time to first match", ier: "Impact 5 · Effort 3 · Risk 2", ai: "Assist: an LLM picks the next most informative question; answers map to O*NET interest areas deterministically." },
+      { n: 2, title: "Adaptive: skips what it already knows", value: "A CV or an earlier answer removes redundant questions, which respects people's time.", metric: "Questions asked per completed profile", ier: "Impact 4 · Effort 3 · Risk 2", ai: "Question selection uses what's already in the profile." },
+      { n: 3, title: "Profile builds live, and stays editable", value: "Users see the value forming as they answer, and can correct anything.", metric: "Profile edits; drop-off per step", ier: "Impact 4 · Effort 2 · Risk 1" },
+      { n: 4, title: "Arabic or English, typed or spoken", value: "Reaches people who wouldn't finish a long English form, which matters for inclusion targets.", metric: "Completion rate by language and channel", ier: "Impact 4 · Effort 3 · Risk 3", ai: "Speech-to-text and dialect handling, checked against an Arabic evaluation set." },
+    ],
+  },
   {
     id: "cv", label: "CV → Skills → Gap", nav: "CV Analysis", kind: "upgrade",
     today: [
@@ -90,7 +99,7 @@ const Hot = ({ n, on, onClick }: { n: number; on: boolean; onClick: (n: number) 
 );
 
 export default function CareerNavProto() {
-  const [screen, setScreen] = useState<ScreenId>("cv");
+  const [screen, setScreen] = useState<ScreenId>("onboard");
   const [mode, setMode] = useState<"today" | "proposed">("proposed");
   const [active, setActive] = useState<number | null>(null);
   const s = screens.find((x) => x.id === screen)!;
@@ -146,7 +155,7 @@ export default function CareerNavProto() {
             </div>
             <div className="flex min-h-[640px]">
               <aside className="hidden w-48 shrink-0 space-y-1 p-3 md:block" style={{ background: C.side }}>
-                {["Career Test", "CV Analysis", ...(proposed ? ["Career Paths", "My Gap Plan"] : []), "My Program", "Explore", ...(screen === "provider" ? ["Demand Signals"] : [])].map((n) => (
+                {[...(screen === "onboard" ? ["Get Started"] : []), "Career Test", "CV Analysis", ...(proposed ? ["Career Paths", "My Gap Plan"] : []), "My Program", "Explore", ...(screen === "provider" ? ["Demand Signals"] : [])].map((n) => (
                   <div key={n} className="rounded-lg px-3 py-2.5 text-sm" style={{ background: n === s.nav ? C.sideActive : "transparent", color: n === s.nav ? "#fff" : "#B8C7D3", fontWeight: n === s.nav ? 600 : 400 }}>{n}</div>
                 ))}
               </aside>
@@ -158,6 +167,7 @@ export default function CareerNavProto() {
                   {screen === "explore" && <ExploreScreen proposed={proposed} hot={hot} />}
                   {screen === "provider" && <ProviderScreen hot={hot} />}
                   {screen === "test" && <TestScreen proposed={proposed} hot={hot} />}
+                  {screen === "onboard" && <OnboardScreen hot={hot} go={() => setScreen("paths")} />}
                 </div>
               </main>
             </div>
@@ -660,6 +670,134 @@ function ProviderScreen({ hot }: { hot: HotFn }) {
           <div className="mt-3 flex gap-2"><Btn>Create course draft</Btn><Btn ghost>See the evidence</Btn></div>
         </div></div>
       </Card>
+    </div>
+  );
+}
+
+/* ---------------- AI onboarding ---------------- */
+type Step = { bot: string; options: { label: string; sets: [string, string][]; skip?: number }[] };
+const onboardSteps: Step[] = [
+  { bot: "Hi Nada! I'm your career guide. In about 3 minutes I'll build your profile and show roles that fit. Where are you in your career right now?",
+    options: [
+      { label: "Student / fresh graduate", sets: [["Stage", "Student"]] },
+      { label: "Working, want to grow", sets: [["Stage", "Experienced professional"]] },
+      { label: "Working, thinking of a shift", sets: [["Stage", "Considering a career shift"]] },
+      { label: "Looking for work", sets: [["Stage", "Job seeker"]] },
+    ] },
+  { bot: "Great. Want to save time? Upload your CV and I'll skip the questions it already answers.",
+    options: [
+      { label: "📎 Use my CV", sets: [["Skills", "16 skills from your CV"], ["Experience", "5+ years · Product, AI, fintech"]], skip: 9 },
+      { label: "Skip for now", sets: [] },
+    ] },
+  { bot: "Which of these sounds most like a great workday for you?",
+    options: [
+      { label: "🧩 Solving messy problems", sets: [["Top interest", "Investigative"]] },
+      { label: "🤝 Leading people and decisions", sets: [["Top interest", "Enterprising"]] },
+      { label: "🎨 Designing and creating", sets: [["Top interest", "Artistic"]] },
+      { label: "📊 Organising data and systems", sets: [["Top interest", "Conventional"]] },
+    ] },
+  { bot: "And your second favourite?",
+    options: [
+      { label: "🤝 Leading people and decisions", sets: [["Second interest", "Enterprising"]] },
+      { label: "🧩 Solving messy problems", sets: [["Second interest", "Investigative"]] },
+      { label: "💬 Helping and teaching others", sets: [["Second interest", "Social"]] },
+    ] },
+  { bot: "What matters most to you in your next role?",
+    options: [
+      { label: "💰 Pay", sets: [["Priority", "Pay"]] },
+      { label: "📈 Growth & learning", sets: [["Priority", "Growth"]] },
+      { label: "🌍 Impact", sets: [["Priority", "Impact"]] },
+      { label: "⚖️ Balance", sets: [["Priority", "Work-life balance"]] },
+    ] },
+  { bot: "Where do you want to work?",
+    options: [
+      { label: "🇦🇪 UAE", sets: [["Location", "United Arab Emirates"]] },
+      { label: "🇸🇦 Saudi Arabia", sets: [["Location", "Saudi Arabia"]] },
+      { label: "🇪🇬 Egypt", sets: [["Location", "Egypt"]] },
+      { label: "🌐 Remote", sets: [["Location", "Remote"]] },
+    ] },
+];
+
+function OnboardScreen({ hot, go }: { hot: HotFn; go: () => void }) {
+  const [i, setI] = useState(0);
+  const [msgs, setMsgs] = useState<{ me: boolean; t: string }[]>([{ me: false, t: onboardSteps[0].bot }]);
+  const [profile, setProfile] = useState<Record<string, string>>({});
+  const [typing, setTyping] = useState(false);
+  const [skipped, setSkipped] = useState(0);
+  const done = i >= onboardSteps.length;
+  const fields = ["Stage", "Skills", "Experience", "Top interest", "Second interest", "Priority", "Location"];
+  const pct = Math.round((Object.keys(profile).length / fields.length) * 100);
+
+  const answer = (o: Step["options"][number]) => {
+    if (typing || done) return;
+    setMsgs((m) => [...m, { me: true, t: o.label }]);
+    setProfile((pr) => ({ ...pr, ...Object.fromEntries(o.sets) }));
+    if (o.skip) setSkipped(o.skip);
+    setTyping(true);
+    setTimeout(() => {
+      const next = i + 1;
+      setTyping(false);
+      setI(next);
+      if (next < onboardSteps.length) {
+        setMsgs((m) => [...m, { me: false, t: (o.skip ? `Got it: I found 16 skills and 5+ years of experience, so I'll skip ${o.skip} questions. ` : "") + onboardSteps[next].bot }]);
+      } else {
+        setMsgs((m) => [...m, { me: false, t: "Done! Your profile is ready. Investigative + Enterprising people with your skills do best in product, strategy and AI roles. I found 3 paths for you in the UAE." }]);
+      }
+    }, 650);
+  };
+
+  return (
+    <div>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">{hot(1)}<H>Let's find your ideal career</H></div>
+        <span className="flex items-center gap-2 text-xs" style={{ color: C.muted }}>{hot(4)} <span className="rounded-full bg-white px-3 py-1 font-semibold" style={{ color: C.ink }}>English | العربية</span><span className="rounded-full bg-white px-3 py-1" style={{ color: C.ink }}>🎙 Speak instead</span></span>
+      </div>
+      <div className="mt-4 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+        <Card className="flex min-h-[460px] flex-col">
+          <div className="flex-1 space-y-3">
+            {msgs.map((m, k) => (
+              <div key={k} className={`flex animate-rise ${m.me ? "justify-end" : ""}`}>
+                <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${m.me ? "text-white" : "bg-[#F3F7FA]"}`} style={m.me ? { background: C.ink } : { color: "#26323B" }}>{m.t}</div>
+              </div>
+            ))}
+            {typing && <div className="flex gap-1 px-2 py-2">{[0, 1, 2].map((d) => <span key={d} className="h-2 w-2 animate-bounce rounded-full bg-[#9FB3C1]" style={{ animationDelay: `${d * 0.15}s` }} />)}</div>}
+          </div>
+          <div className="mt-4 border-t border-[#EEF1F4] pt-3">
+            {!done ? (
+              <div className="flex flex-wrap gap-2">
+                {i === 1 && <span className="mr-1 self-center">{hot(2)}</span>}
+                {onboardSteps[i].options.map((o) => (
+                  <button key={o.label} onClick={() => answer(o)} disabled={typing}
+                    className="rounded-full border border-[#C9D6DF] bg-white px-3.5 py-2 text-sm transition hover:border-[#1F4E6B] disabled:opacity-40" style={{ color: C.ink }}>{o.label}</button>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="text-sm" style={{ color: C.muted }}>Took about 3 minutes · {onboardSteps.length} questions{skipped ? ` · ${skipped} skipped thanks to your CV` : ""}</span>
+                <Btn onClick={go}>See my career paths →</Btn>
+              </div>
+            )}
+          </div>
+        </Card>
+        <Card>
+          <div className="flex items-center gap-2">{hot(3)}<p className="font-semibold" style={{ color: C.ink }}>Your profile, building live</p></div>
+          <div className="mt-3 h-2 rounded-full bg-[#EEF1F4]"><div className="h-full rounded-full bg-emerald-500 transition-all duration-700" style={{ width: `${pct}%` }} /></div>
+          <p className="mt-1 text-xs" style={{ color: C.muted }}>{pct}% complete</p>
+          <div className="mt-4 space-y-2">
+            {fields.map((f) => (
+              <div key={f} className="flex items-center justify-between rounded-lg border border-[#EEF1F4] px-3 py-2 text-sm">
+                <span style={{ color: C.muted }}>{f}</span>
+                {profile[f] ? <span className="animate-rise font-semibold" style={{ color: C.ink }}>{profile[f]} <span className="text-[11px] font-normal text-neutral-400">edit</span></span> : <span className="text-neutral-300">—</span>}
+              </div>
+            ))}
+          </div>
+          {done && (
+            <div className="mt-4 animate-rise rounded-lg bg-emerald-50 p-3 text-xs text-emerald-800">
+              <b>Interest code: I-E</b> (Investigative, Enterprising), mapped to O*NET interest areas. Strong fit: product management, strategy, AI roles.
+            </div>
+          )}
+        </Card>
+      </div>
     </div>
   );
 }
