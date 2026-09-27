@@ -114,3 +114,12 @@ body:has(.ws) { --ink: 6 20 46; --accent: 54 194 244; background: rgb(6 20 46); 
 .ws-curtain span { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font: 600 12px var(--font-mono); letter-spacing: .3em; color: #36C2F4; }
 @keyframes curtain { to { clip-path: inset(0 0 100% 0); } }
 @media (prefers-reduced-motion: reduce) { .ws-sec h2, .ws-sec .ws-num, .ws-stagger > * { clip-path: none; opacity: 1; transform: none; } .ws-curtain { display: none; } }
+
+/* meeting mode transitions */
+.mt-slide { animation: mtSlide .7s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes mtSlide { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.mt-wipe { animation: mtWipe .9s cubic-bezier(.7,0,.2,1) .1s both; }
+@keyframes mtWipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.mt-bar { transform-origin: left; animation: mtBar 1s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes mtBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .mt-slide, .mt-wipe, .mt-bar { animation: none; } }

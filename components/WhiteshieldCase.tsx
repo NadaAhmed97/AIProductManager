@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useMemo, useState } from "react";
 import WsStopMotion from "@/components/WsStopMotion";
+import WsMeeting from "@/components/WsMeeting";
 import {
   aiLadder, aiQuestions, edge, fit, competitors, customers, facts, measurement, metricTree, navigatorFeatures,
   plan, proposals, questionsForThem, scalabilityChecks, sources, type Proposal,
@@ -59,6 +60,7 @@ export default function WhiteshieldCase() {
 
   return (
     <div className="ws relative min-h-screen">
+      <WsMeeting />
       <div className="ws-curtain"><span>NADA × WHITESHIELD</span></div>
       <div className="ws-grid pointer-events-none absolute inset-x-0 top-0 h-[700px]" />
       <div className="orb left-[-10%] top-[-5%] h-[380px] w-[380px] bg-accent/30" />
@@ -88,10 +90,16 @@ export default function WhiteshieldCase() {
             proposition for every feature, impact, effort and risk scored openly, competitors checked, scalability tested, and AI
             added where it genuinely helps.
           </p>
-          <a href="/whiteshield/prototype/" className="mt-8 inline-flex animate-rise items-center gap-3 rounded-2xl border border-accent/50 bg-accent/10 px-5 py-4 transition hover:bg-accent/20 [animation-delay:.25s]">
+          <div className="mt-8 flex flex-wrap gap-3">
+          <button onClick={() => window.dispatchEvent(new Event("open-meeting"))} className="inline-flex animate-rise items-center gap-3 rounded-2xl bg-accent px-5 py-4 text-left text-ink transition hover:scale-[1.02] [animation-delay:.22s]">
+            <span className="text-2xl">▶</span>
+            <span><span className="block font-semibold">Start meeting mode</span><span className="text-sm opacity-70">7 screens · arrow keys to move</span></span>
+          </button>
+          <a href="/whiteshield/prototype/" className="inline-flex animate-rise items-center gap-3 rounded-2xl border border-accent/50 bg-accent/10 px-5 py-4 transition hover:bg-accent/20 [animation-delay:.25s]">
             <span className="text-2xl">▶</span>
             <span><span className="block font-semibold">Open the clickable prototype</span><span className="text-sm text-neutral-400">Career Navigator rebuilt, with Today / Proposed on every screen</span></span>
           </a>
+          </div>
           <br />
           <p className="mt-6 max-w-2xl animate-rise rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-neutral-400 [animation-delay:.3s]">
             <span className="font-semibold text-neutral-200">Built from public information only.</span> Anything marked as a

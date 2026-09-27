@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const C = { navy: "#0B3B5C", side: "#0A3350", sideActive: "#1D4E6E", bg: "#EBEDF0", ink: "#1F4E6B", muted: "#6B7A86" };
 
-type ScreenId = "onboard" | "test" | "cv" | "paths" | "market" | "explore" | "provider";
+type ScreenId = "onboard" | "test" | "cv" | "paths" | "market" | "explore" | "provider" | "ministry";
 type Note = { n: number; title: string; value: string; metric: string; ier: string; ai?: string };
 
 const screens: { id: ScreenId; label: string; nav: string; kind: "upgrade" | "new"; notes: Note[]; today?: string[] }[] = [
@@ -77,6 +77,15 @@ const screens: { id: ScreenId; label: string; nav: string; kind: "upgrade" | "ne
     ],
   },
   {
+    id: "ministry", label: "Ministry view", nav: "Policy Dashboard", kind: "new",
+    notes: [
+      { n: 1, title: "Verified hires against the national target", value: "The ministry sees outcomes, not just sign-ups: hires confirmed through employer or social-insurance records, tracked against its target.", metric: "Verified hires vs target; share attributable to the programme", ier: "Impact 5 · Effort 4 · Risk 3", ai: "None needed: this is deterministic data joining. AI stays out of the numbers." },
+      { n: 2, title: "Proof it caused the hire", value: "Users who followed a gap plan are compared with similar users who didn't, so the ministry can defend budget with evidence, not anecdotes.", metric: "Hire-rate uplift vs matched comparison group", ier: "Impact 5 · Effort 3 · Risk 2" },
+      { n: 3, title: "Where the training money works", value: "Funded courses ranked by hires per AED, so reskilling budgets move to what actually gets people jobs.", metric: "Cost per verified hire by course and provider", ier: "Impact 5 · Effort 3 · Risk 3", ai: "Assist: AI drafts the monthly policy brief from these numbers; an analyst approves it." },
+      { n: 4, title: "Skills gaps by sector, early", value: "Aggregated, anonymised demand vs supply by sector gives policy teams a leading indicator months before labour surveys.", metric: "Forecast lead time; policy decisions citing the dashboard", ier: "Impact 4 · Effort 3 · Risk 2" },
+    ],
+  },
+  {
     id: "test", label: "Career Test landing", nav: "Career Test", kind: "upgrade",
     today: [
       "The most prominent block is an O*NET licence disclaimer",
@@ -102,10 +111,17 @@ export default function CareerNavProto() {
   const [screen, setScreen] = useState<ScreenId>("onboard");
   const [mode, setMode] = useState<"today" | "proposed">("proposed");
   const [active, setActive] = useState<number | null>(null);
+  const demo: ScreenId[] = ["onboard", "cv", "paths", "market", "ministry"];
+  const di = demo.indexOf(screen);
   const s = screens.find((x) => x.id === screen)!;
   const proposed = s.kind === "new" || mode === "proposed";
 
   useEffect(() => setActive(null), [screen, mode]);
+  // Deep link (?screen=ministry) so meeting mode can open a specific screen.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("screen") as ScreenId | null;
+    if (q && screens.some((x) => x.id === q)) setScreen(q);
+  }, []);
   const hot = (n: number) => <Hot n={n} on={active === n} onClick={(k) => setActive(active === k ? null : k)} />;
 
   return (
@@ -142,6 +158,19 @@ export default function CareerNavProto() {
             <p className="mb-3 text-sm text-sky-300">✦ New screen proposed</p>
           )}
 
+          {/* guided demo path for the meeting: citizen journey, then the ministry's view */}
+          <div className="mb-3 flex flex-wrap items-center gap-2 font-mono text-[11px]">
+            <span className="text-neutral-500">DEMO PATH</span>
+            {demo.map((d, i) => (
+              <button key={d} onClick={() => setScreen(d)} className={`rounded-full px-2.5 py-1 transition ${d === screen ? "bg-[#36C2F4] font-semibold text-[#06142E]" : i < di ? "text-[#36C2F4]" : "text-neutral-500 hover:text-white"}`}>
+                {i + 1}. {screens.find((x) => x.id === d)!.label}
+              </button>
+            ))}
+            {di >= 0 && di < demo.length - 1 && (
+              <button onClick={() => setScreen(demo[di + 1])} className="ml-auto rounded-full border border-[#36C2F4]/60 px-3 py-1 text-[#36C2F4] hover:bg-[#36C2F4]/10">Next in demo →</button>
+            )}
+          </div>
+
           {/* the app */}
           <div className="overflow-hidden rounded-xl border border-white/10 shadow-2xl" style={{ fontFamily: "Poppins, system-ui, sans-serif" }}>
             <div className="flex h-12 items-center justify-between px-5" style={{ background: C.navy }}>
@@ -155,7 +184,7 @@ export default function CareerNavProto() {
             </div>
             <div className="flex min-h-[640px]">
               <aside className="hidden w-48 shrink-0 space-y-1 p-3 md:block" style={{ background: C.side }}>
-                {[...(screen === "onboard" ? ["Get Started"] : []), "Career Test", "CV Analysis", ...(proposed ? ["Career Paths", "My Gap Plan"] : []), "My Program", "Explore", ...(screen === "provider" ? ["Demand Signals"] : [])].map((n) => (
+                {[...(screen === "onboard" ? ["Get Started"] : []), "Career Test", "CV Analysis", ...(proposed ? ["Career Paths", "My Gap Plan"] : []), "My Program", "Explore", ...(screen === "provider" ? ["Demand Signals"] : []), ...(screen === "ministry" ? ["Policy Dashboard"] : [])].map((n) => (
                   <div key={n} className="rounded-lg px-3 py-2.5 text-sm" style={{ background: n === s.nav ? C.sideActive : "transparent", color: n === s.nav ? "#fff" : "#B8C7D3", fontWeight: n === s.nav ? 600 : 400 }}>{n}</div>
                 ))}
               </aside>
@@ -166,6 +195,7 @@ export default function CareerNavProto() {
                   {screen === "market" && <MarketScreen hot={hot} />}
                   {screen === "explore" && <ExploreScreen proposed={proposed} hot={hot} />}
                   {screen === "provider" && <ProviderScreen hot={hot} />}
+                  {screen === "ministry" && <MinistryScreen hot={hot} />}
                   {screen === "test" && <TestScreen proposed={proposed} hot={hot} />}
                   {screen === "onboard" && <OnboardScreen hot={hot} go={() => setScreen("paths")} />}
                 </div>
@@ -629,6 +659,56 @@ function ExploreScreen({ proposed, hot }: { proposed: boolean; hot: HotFn }) {
 }
 
 /* ---------------- Provider / university ---------------- */
+function MinistryScreen({ hot }: { hot: HotFn }) {
+  const sectors = [["Digital & data", 82, 41], ["Healthcare", 64, 52], ["Finance", 58, 47], ["Logistics", 46, 38], ["Tourism", 40, 44]] as const;
+  const courses = [["Data analytics bootcamp", 64, 3750], ["Python for data (Arabic)", 58, 600], ["Cloud fundamentals", 62, 0], ["General leadership course", 12, 21000]] as const;
+  return (
+    <div>
+      <p className="text-xs" style={{ color: C.muted }}>Signed in as: Labour-market policy team, a government client (illustrative data)</p>
+      <H>Policy dashboard</H>
+      <p className="mt-1 text-sm" style={{ color: C.muted }}>Outcomes of the programme, not just usage. All figures aggregated and anonymised.</p>
+      <div className="mt-4 grid gap-4 md:grid-cols-3">
+        <Card>
+          <div className="flex items-center gap-2">{hot(1)}<p className="text-xs font-semibold uppercase" style={{ color: C.muted }}>Verified hires this year</p></div>
+          <p className="mt-2 text-3xl font-bold" style={{ color: C.ink }}>4,120 <span className="text-base font-medium" style={{ color: C.muted }}>/ 6,000</span></p>
+          <div className="mt-3 h-2 rounded-full bg-[#EEF1F4]"><div className="h-full rounded-full bg-[#059669]" style={{ width: "69%" }} /></div>
+          <p className="mt-2 text-xs" style={{ color: C.muted }}>69% of target · confirmed via employer records</p>
+        </Card>
+        <Card>
+          <div className="flex items-center gap-2">{hot(2)}<p className="text-xs font-semibold uppercase" style={{ color: C.muted }}>Did the programme cause it?</p></div>
+          <div className="mt-3 space-y-2 text-sm">
+            {[["Followed a gap plan", 38, "#059669"], ["Similar users, no plan", 22, "#9FB3C8"]].map(([l, v, c]) => (
+              <div key={l as string}><p className="flex justify-between"><span>{l}</span><b style={{ color: C.ink }}>{v}% hired</b></p><div className="mt-1 h-2 rounded-full bg-[#EEF1F4]"><div className="h-full rounded-full" style={{ width: `${(v as number) * 2}%`, background: c as string }} /></div></div>
+            ))}
+          </div>
+          <p className="mt-2 text-xs" style={{ color: C.muted }}>+16 pts uplift vs matched comparison group</p>
+        </Card>
+        <Card>
+          <div className="flex items-center gap-2">{hot(4)}<p className="text-xs font-semibold uppercase" style={{ color: C.muted }}>Skills gap by sector</p></div>
+          <div className="mt-3 space-y-1.5 text-xs">
+            {sectors.map(([s, d, sup]) => (
+              <div key={s} className="grid grid-cols-[90px_1fr] items-center gap-2"><span>{s}</span>
+                <div className="relative h-3 rounded bg-[#EEF1F4]"><div className="absolute h-full rounded bg-[#DC2626]/70" style={{ width: `${d}%` }} /><div className="absolute h-full rounded bg-[#0B3B5C]" style={{ width: `${sup}%` }} /></div></div>
+            ))}
+            <p className="pt-1" style={{ color: C.muted }}><span className="text-[#0B3B5C]">■</span> supply · <span className="text-[#DC2626]">■</span> demand gap</p>
+          </div>
+        </Card>
+      </div>
+      <Card className="mt-4">
+        <div className="flex items-center gap-2">{hot(3)}<p className="font-semibold" style={{ color: C.ink }}>Funded courses: where training money turns into jobs</p></div>
+        <table className="mt-3 w-full text-sm">
+          <thead><tr className="text-left text-xs" style={{ color: C.muted }}><th className="py-2">Course</th><th>Hired within 6 months</th><th>Cost per verified hire</th><th>Recommendation</th></tr></thead>
+          <tbody>{courses.map(([c, h, cost]) => (
+            <tr key={c} className="border-t border-[#EEF1F4]"><td className="py-2.5 font-medium" style={{ color: C.ink }}>{c}</td><td>{h}%</td><td>{cost ? `AED ${cost.toLocaleString()}` : "Free"}</td>
+              <td><span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${h > 40 ? "bg-[#ECFDF5] text-[#059669]" : "bg-[#FEF2F2] text-[#DC2626]"}`}>{h > 40 ? "Scale up" : "Review funding"}</span></td></tr>
+          ))}</tbody>
+        </table>
+        <p className="mt-3 rounded-lg bg-[#F5F7FA] p-3 text-xs" style={{ color: C.muted }}>✦ AI-drafted brief (analyst approval pending): &quot;Digital &amp; data shows the widest gap. Shifting 20% of leadership-course funding to data bootcamps would, at current rates, add ~300 verified hires.&quot;</p>
+      </Card>
+    </div>
+  );
+}
+
 function ProviderScreen({ hot }: { hot: HotFn }) {
   const rows = [
     { s: "Python for data", l: 3240, j: "61%", cov: 20 },
