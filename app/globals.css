@@ -123,3 +123,13 @@ body:has(.ws) { --ink: 6 20 46; --accent: 54 194 244; background: rgb(6 20 46); 
 .mt-bar { transform-origin: left; animation: mtBar 1s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes mtBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) { .mt-slide, .mt-wipe, .mt-bar { animation: none; } }
+
+/* booklet: print to a clean, light PDF */
+@media print {
+  .bk-noprint { display: none !important; }
+  .ws, body:has(.ws) { background: #fff !important; color: #111 !important; }
+  .ws * { color: #111 !important; border-color: #ccc !important; background: transparent !important; box-shadow: none !important; }
+  .ws .shimmer { -webkit-text-fill-color: #111; }
+  .bk-card, .bk-sec h2 { break-inside: avoid; }
+  .bk-ans { display: block !important; }
+}
