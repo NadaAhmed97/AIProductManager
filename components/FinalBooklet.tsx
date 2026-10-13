@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 const toc = [
   ["cheat", "1-page cheat sheet"],
+  ["mock", "Your 8 polished answers"],
   ["stage", "Where you are"],
   ["who", "Who you're meeting"],
   ["purpose", "Whiteshield's purpose, in your words"],
@@ -116,8 +117,24 @@ export default function FinalBooklet() {
             </div>
           </S>
 
+
+          {/* mock answers */}
+          <S id="mock" n={2} title="Your 8 polished answers (from our final mock)">
+            <p className="text-sm text-neutral-400">Your mock average was 7.5/10. These are the improved versions. Read them out loud once.</p>
+            <div className="mt-4 space-y-2">
+              <QA tag="CEO" q="Why Whiteshield, and why now?" a={<><Say>Thank you, it's been a real pleasure. I've learned a lot from everyone I've met.</Say><Say>What draws me is the purpose. Governments make decisions that affect millions of people, often with incomplete data. Whiteshield turns data and AI into evidence those decisions can be grounded in, and the outcome isn't just a good product, it's better decisions for real people.</Say><Say>It's also very close to what I've been doing. At Smart Bricks I built an agentic AI platform where AI analyses, proposes assumptions and surfaces gaps, deterministic engines calculate, and humans decide. At Law71 I worked on legal AI adopted by the UAE Ministry of Foreign Affairs.</Say><Say>Why now: I've spent the last few years building AI for decision-makers, and I want to do it where the impact is biggest. For me, that's here.</Say></>} />
+              <QA tag="CEO" q="What motivates you?" a={<><Say>Seeing something I built get used and actually change an outcome, like when investors at Smart Bricks recognised their own problem in the product we built.</Say><Say>There's also a bigger reason. I was lucky to get a good education and I want to put it to good use. As a Women in AI Ambassador in Egypt, I care about showing that women can build ambitious things in tech, and helping other women do the same.</Say><Say>And I'm motivated by growth alongside a strong team. That's a big part of why Whiteshield appeals to me.</Say></>} />
+              <QA tag="CEO" q="A time you took ownership without being asked." a={<><Say>At Smart Bricks I noticed our customer success outreach was disconnected from product data. Our CS lead wasn't technical, so tools like PostHog didn't help him, and he was calling users without knowing what they'd done.</Say><Say>Nobody asked me to, but I built him a tool with Claude: who to contact and when, each user's journey in plain English, AI-suggested questions based on their behaviour, feedback logging, and a “what's new” section so he always knew what product had launched.</Say><Say>Call quality improved a lot, we built close relationships with key users, and their feedback flowed back into product. If something's broken between teams, I don't wait. I fix it.</Say></>} />
+              <QA tag="CEO" q="How do you handle pressure?" a={<><Say>I genuinely do well under pressure. At a software house I ran 2–4 projects at once, and at Smart Bricks I led our B2C product and a new B2B vertical under tight client deadlines.</Say><Say>Three habits: I prioritise ruthlessly, what must happen this week and what can wait; I communicate early, flagging risks before they become surprises; and I break big deadlines into small steps, while protecting the team from the noise.</Say><Say>With the Ministry of Foreign Affairs and EDGE at Law71, the key was shared visibility: one backlog everyone could see and compliance built into acceptance criteria, so fewer last-minute escalations.</Say></>} />
+              <QA tag="CEO" q="What do you need from a manager and team?" a={<><Say>I actually do my best work with autonomy. I've been the sole PM in most of my roles.</Say><Say>From a manager: a clear problem and outcome, the trust to own how we get there, and short regular check-ins plus honest feedback.</Say><Say>In return I'm very transparent: everyone knows what's in progress, what's next and any risks.</Say><Say>And from the team, what I try to create myself: an environment where people feel heard and trusted to own their work.</Say></>} />
+              <QA tag="Wael" q="How do you work with engineering, idea to production?" a={<><Say>I start from the problem and outcome, not the solution. I bring engineering in early during discovery for a feasibility check, especially on data dependencies, which are usually the hardest part.</Say><Say>Then a PRD with clear acceptance criteria and a visual of the journey, sometimes a working prototype. The team spikes the unknowns and estimates; I respect those estimates and we agree scope together. During the sprint I unblock and protect the team from changing priorities.</Say><Say>I do UAT myself (my QA background helps), and after launch we monitor the metrics and feed learnings into the next iteration.</Say></>} />
+              <QA tag="Wael" q="Walk me through your AI testing with synthetic data." a={<><Say>At Law71, our legal AI for the Ministry of Foreign Affairs and EDGE had to work in Arabic and English, but we had very few real documents, and Arabic dialects made it harder.</Say><Say>I created synthetic variations of the sample documents, covering dialects, phrasing and edge cases, and our legal expert reviewed the expected answers. Then I built an automated framework with Selenium that scored each response on relevance, ambiguity, correctness and accuracy.</Say><Say>To make sure the scoring was trustworthy, I reviewed random results by hand with the legal expert. It showed where Arabic was weaker so we could fix it before clients saw it, and it became a regression suite run on every change.</Say></>} />
+              <QA tag="Wael" q="A promised feature will take 3× longer. What do you do?" a={<><Say>I trust the estimate and ask the team to walk me through what's driving it, to see what I can unblock, often a data dependency I can chase myself.</Say><Say>Then we find a thinner first version that meets the client's core need by the original date. I align with Hugo, then go back to the client early and honestly with options, and confirm in writing.</Say><Say>And the lesson: no date goes to a client until engineering has estimated it.</Say></>} />
+            </div>
+          </S>
+
           {/* 2 */}
-          <S id="stage" n={2} title="Where you are">
+          <S id="stage" n={3} title="Where you are">
             <ol className="space-y-2 text-sm text-neutral-300">
               <li>✅ Aptitude test & video (first application)</li>
               <li>✅ Recruiter screen (Alex Elliot)</li>
@@ -126,12 +143,20 @@ export default function FinalBooklet() {
               <li>👉 <b className="text-white">Final: Alex (CEO) + Wael (VP Engineering)</b>, fit & engineering collaboration</li>
               <li>⏭ Offer → documents → visa → start</li>
             </ol>
+            <h3 className="mt-2 font-semibold text-white">Good to be aware of</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-neutral-300">
+              <li><b className="text-white">Don't raise salary, visa, family or remote work in the interview.</b> Those belong to the offer stage with Alex Elliot (sections 14–16).</li>
+              <li><b className="text-white">Pace:</b> Glassdoor reviews rate work-life balance lowest (~3.1/5). A neutral way to learn about it: “How would you describe the pace and working style of the product and engineering team?”</li>
+              <li><b className="text-white">Working model:</b> most product and AI roles are listed as hybrid in Dubai, with client visits.</li>
+              <li><b className="text-white">Contract vs permanent:</b> if asked, you're happy to start where it helps the team and earn the permanent role.</li>
+              <li><b className="text-white">Names:</b> use the names Alex Elliot gave you, and thank both by name at the end.</li>
+            </ul>
             <Note>At this stage they're mostly confirming, not testing. The team already wants you. Your job is to be the same person they met, and to make the CEO and Wael comfortable saying yes.</Note>
             <Note>Confirm full names with Alex Elliot. Public sources list Fadi Farra as Whiteshield's founder and CEO, so “Alex (CEO)” may be a different title or a recent change. Don't mention this in the interview; just use the name you're given.</Note>
           </S>
 
           {/* 3 */}
-          <S id="who" n={3} title="Who you're meeting">
+          <S id="who" n={4} title="Who you're meeting">
             <Grid>
               <T t="Alex, CEO">
                 <p>Focus: culture, motivation, fit with the wider business, how you handle challenges.</p>
@@ -145,7 +170,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 4 */}
-          <S id="purpose" n={4} title="Whiteshield's purpose, in your words">
+          <S id="purpose" n={5} title="Whiteshield's purpose, in your words">
             <p className="text-sm text-neutral-300">Alex Elliot specifically asked you to show you understand <b className="text-white">how technology, AI and data help governments make better decisions and deliver meaningful outcomes.</b> Have this ready:</p>
             <div className="mt-4 space-y-3">
               <Say>Governments make decisions that affect millions of people, often with data that's late, incomplete or scattered. Whiteshield turns that data into evidence a decision-maker can trust: forecasting what a policy will do before it's made, and tracking whether it worked after. The technology matters, but the real outcome is better decisions: more jobs, better-targeted support, money spent where it works.</Say>
@@ -161,10 +186,11 @@ export default function FinalBooklet() {
           </S>
 
           {/* 5 */}
-          <S id="stories" n={5} title="Your 5 winning stories">
+          <S id="stories" n={6} title="Your winning stories">
             <div className="space-y-3">
               <T t="1. 20+ discovery sessions → finding the real problem (CEO)">Smart Bricks: new vertical, vague requirements, no public data. You ran 20+ discovery sessions with institutional investors, mapped the process end to end, and found speed wasn't their pain. You reframed the product around a fund's “company brain”; the CEO agreed; v1 was built around it.</T>
-              <T t="2. Synthetic data to test AI across dialects (Wael)">With little real data available, you used a few real examples plus LLMs to generate realistic test data, including different Arabic dialects, to test an AI assistant before launch. That let the team measure quality across dialects, catch failures early and fix them before users saw them.</T>
+              <T t="2. Selenium + synthetic data to test legal AI across dialects (Wael)">Law71: few real documents, Arabic dialects and intent. You created synthetic variations of MOFA and EDGE sample documents, built an automated Selenium framework scoring relevance, ambiguity, correctness and accuracy against expected answers, and reviewed random results with the legal expert. It surfaced where Arabic was weaker and became a regression suite.</T>
+              <T t="2b. The customer success tool you built unasked (CEO)">Smart Bricks: the CS lead wasn't technical, so PostHog didn't help him. You built him a tool with Claude: who to contact and when, each user's journey in plain English, AI-suggested questions, feedback logging and a “what's new” section. Call quality rose, relationships with users got closer, and feedback flowed back to product.</T>
               <T t="3. Ownership & getting things done (CEO)">Sole PM repeatedly: XPay (no documentation, weekly priority changes, migrated live merchants with 100% uptime), Mumzworld app (5M+ users, 99.9% uptime through Black Friday). You build the structure nobody gave you.</T>
               <T t="4. Complex requirements → working product, with engineers (Wael)">MUAB: the CEO's wishes had drifted far from the spec. You rebuilt the PRD live in the review and locked five architecture decisions in one session with no rework. Law71: compliance written into acceptance criteria, so engineers built it right the first time.</T>
               <T t="5. You build what you propose (both)">Prototypes and internal tools: CS command centre, call-insights tool, Testify, Zeki, and the Career Navigator prototype and Quantum Leap concept for Whiteshield.</T>
@@ -173,7 +199,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 6 */}
-          <S id="ceo" n={6} title="CEO round: Q&A">
+          <S id="ceo" n={7} title="CEO round: Q&A">
             <div className="space-y-2">
               <QA tag="open" q="Tell me about yourself." a={<Say>I'm a product builder who takes AI products from 0 to 1. I started as a software and QA engineer, so I'm hands-on: I prototype and build the tools I need. Most recently at Smart Bricks I built an agentic AI underwriting platform for institutional investors from zero, and before that at Law71 I worked on legal AI adopted by the UAE Ministry of Foreign Affairs and EDGE Group. What ties it together is turning unclear problems into AI products people trust.</Say>} />
               <QA tag="motivation" q="Why Whiteshield?" a={<Say>Because the purpose is real. Governments make decisions that affect millions of people, often with incomplete data. Whiteshield turns data and AI into evidence a decision-maker can trust, and that's exactly the kind of AI I want to build: grounded, trusted and actually used. I've also loved the people I've met in this process. Fouad and Hugo both made me want to work here more.</Say>} />
@@ -191,7 +217,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 7 */}
-          <S id="wael" n={7} title="Wael round: Q&A">
+          <S id="wael" n={8} title="Wael round: Q&A">
             <div className="space-y-2">
               <QA tag="eng" q="How do you work with engineering teams?" a={<Say>I bring clear problems, not solutions: the user, the decision, the data, and what success looks like, written down. Engineering owns the how. I started as a software and QA engineer, so I understand trade-offs and respect estimates. I protect the team from changing priorities with one visible backlog and written decisions, and I'm available fast when they're blocked.</Say>} />
               <QA tag="eng" q="How do you turn complex requirements into a working product?" a={<><Say>Break it down to the decision it serves, then into small, testable pieces. I write requirements with acceptance criteria engineers can verify, map dependencies, and prototype the risky parts first.</Say><Say>At MUAB the CEO's wishes had drifted far from the spec; I rebuilt the PRD live with stakeholders and locked five architecture decisions in one session with no rework.</Say></>} />
@@ -205,21 +231,22 @@ export default function FinalBooklet() {
           </S>
 
           {/* 8 */}
-          <S id="evals" n={8} title="Deep dive: AI testing & evaluation (your Wael story)">
+          <S id="evals" n={9} title="Deep dive: AI testing & evaluation (your Wael story)">
             <p className="text-sm text-neutral-300">Hugo highlighted this as something the team could benefit from. Be ready to go 2–3 levels deep.</p>
             <ol className="mt-4 space-y-3 text-sm text-neutral-300">
               {[
-                ["The problem", "An AI assistant had to work across different Arabic dialects, but there wasn't enough real data to test it."],
-                ["What you did", "Took a few real examples and used LLMs to generate realistic synthetic test cases, covering dialects, phrasing, edge cases and negative cases (questions it should refuse)."],
-                ["How you checked the test data", "Native speakers / domain experts reviewed a sample, so the synthetic data was realistic and not just the model testing itself."],
-                ["What you measured", "Correctness against expected answers, groundedness (backed by sources), refusal when it should refuse, and quality per dialect, so weak dialects stood out."],
-                ["What happened", "Failures were found and fixed before launch, and the test set became a regression suite run on every change."],
+                ["The problem", "At Law71, legal AI for the UAE Ministry of Foreign Affairs and EDGE had to work in Arabic and English, with very few real documents to test with, and Arabic dialects and intent made it harder."],
+                ["What you did", "Created many synthetic variations of the sample documents the clients provided, covering dialects, phrasing and edge cases."],
+                ["How you checked the test data", "The legal expert on the team reviewed the expected answers, so the synthetic “correct answers” were actually correct."],
+                ["How you tested", "Built an automated framework with Selenium that ran each test case through the platform and scored responses on relevance, ambiguity, correctness and accuracy against the expected answers."],
+                ["How you knew the scoring worked", "Regularly sat with the legal expert to review random results by hand and mark findings."],
+                ["What happened", "It showed where Arabic was weaker so those cases were fixed before clients saw them, and it became a regression suite run on every change. (Confirm the exact result you can share.)"],
                 ["The lesson", "Evaluate per language and per dialect, never assume English quality carries over, and turn every production failure into a new test."],
               ].map(([t, d], i) => (
                 <li key={t} className="flex gap-3"><span className="font-mono text-accent">{i + 1}</span><span><b className="text-white">{t}.</b> {d}</span></li>
               ))}
             </ol>
-            <Note>Adjust to the real details: which company, which assistant, which dialects, and any result you can share. Hugo and Fouad remembered this story, so tell it the same way.</Note>
+            <Note>This is the story Hugo and Fouad remembered. Tell it the same way, and only claim the results that are true.</Note>
             <h3 className="mt-6 font-semibold text-white">If Wael goes deeper</h3>
             <Grid>
               <T t="“Isn't synthetic data biased?”">Yes, it can be. That's why it's seeded with real examples, reviewed by humans, mixed with real cases as soon as they exist, and never the only test.</T>
@@ -230,7 +257,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 9 */}
-          <S id="curve" n={9} title="Curveballs">
+          <S id="curve" n={10} title="Curveballs">
             <Grid>
               <T t="Estimation (like Hugo's moon question)">Start from something you know → simple maths out loud → sense-check → give a number. Moon: Apollo took ~3 days at ~5,000 km/h → ~360,000 km.</T>
               <T t="“What would your last manager say about you?”">“That I take ownership, move fast, and sometimes need to slow down to bring people with me. And that I always deliver.”</T>
@@ -240,7 +267,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 10 */}
-          <S id="ask" n={10} title="Questions to ask them">
+          <S id="ask" n={11} title="Questions to ask them">
             <Grid>
               <T t="To the CEO (pick 2)">
                 <ul className="list-disc space-y-1 pl-5">
@@ -261,7 +288,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 11 */}
-          <S id="run" n={11} title="On the day">
+          <S id="run" n={12} title="On the day">
             <Grid>
               <T t="Before">Breathe (in 4 · hold 4 · out 6, ×5). Water. Notifications off. Camera at eye level. This booklet on your phone, not your screen.</T>
               <T t="During">Warm and conversational. Answer first, one example, stop. Smile. If they mention a problem, show curiosity and ask a follow-up.</T>
@@ -271,7 +298,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 12 */}
-          <S id="offer" n={12} title="The offer: pay & negotiation">
+          <S id="offer" n={13} title="The offer: pay & negotiation">
             <h3 className="font-semibold text-white">Market reference (UAE, 2026, tax-free)</h3>
             <div className="mt-3 overflow-x-auto">
               <table className="w-full min-w-[480px] text-left text-sm">
@@ -300,7 +327,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 13 */}
-          <S id="package" n={13} title="Package & contract checklist">
+          <S id="package" n={14} title="Package & contract checklist">
             <Grid>
               <T t="Pay"><ul className="list-disc pl-5"><li>Monthly salary, and the basic vs allowances split (affects end-of-service)</li><li>Bonus or performance pay</li><li>Contract monthly rate vs permanent salary</li></ul></T>
               <T t="Benefits"><ul className="list-disc pl-5"><li>Health insurance (you, and family if relevant)</li><li>Housing and transport allowance</li><li>Annual flight home</li><li>Annual leave</li></ul></T>
@@ -324,7 +351,7 @@ export default function FinalBooklet() {
           </S>
 
           {/* 14 */}
-          <S id="visa" n={14} title="Visa & documents">
+          <S id="visa" n={15} title="Visa & documents">
             <h3 className="font-semibold text-white">You already have ✅</h3>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-neutral-300">
               <li>UAE-attested engineering degree and transcript</li>
