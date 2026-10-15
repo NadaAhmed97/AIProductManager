@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 // Private, unlinked, noindex. Same layout as the Hugo booklet.
 
 const toc = [
+  ["eduhub", "NEW · Mustapha & EduHub"],
   ["cheat", "1-page cheat sheet"],
   ["mock", "Your 8 polished answers"],
   ["stage", "Where you are"],
@@ -95,6 +96,37 @@ export default function FinalBooklet() {
             <h1 className="mt-3 text-4xl font-extrabold tracking-tight md:text-5xl">The <span className="shimmer">final round</span></h1>
             <p className="mt-4 text-lg text-neutral-400">Alex (CEO) and Wael (VP Engineering). Conversational, about fit, motivation and how you work with engineers. Then the offer.</p>
           </div>
+
+
+          {/* EduHub round */}
+          <S id="eduhub" n={0} title="NEW · Final conversation with Mustapha (EduHub)">
+            <Note>Alex: “one final conversation with Mustapha to confirm your fit for the EduHub team.” Likely your future manager, and likely the permanent role on an established government product.</Note>
+            <Grid>
+              <T t="Mustapha Bourdkani">Manager at Whiteshield (Labour Markets &amp; Resilience page); also listed as Technology Partnerships Lead. Profile mentions legal-expert work on a Whiteshield project (Samarkand Economic Forum) and the Global Labour Resilience Index. Policy/consulting and client side. Check his LinkedIn for his current title.</T>
+              <T t="EduHub, the product">The UAE's national university admissions platform; Whiteshield provides the technology. Upgraded June 2026 by the Ministry of Higher Education and Scientific Research with the Ministry of Education. AI guides students from exploring programmes to applying and tracking decisions. Grades 10–11 explore; Grade 12+ apply with one profile for multiple applications. Integrated with UAE PASS and Ministry of Education systems. Dashboards for students, schools, universities and advisors. ~74 universities registered. Part of Zero Government Bureaucracy. Sept 2026: AI scholarship application (~5 minutes, 2 documents).</T>
+            </Grid>
+            <h3 className="mt-6 font-semibold text-white">What he'll likely test</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-neutral-300">
+              <li>Working with ministry stakeholders: requirements, change requests, deadlines.</li>
+              <li>Delivering on a live product: prioritising improvements, quality, reliability, releases.</li>
+              <li>Understanding EduHub's users: students, parents, schools, universities, advisors.</li>
+              <li>Data integration and AI inside a government system.</li>
+            </ul>
+            <div className="mt-6 space-y-2">
+              <QA tag="EduHub" q="Why EduHub?" a={<Say>It shapes students' futures at national scale, and it's a great example of what Whiteshield does: technology helping government deliver better outcomes. I also like that it's live. Improving a product people rely on is a different, rewarding challenge from building from zero.</Say>} />
+              <QA tag="EduHub" q="How would you work with ministry stakeholders?" a={<Say>At Law71 I worked directly with the UAE Ministry of Foreign Affairs and EDGE Group. I keep one visible backlog, turn requests into clear requirements, make trade-offs visible, and bring compliance into acceptance criteria early so there are fewer last-minute surprises. And I listen first: the ministry often understands its problem better than any spec.</Say>} />
+              <QA tag="EduHub" q="How would you improve EduHub?" a={<><Say>First I'd look at the data and talk to users to find the biggest friction. Some hypotheses I'd test:</Say><ul className="list-disc pl-5"><li>Personalised programme recommendations from grades and interests (like my Career Navigator onboarding).</li><li>Reducing application drop-off: funnel analytics, saved progress, reminders.</li><li>Arabic-first experience and support for parents, since families decide together.</li><li>Better insight for the ministry: programme demand, drop-off points, links to labour-market needs.</li></ul></>} />
+              <QA tag="EduHub" q="Live product vs 0→1: are you comfortable?" a={<Say>Yes. At Mumzworld I owned a live app with 5M+ users and delivered through peak events like Black Friday with 99.9% uptime. On a live product, reliability and trust come first and changes are planned carefully. I enjoy both.</Say>} />
+              <QA tag="EduHub" q="A ministry wants a change two weeks before admissions open. What do you do?" a={<Say>Understand the reason and the risk first. Close to a peak period, stability comes first, so I'd assess impact with engineering, offer options (a safe minimal change now, the rest after the peak), align internally, and agree the decision with the ministry in writing. If it's critical, we ship it with extra testing and a rollback plan.</Say>} />
+            </div>
+            <h3 className="mt-6 font-semibold text-white">Ask Mustapha</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-neutral-300">
+              <li>“What are the biggest priorities for EduHub over the next six months?”</li>
+              <li>“How does the team work with the Ministry day to day?”</li>
+              <li>“Would this be the permanent role on EduHub, or the early-stage product?”</li>
+              <li>“What would success look like in my first three months?”</li>
+            </ul>
+          </S>
 
           {/* 1 */}
           <S id="cheat" n={1} title="1-page cheat sheet">
